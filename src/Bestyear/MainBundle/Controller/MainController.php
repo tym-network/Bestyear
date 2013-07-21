@@ -10,4 +10,9 @@ class MainController extends Controller
     {
         return $this->render('BestyearMainBundle:Main:index.html.twig', array());
     }
+    
+    public function userAction()
+    {
+        return $this->render('BestyearMainBundle:Main:userView.html.twig', array());
+    }
 }

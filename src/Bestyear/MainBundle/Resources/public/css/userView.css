@@ -1,0 +1,76 @@
+@font-face {
+	font-family: 'MavenProBold';
+	src: url('../fonts/MavenProLight-300.otf');
+}
+
+#userProfile {
+    margin: 30px;
+    font-family: "MavenProLight", "Century Gothic";
+}
+
+#userPicture {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+}
+
+.female {
+    border: 8px solid #e61aa0;
+}
+
+.male {
+    border: 8px solid #22c2cc;
+}
+
+#identity {
+    position: absolute;
+    margin-left: 124px;
+    margin-top: 18px;
+    font-size: 22px;
+}
+
+#name {
+    font-size: 28px;
+    font-family: "MavenProBold", "Century Gothic";
+    font-weight: bold;
+}
+
+#socialNetworks {
+    float: right;
+    margin-top: 24px;
+}
+
+#facebook {
+    float:right;
+    width: 70px;
+    height: 70px;
+    background: #00478d;
+    border-radius: 45px;
+}
+
+#facebookIcon {
+    width: 23px;
+    height: 23px;
+    background: url("../images/facebook-icon.png") no-repeat;
+    position: relative;
+    top: 23px;
+    left: 23px;
+}
+
+#twitter {
+    float:right;
+    margin-right: 20px;
+    width: 70px;
+    height: 70px;
+    background: #00abee;
+    border-radius: 45px;
+}
+
+#twitterIcon {
+    width: 27px;
+    height: 21px;
+    background: url("../images/twitter-icon.png") no-repeat;
+    position: relative;
+    top: 25px;
+    left: 21px;
+}

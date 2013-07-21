@@ -1,0 +1,23 @@
+{% extends '::base.html.twig' %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/bestyearmain/css/userView.css') }}" type="text/css" />
+{% endblock %}
+
+{% block content %}
+    <div id="userProfile">
+        <img src="{{ asset('bundles/bestyearmain/images/user.jpg') }}" id="userPicture" class="female" alt="Jane Doe"/>
+        <div id="identity">
+            <span id="name">Jane Doe</span><br/>
+            <span id="birthdate">21/05/1991 (22 ans)</span><br/>
+            <span id="level">GB03</span>
+        </div>
+        <div id="socialNetworks">
+            <div id="facebook">
+                <div id="facebookIcon"></div>
+            </div>
+            <div id="twitter">
+                <div id="twitterIcon"></div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
