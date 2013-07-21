@@ -74,3 +74,53 @@
     top: 25px;
     left: 21px;
 }
+
+#details {
+    position: relative;
+    top: 130px;
+}
+
+.couronne {
+    width: 79px;
+    height: 76px;
+    margin-top: 20px;  
+}
+
+#couronne1 {
+    background: url("../images/couronne1.png") no-repeat;
+}
+
+#couronne2 {
+    background: url("../images/couronne2.png") no-repeat;
+}
+
+#couronne3 {
+    background: url("../images/couronne3.png") no-repeat;
+}
+
+#phoneIcon {
+    width: 24px;
+    height: 25px;
+    background: url("../images/phone-icon.png") no-repeat;
+    position: relative;
+    top: 25px;
+    left: 26px;
+}
+
+#mailIcon {
+    width: 26px;
+    height: 19px;
+    background: url("../images/mail-icon.png") no-repeat;
+    position: relative;
+    top: 28px;
+    left: 25px;
+}
+
+#compassIcon {
+    width: 25px;
+    height: 25px;
+    background: url("../images/compass-icon.png") no-repeat;
+    position: relative;
+    top: 25px;
+    left: 26px;
+}
