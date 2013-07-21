@@ -1,0 +1,4 @@
+bestyear_main:
+    resource: "@BestyearMainBundle/Resources/config/routing.yml"
+    prefix:   /
+

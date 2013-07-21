@@ -2,12 +2,42 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        <title>{% block title %}Le BestYear{% endblock %}</title>
+        <link rel="stylesheet" href="{{ asset('css/base.css') }}" type="text/css" />
+        {% block stylesheets %}
+        {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
-        {% block body %}{% endblock %}
+        <div id="header">
+            <div id="logo"></div>
+            <div id="searchBar">
+                <div id="searchIcon"></div>
+            </div>
+            <div id="myProfile">
+                <div id="userName">Jane Doe</div>
+                <div id="userLogo"></div>
+            </div>
+        </div>
+        <div id="layout">
+            <div id="leftBar">
+                <div id="homeLeftBar">
+                    <div id="homeIcon"></div>
+                </div>
+                <div id="listLeftBar">
+                    <div id="listIcon"></div>
+                </div>
+                <div id="searchUserLeftBar">
+                    <div id="searchUserIcon"></div>
+                </div>
+            </div>
+            <div id="content">
+                {% block content %}{% endblock %}
+            </div>
+        </div>
+        <div id="footer">
+            © <a href="theotimeloiseau.com">Théotime Loiseau</a> - 2013<br/>
+        </div>
         {% block javascripts %}{% endblock %}
     </body>
 </html>
