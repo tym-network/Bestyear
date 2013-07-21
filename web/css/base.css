@@ -1,0 +1,151 @@
+@font-face {
+	font-family: 'MavenProLight';
+	src: url('../fonts/MavenProLight-200.otf');
+}
+
+body {
+    background: rgb(215,215,215);
+    height: 100%;
+    margin: 0px;
+}
+
+#header {
+    height: 89px;
+    width: 1000px;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#logo {
+    width: 180px;
+    height: 89px;
+    background: url("../images/logo.png") no-repeat;
+    position: absolute;
+}
+
+#searchBar {
+    width: 340px;
+    height: 50px;
+    background: white;
+    border-radius: 10px 10px 10px 10px;
+    -moz-border-radius: 10px 10px 10px 10px;
+    position: absolute;
+    margin-left: 300px;
+    margin-top: 20px;
+}
+
+#searchIcon {
+    width: 24px;
+    height: 26px;
+    background: url("../images/search-icon.png") no-repeat;
+    position: relative;
+    top: 10px;
+    left: 304px;
+}
+
+#myProfile {
+    float: right;
+    margin-top: 23px;
+}
+
+#userName {
+    text-align: right;
+    float: left;
+    margin-top: 10px;
+    margin-right: 7px;
+    font-family: "MavenProLight", "Century Gothic";
+    font-size: 22px;
+}
+
+#userLogo {
+    width: 44px;
+    height: 44px;
+    background: url("../images/user-icon.png") no-repeat;
+    float: right;
+}
+
+#layout {
+    width: 1000px;
+    min-height: 420px;
+    background: white;
+    position: relative;
+    margin: auto;
+}  
+
+#leftBar {
+    width: 89px;
+    height: 100%;
+    background: #434343;
+    position: absolute;
+    bottom: 0;
+    top: 0;
+}
+
+#homeLeftBar {
+    width: 89px;
+    height: 80px;
+    background: #22c2cc;
+}
+
+#homeIcon {
+    width: 40px;
+    height: 35px;
+    background: url("../images/home-icon.png") no-repeat;
+    position: relative;
+    top: 22px;
+    left: 24px;
+}
+
+#listLeftBar {
+    width: 89px;
+    height: 80px;
+    background: #24c761;
+}
+
+#listIcon {
+    width: 39px;
+    height: 31px;
+    background: url("../images/list-icon.png") no-repeat;
+    position: relative;
+    top: 25px;
+    left: 25px;
+}
+
+#searchUserLeftBar {
+    width: 89px;
+    height: 80px;
+    background: #d9df3c;
+}
+
+#searchUserIcon {
+    width: 37px;
+    height: 39px;
+    background: url("../images/searchUser-icon.png") no-repeat;
+    position: relative;
+    top: 21px;
+    left: 26px;
+}
+
+#footer {
+    text-align: center;
+    width: 1000px;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-family: "Century Gothic";
+    font-size: 14px;
+}
+
+#footer a {
+    color: black;
+    text-decoration: none;
+    -webkit-transition: color 0.3s linear;
+    -o-transition: color 0.3s linear;
+    -moz-transition: color 0.3s linear;
+    transition: color 0.3s linear;
+}
+
+#footer a:hover {
+    color: #22c2cc;
+}
