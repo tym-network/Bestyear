@@ -3,6 +3,8 @@
 }
 
 #userProfile {
+    display: none;
+    opacity: 0;
     margin: 30px;
     font-family: "MavenProLight", "Century Gothic";
 }

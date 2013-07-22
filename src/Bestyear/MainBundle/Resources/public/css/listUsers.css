@@ -1,3 +1,8 @@
+#userList {
+    opacity: 0;
+    display: none;
+}
+
 #leftColumn {
     float: left;
     width: 445px;
