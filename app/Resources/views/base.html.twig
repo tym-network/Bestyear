@@ -7,10 +7,11 @@
         {% block stylesheets %}
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('images/favicon.png') }}" />
+        <script src="{{ asset('js/jquery-1.10.2.min.js') }}"></script>
     </head>
     <body>
         <div id="header">
-            <div id="logo"></div>
+            <a href="{{ path('bestyear_main_homepage') }}"><div id="logo"></div></a>
             <div id="searchBar">
                 <div id="searchIcon"></div>
             </div>
@@ -21,15 +22,22 @@
         </div>
         <div id="layout">
             <div id="leftBar">
-                <div id="homeLeftBar">
-                    <div id="homeIcon"></div>
-                </div>
-                <div id="listLeftBar">
-                    <div id="listIcon"></div>
-                </div>
-                <div id="searchUserLeftBar">
-                    <div id="searchUserIcon"></div>
-                </div>
+                <div id="leftWhiteArrow"></div>
+                <a href="#home">
+                    <div id="homeLeftBar">
+                        <div id="homeIcon"></div>
+                    </div>
+                </a>
+                <a href="#list">
+                    <div id="listLeftBar">
+                        <div id="listIcon"></div>
+                    </div>
+                </a>
+                <a href="#user">
+                    <div id="searchUserLeftBar">
+                        <div id="searchUserIcon"></div>
+                    </div>
+                </a>
             </div>
             <div id="content">
                 {% block content %}{% endblock %}
@@ -38,6 +46,8 @@
         <div id="footer">
             © <a href="theotimeloiseau.com">Théotime Loiseau</a> - 2013<br/>
         </div>
-        {% block javascripts %}{% endblock %}
+        {% block javascripts %}
+            <script src="{{ asset('js/arrow.js') }}"></script>
+        {% endblock %}
     </body>
 </html>

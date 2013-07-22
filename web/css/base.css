@@ -3,6 +3,11 @@
 	src: url('../fonts/MavenProLight-200.otf');
 }
 
+@font-face {
+	font-family: 'MavenProBold';
+	src: url('../fonts/MavenProLight-300.otf');
+}
+
 body {
     background: rgb(236,236,236);
     height: 100%;
@@ -156,4 +161,13 @@ body {
 
 #footer a:hover {
     color: #22c2cc;
+}
+
+#leftWhiteArrow {
+    width: 17px;
+    height: 40px;
+    background: url("../images/leftmenu-arrow.png") no-repeat;
+    float: left;
+    margin-top: 20px;
+    margin-left:72px;
 }
