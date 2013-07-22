@@ -1,0 +1,39 @@
+#leftColumn {
+    float: left;
+    width: 445px;
+}
+
+#rightColumn {
+    float: left;
+    width: 445px;
+}
+
+#userList .circle {
+    width: 120px;
+    height: 120px;
+    border-radius: 60px;
+}
+
+#userList .male {
+    background: #22c2cc;
+}
+
+#userList .female {
+    background: #e61aa0;
+}
+
+#userList .frameUserPicture {
+    width: 74px;
+    height: 74px;
+    position: relative;
+    left:20px;
+    top:20px;
+}
+
+#userList .female .frameUserPicture {
+    background: url("../images/cadre-user-list-female.png") no-repeat;
+}
+
+#userList .male .frameUserPicture {
+    background: url("../images/cadre-user-list-male.png") no-repeat;
+}

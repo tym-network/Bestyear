@@ -5,3 +5,7 @@ bestyear_main_homepage:
 bestyear_user_view:
     pattern:  /user1
     defaults: { _controller: BestyearMainBundle:Main:user }
+    
+bestyear_user_list:
+    pattern:  /list
+    defaults: { _controller: BestyearMainBundle:Main:listUsers }

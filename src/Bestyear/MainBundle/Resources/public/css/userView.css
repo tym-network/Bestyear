@@ -3,6 +3,10 @@
 	src: url('../fonts/MavenProLight-300.otf');
 }
 
+#layout {
+    height: 500px;
+}
+
 #userProfile {
     margin: 30px;
     font-family: "MavenProLight", "Century Gothic";
@@ -83,7 +87,9 @@
 .couronne {
     width: 79px;
     height: 76px;
-    margin-top: 20px;  
+    margin-top: 20px;
+    float:left;
+    clear:left; 
 }
 
 #couronne1 {
@@ -98,7 +104,7 @@
     background: url("../images/couronne3.png") no-repeat;
 }
 
-#phoneIcon {
+#phoneBigIcon {
     width: 24px;
     height: 25px;
     background: url("../images/phone-icon.png") no-repeat;
@@ -107,7 +113,7 @@
     left: 26px;
 }
 
-#mailIcon {
+#mailBigIcon {
     width: 26px;
     height: 19px;
     background: url("../images/mail-icon.png") no-repeat;
@@ -116,11 +122,79 @@
     left: 25px;
 }
 
-#compassIcon {
+#compassBigIcon {
     width: 25px;
     height: 25px;
     background: url("../images/compass-icon.png") no-repeat;
     position: relative;
     top: 25px;
     left: 26px;
+}
+
+.homeIcon {
+    width: 21px;
+    height: 19px;
+    background: url("../images/home-icon.png") no-repeat;
+    float:left;
+    margin-top: -1px;
+}
+
+.schoolIcon {
+    width: 22px;
+    height: 17px;
+    background: url("../images/school-icon.png") no-repeat;
+    float:left;
+}
+
+.smartphoneIcon {
+    width: 14px;
+    height: 22px;
+    background: url("../images/smartphone-icon.png") no-repeat;
+    float:left;
+    margin-top: -3px;
+    margin-left: 3px;
+}
+
+.gplusIcon {
+    width: 19px;
+    height: 19px;
+    background: url("../images/gplus-icon.png") no-repeat;
+    float:left;
+    margin-top: -1px;
+}
+
+.info {
+    max-width: 200px;
+    width: 200px;
+    padding-left: 28px;
+}
+
+.line {
+    float: left;
+}
+
+.line1-1 {
+    margin-top: 50px;
+    margin-left: 6px;
+}
+
+.line2-1 {
+    margin-top: 30px;
+}
+
+.line2-2 {
+    margin-top: 8px;
+}
+
+.line3-1 {
+    margin-top: 20px;
+}
+
+.line3-2 {
+    margin-top: 8px;
+    margin-left: 6px;
+}
+
+.line3-3 {
+    margin-top: 8px;
 }
