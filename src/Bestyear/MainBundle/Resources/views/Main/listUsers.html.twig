@@ -1,0 +1,44 @@
+{% extends '::base.html.twig' %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/bestyearmain/css/listUsers.css') }}" type="text/css" />
+{% endblock %}
+
+{% block content %}
+    <div id="userList">
+        <div id="rightColumn">
+            <table>
+                <tr>
+                    <td>
+                        <div class="circle female">
+                            <img src="{{ asset('bundles/bestyearmain/images/user.jpg') }}" class="userPicture"/>
+                            <div class="frameUserPicture"></div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="infosSummary">
+                            <div class="name">Jane Doe</div>
+                            <div class="other">GB02 - 21 ans</div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id="leftColumn">
+            <table>
+                <tr>
+                    <td>
+                        <div class="circle male">
+                            <div class="userBigIcon"></div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="infosSummary">
+                            <div class="name">John Doe</div>
+                            <div class="other">GI02 - 19 ans</div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+{% endblock %}

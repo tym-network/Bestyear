@@ -1,1 +1,117 @@
 {% extends '::base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/bestyearmain/css/listUsers.css') }}" type="text/css"/>
+    <link rel="stylesheet" href="{{ asset('bundles/bestyearmain/css/userView.css') }}" type="text/css"/>
+{% endblock %}
+
+{% block content %}
+    <div id="welcome">
+    <h1>Bienvenue sur le Bestyear de l'UTC !</h1>
+    <h2>Qu'est-ce que le Bestyear?</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus commodo ornare aliquam. In eros nisl, gravida ultricies justo eget, sollicitudin luctus diam. Suspendisse aliquet facilisis varius. In hac habitasse platea dictumst. Nam eu risus et dolor adipiscing elementum. Curabitur mattis accumsan lectus sed fermentum. Proin dapibus malesuada laoreet.
+
+Mauris in luctus dui, ac pulvinar odio. Nulla vitae risus egestas nisi faucibus feugiat at nec tellus. Nam eget volutpat risus. Cras eget leo nisl. Aliquam vel varius tortor. Sed mollis, ipsum quis pellentesque dignissim, nunc quam malesuada mauris, eu feugiat massa justo et nunc. Nunc ullamcorper libero vitae dictum euismod. Proin varius augue arcu, eget consectetur sapien consectetur nec. Nam sit amet luctus nisl. Pellentesque quis porta metus.</p>
+    </div>
+    
+    
+    <div id="userList">
+        <div id="rightColumn">
+            <table>
+                <tr>
+                    <td>
+                        <div class="circle female">
+                            <img src="{{ asset('bundles/bestyearmain/images/user.jpg') }}" class="userPicture"/>
+                            <div class="frameUserPicture"></div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="infosSummary">
+                            <div class="name">Jane Doe</div>
+                            <div class="other">GB02 - 21 ans</div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id="leftColumn">
+            <table>
+                <tr>
+                    <td>
+                        <div class="circle male">
+                            <div class="userBigIcon"></div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="infosSummary">
+                            <div class="name">John Doe</div>
+                            <div class="other">GI02 - 19 ans</div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+
+    <div id="userProfile">
+        <img src="{{ asset('bundles/bestyearmain/images/user.jpg') }}" id="userPicture" class="female" alt="Jane Doe"/>
+        <div id="identity">
+            <span id="name">Jane Doe</span><br/>
+            <span id="birthdate">21/05/1991 (22 ans)</span><br/>
+            <span id="level">GB03</span>
+        </div>
+        <div id="socialNetworks">
+            <div id="facebook">
+                <div id="facebookIcon"></div>
+            </div>
+            <div id="twitter">
+                <div id="twitterIcon"></div>
+            </div>
+        </div>
+        <div id="details">
+            <div id="couronne3" class="couronne">
+                <div id="phoneBigIcon"></div>
+            </div>
+            <div class="line">
+                <div class="line3-1">
+                    <div class="homeIcon"></div>
+                    <div class="info">03 22 22 22 22</div>
+                </div>
+                <div class="line3-2">
+                    <div class="schoolIcon"></div>
+                    <div class="info">03 22 22 22 22</div>
+                </div>
+                <div class="line3-3">
+                    <div class="smartphoneIcon"></div>
+                    <div class="info">03 22 22 22 22</div>
+                </div>
+            </div>
+            <div id="couronne1" class="couronne">
+                <div id="mailBigIcon"></div>
+            </div>
+            <div class="line">
+                <div class="line1-1">
+                    <div class="gplusIcon"></div>
+                    <div class="info">jane@doe.com</div>
+                </div>
+            </div>
+            <div id="couronne2" class="couronne">
+                <div id="compassBigIcon"></div>
+            </div>
+            <div class="line">
+                <div class="line2-1">
+                    <div class="homeIcon"></div>
+                    <div class="info">5 Rue de la rue <br/> 60200 Compiègne</div>
+                </div>
+                <div class="line2-2">
+                    <div class="schoolIcon"></div>
+                    <div class="info">12 Rue de la rue <br/> 60200 Compiègne</div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('bundles/bestyearmain/js/transition.js') }}"></script>
+{% endblock %}

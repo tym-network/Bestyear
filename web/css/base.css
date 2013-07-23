@@ -3,8 +3,13 @@
 	src: url('../fonts/MavenProLight-200.otf');
 }
 
+@font-face {
+	font-family: 'MavenProBold';
+	src: url('../fonts/MavenProLight-300.otf');
+}
+
 body {
-    background: rgb(215,215,215);
+    background: rgb(236,236,236);
     height: 100%;
     margin: 0px;
 }
@@ -56,6 +61,7 @@ body {
     margin-right: 7px;
     font-family: "MavenProLight", "Century Gothic";
     font-size: 22px;
+    max-width: 300px;
 }
 
 #userLogo {
@@ -127,6 +133,13 @@ body {
     left: 26px;
 }
 
+#content {
+    width: 891px;
+    height: 100%;
+    margin-left: 89px;
+    padding: 10px;
+}
+
 #footer {
     text-align: center;
     width: 1000px;
@@ -148,4 +161,13 @@ body {
 
 #footer a:hover {
     color: #22c2cc;
+}
+
+#leftWhiteArrow {
+    width: 17px;
+    height: 40px;
+    background: url("../images/leftmenu-arrow.png") no-repeat;
+    float: left;
+    margin-top: 20px;
+    margin-left:72px;
 }

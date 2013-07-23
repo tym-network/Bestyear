@@ -10,4 +10,9 @@ class MainController extends Controller
     {
         return $this->render('BestyearMainBundle:Main:index.html.twig', array());
     }
+    
+    public function inscriptionAction()
+    {
+        return $this->render('BestyearMainBundle:Main:inscription.html.twig', array());
+    }
 }

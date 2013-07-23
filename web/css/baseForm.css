@@ -1,0 +1,100 @@
+@font-face {
+	font-family: 'MavenProLight';
+	src: url('../fonts/MavenProLight-200.otf');
+}
+
+@font-face {
+	font-family: 'MavenProBold';
+	src: url('../fonts/MavenProLight-300.otf');
+}
+
+body {
+    background: rgb(236,236,236);
+    height: 100%;
+    margin: 0px;
+}
+
+#header {
+    height: 89px;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#logo {
+    width: 180px;
+    height: 89px;
+    background: url("../images/logo.png") no-repeat;
+    margin: auto;
+}
+
+#layout {
+    width: 400px;
+    margin: auto;
+}
+
+#content {
+    width: 400px;
+    min-height: 300px;
+    background: white;
+    border: 1px solid #cecece;
+}
+
+.button {
+    width: 200px;
+    height: 36px;
+    background: #24c761;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-family: "MavenProLight", "Century Gothic";  
+    font-size: 20px;
+    color: white;
+    border: none;
+}
+
+#footer {
+    text-align: center;
+    width: 1000px;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-family: "Century Gothic";
+    font-size: 14px;
+}
+
+#footer a {
+    color: black;
+    text-decoration: none;
+    -webkit-transition: color 0.3s linear;
+    -o-transition: color 0.3s linear;
+    -moz-transition: color 0.3s linear;
+    transition: color 0.3s linear;
+}
+
+#footer a:hover {
+    color: #22c2cc;
+}
+
+h1 {
+    font-family: "MavenProLight", "Century Gothic";
+    font-size: 30px;
+    text-align: center;
+    margin-top: 12px;
+    margin-bottom: 10px;
+}
+
+.line {
+    width: 100%;
+    height: 4px;
+    background: url("../images/signIn-line.png") repeat-x;
+    margin-bottom: 10px;
+}
+
+input {
+    border: 1px solid #dddddd;
+    border-radius: 2px;
+    outline: none;
+    width: 300px;
+    height: 24px;
+    margin-bottom: 10px;
+}

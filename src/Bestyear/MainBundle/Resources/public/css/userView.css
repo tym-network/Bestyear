@@ -1,0 +1,197 @@
+#layout {
+    height: 500px;
+}
+
+#userProfile {
+    display: none;
+    opacity: 0;
+    margin: 30px;
+    font-family: "MavenProLight", "Century Gothic";
+}
+
+#userPicture {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+}
+
+.female {
+    border: 8px solid #e61aa0;
+}
+
+.male {
+    border: 8px solid #22c2cc;
+}
+
+#identity {
+    position: absolute;
+    margin-left: 124px;
+    margin-top: 18px;
+    font-size: 22px;
+}
+
+#name {
+    font-size: 28px;
+    font-family: "MavenProBold", "Century Gothic";
+    font-weight: bold;
+}
+
+#socialNetworks {
+    float: right;
+    margin-top: 24px;
+}
+
+#facebook {
+    float:right;
+    width: 70px;
+    height: 70px;
+    background: #00478d;
+    border-radius: 45px;
+}
+
+#facebookIcon {
+    width: 23px;
+    height: 23px;
+    background: url("../images/facebook-icon.png") no-repeat;
+    position: relative;
+    top: 23px;
+    left: 23px;
+}
+
+#twitter {
+    float:right;
+    margin-right: 20px;
+    width: 70px;
+    height: 70px;
+    background: #00abee;
+    border-radius: 45px;
+}
+
+#twitterIcon {
+    width: 27px;
+    height: 21px;
+    background: url("../images/twitter-icon.png") no-repeat;
+    position: relative;
+    top: 25px;
+    left: 21px;
+}
+
+#details {
+    position: relative;
+    top: 130px;
+}
+
+.couronne {
+    width: 79px;
+    height: 76px;
+    margin-top: 20px;
+    float:left;
+    clear:left; 
+}
+
+#couronne1 {
+    background: url("../images/couronne1.png") no-repeat;
+}
+
+#couronne2 {
+    background: url("../images/couronne2.png") no-repeat;
+}
+
+#couronne3 {
+    background: url("../images/couronne3.png") no-repeat;
+}
+
+#phoneBigIcon {
+    width: 24px;
+    height: 25px;
+    background: url("../images/phone-icon.png") no-repeat;
+    position: relative;
+    top: 25px;
+    left: 26px;
+}
+
+#mailBigIcon {
+    width: 26px;
+    height: 19px;
+    background: url("../images/mail-icon.png") no-repeat;
+    position: relative;
+    top: 28px;
+    left: 25px;
+}
+
+#compassBigIcon {
+    width: 25px;
+    height: 25px;
+    background: url("../images/compass-icon.png") no-repeat;
+    position: relative;
+    top: 25px;
+    left: 26px;
+}
+
+.homeIcon {
+    width: 21px;
+    height: 19px;
+    background: url("../images/home-icon.png") no-repeat;
+    float:left;
+    margin-top: -1px;
+}
+
+.schoolIcon {
+    width: 22px;
+    height: 17px;
+    background: url("../images/school-icon.png") no-repeat;
+    float:left;
+}
+
+.smartphoneIcon {
+    width: 14px;
+    height: 22px;
+    background: url("../images/smartphone-icon.png") no-repeat;
+    float:left;
+    margin-top: -3px;
+    margin-left: 3px;
+}
+
+.gplusIcon {
+    width: 19px;
+    height: 19px;
+    background: url("../images/gplus-icon.png") no-repeat;
+    float:left;
+    margin-top: -1px;
+}
+
+.info {
+    max-width: 200px;
+    width: 200px;
+    padding-left: 28px;
+}
+
+.line {
+    float: left;
+}
+
+.line1-1 {
+    margin-top: 50px;
+    margin-left: 6px;
+}
+
+.line2-1 {
+    margin-top: 30px;
+}
+
+.line2-2 {
+    margin-top: 8px;
+}
+
+.line3-1 {
+    margin-top: 20px;
+}
+
+.line3-2 {
+    margin-top: 8px;
+    margin-left: 6px;
+}
+
+.line3-3 {
+    margin-top: 8px;
+}

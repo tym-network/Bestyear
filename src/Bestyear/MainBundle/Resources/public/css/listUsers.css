@@ -1,0 +1,75 @@
+#userList {
+    opacity: 0;
+    display: none;
+}
+
+#leftColumn {
+    float: left;
+    width: 445px;
+}
+
+#rightColumn {
+    float: left;
+    width: 445px;
+}
+
+#userList .circle {
+    width: 110px;
+    height: 110px;
+    border-radius: 60px;
+}
+
+#userList .male {
+    background: #22c2cc;
+}
+
+#userList .female {
+    background: #e61aa0;
+}
+
+#userList .frameUserPicture {
+    width: 74px;
+    height: 74px;
+    position: relative;
+    left:18px;
+    top:18px;
+}
+
+#userList .userPicture {
+    width: 74px;
+    height: 74px;
+    float:left;
+    margin-top:18px;
+    margin-left:18px;
+}
+
+#userList .female .frameUserPicture {
+    background: url("../images/cadre-user-list-female.png") no-repeat;
+}
+
+#userList .male .frameUserPicture {
+    background: url("../images/cadre-user-list-male.png") no-repeat;
+}
+
+#userList .infosSummary {
+    margin-left: 10px;
+}
+
+#userList .name {
+    font-family: "MavenProBold", "Century Gothic";
+    font-size: 26px;
+}
+
+#userList .other {
+    font-family: "MavenProLight", "Century Gothic";
+    font-size: 20px;
+}
+
+#userList .userBigIcon {
+    width: 45px;
+    height: 41px;
+    background: url("../images/user-icon-big.png") no-repeat;
+    position: relative;
+    left: 32px;
+    top: 34px;
+}

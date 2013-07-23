@@ -1,0 +1,39 @@
+{% extends '::baseForm.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/bestyearmain/css/inscription.css') }}" type="text/css"/>
+{% endblock %}
+
+{% block leftBar %}
+    <div id="leftBar">
+        <div id="leftWhiteArrow"></div>
+        <a href="#step1">
+            <div id="bubble1" class="bubble complete">
+                <div id="step1" class="numbers">1</div>
+            </div>
+        </a>
+        <a href="#step2">
+            <div id="bubble2" class="bubble current">
+                <div id="step2" class="numbers">2</div>
+            </div>
+        </a>
+        <a href="#step3">
+            <div id="bubble3" class="bubble">
+                <div id="step3" class="numbers">3</div>
+            </div>
+        </a>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <h1>Inscription</h1>
+    <div class="line"></div>
+    <div id="form">
+        <input type="text"/><br/>
+        <input type="text"/><br/>
+        <input type="button" class="button" value="Étape suivante"/>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+{% endblock %}
