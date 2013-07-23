@@ -2,10 +2,6 @@ bestyear_main_homepage:
     pattern:  /
     defaults: { _controller: BestyearMainBundle:Main:index }
 
-bestyear_user_view:
-    pattern:  /user1
-    defaults: { _controller: BestyearMainBundle:Main:user }
-    
-bestyear_user_list:
-    pattern:  /list
-    defaults: { _controller: BestyearMainBundle:Main:listUsers }
+bestyear_signin:
+    pattern:  /inscription
+    defaults: { _controller: BestyearMainBundle:Main:inscription }

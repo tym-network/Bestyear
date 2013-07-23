@@ -11,13 +11,8 @@ class MainController extends Controller
         return $this->render('BestyearMainBundle:Main:index.html.twig', array());
     }
     
-    public function userAction()
+    public function inscriptionAction()
     {
-        return $this->render('BestyearMainBundle:Main:userView.html.twig', array());
-    }
-    
-    public function listUsersAction()
-    {
-        return $this->render('BestyearMainBundle:Main:listUsers.html.twig', array());
+        return $this->render('BestyearMainBundle:Main:inscription.html.twig', array());
     }
 }
