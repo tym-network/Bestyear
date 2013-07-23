@@ -1,7 +1,3 @@
 bestyear_main_homepage:
     pattern:  /
     defaults: { _controller: BestyearMainBundle:Main:index }
-
-bestyear_signin:
-    pattern:  /inscription
-    defaults: { _controller: BestyearMainBundle:Main:inscription }

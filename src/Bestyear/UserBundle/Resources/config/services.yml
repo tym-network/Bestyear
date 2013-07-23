@@ -1,0 +1,7 @@
+parameters:
+#    bestyear_user.example.class: Bestyear\UserBundle\Example
+
+services:
+#    bestyear_user.example:
+#        class: %bestyear_user.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
