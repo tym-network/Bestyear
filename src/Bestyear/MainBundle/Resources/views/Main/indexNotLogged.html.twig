@@ -1,0 +1,20 @@
+{% extends '::base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/bestyearmain/css/listUsers.css') }}" type="text/css"/>
+    <link rel="stylesheet" href="{{ asset('bundles/bestyearmain/css/userView.css') }}" type="text/css"/>
+{% endblock %}
+
+{% block content %}
+    <div id="welcome">
+    <h1>Bienvenue sur le Bestyear de l'UTC !</h1>
+    <h2>Qu'est-ce que le Bestyear?</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus commodo ornare aliquam. In eros nisl, gravida ultricies justo eget, sollicitudin luctus diam. Suspendisse aliquet facilisis varius. In hac habitasse platea dictumst. Nam eu risus et dolor adipiscing elementum. Curabitur mattis accumsan lectus sed fermentum. Proin dapibus malesuada laoreet.
+
+Mauris in luctus dui, ac pulvinar odio. Nulla vitae risus egestas nisi faucibus feugiat at nec tellus. Nam eget volutpat risus. Cras eget leo nisl. Aliquam vel varius tortor. Sed mollis, ipsum quis pellentesque dignissim, nunc quam malesuada mauris, eu feugiat massa justo et nunc. Nunc ullamcorper libero vitae dictum euismod. Proin varius augue arcu, eget consectetur sapien consectetur nec. Nam sit amet luctus nisl. Pellentesque quis porta metus.</p>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('bundles/bestyearmain/js/transition.js') }}"></script>
+{% endblock %}

@@ -8,7 +8,11 @@ class MainController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('BestyearMainBundle:Main:index.html.twig', array());
+        if ($this->get('security.context')->isGranted('ROLE_USER')) {
+            return $this->render('BestyearMainBundle:Main:indexLogged.html.twig', array());
+        } else {
+            return $this->render('BestyearMainBundle:Main:indexNotLogged.html.twig', array());
+        }
     }
     
     public function inscriptionAction()
