@@ -35,7 +35,7 @@ body {
 
 #content {
     width: 400px;
-    min-height: 300px;
+    min-height: 200px;
     background: white;
     border: 1px solid #cecece;
 }
@@ -44,12 +44,20 @@ body {
     width: 200px;
     height: 36px;
     background: #24c761;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
     font-family: "MavenProLight", "Century Gothic";  
     font-size: 20px;
     color: white;
     border: none;
+    -webkit-transition: background-color 0.3s linear;
+    -o-transition: background-color 0.3s linear;
+    -moz-transition: background-color 0.3s linear;
+    transition: background-color 0.3s linear;
+}
+
+.button:hover {
+    background-color: #0bdd12;
 }
 
 #footer {
@@ -81,6 +89,7 @@ h1 {
     text-align: center;
     margin-top: 12px;
     margin-bottom: 10px;
+    font-weight: normal;
 }
 
 .line {
@@ -90,11 +99,18 @@ h1 {
     margin-bottom: 10px;
 }
 
-input {
+label {
+    font-family: "MavenProBold", "Century Gothic";
+    font-size:14px;
+}
+
+input[type="text"], input[type="password"] {
     border: 1px solid #dddddd;
     border-radius: 2px;
     outline: none;
     width: 300px;
     height: 24px;
     margin-bottom: 10px;
+    font-family: "MavenProLight", "Century Gothic";
+    font-size: 16px;
 }

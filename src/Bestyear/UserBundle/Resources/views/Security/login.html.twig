@@ -8,10 +8,12 @@
     <h1>Connexion</h1>
     <div class="line"></div>
     <div id="form">
-        <form action="{{ path('login_check') }}" method="POST">
-            <input type="text" name="_username" placeholder="Login UTC" value="{{ last_username }}"/><br/>
-            <input type="password" name="_password" placeholder="Mot de passe"/><br/>
-            <input type="submit" class="button" value="Connexion"/>
+        <form action="{{ path('fos_user_security_check') }}" method="POST">
+            <input type="text" id="username" name="_username" placeholder="Login UTC" value="{{ last_username }}" required="required"/><br/>
+            <input type="password" id="password" name="_password" placeholder="Mot de passe" required="required"/><br/>
+            <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+            <label for="remember_me">Se souvenir de moi?</label><br/>
+            <input type="submit" id="_submit" name="_submit" class="button" value="Connexion"/>
         </form>
     </div>
 {% endblock %}

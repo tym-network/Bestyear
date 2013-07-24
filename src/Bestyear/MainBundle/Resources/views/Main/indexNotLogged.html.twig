@@ -5,6 +5,13 @@
     <link rel="stylesheet" href="{{ asset('bundles/bestyearmain/css/userView.css') }}" type="text/css"/>
 {% endblock %}
 
+{% block topBar %}
+    <div id="topLinks">
+        <a href="{{ path("fos_user_security_login") }}">Se connecter</a>
+        <a href="{{ path("fos_user_registration_register") }}">S'inscrire</a>
+    </div>
+{% endblock %}
+
 {% block content %}
     <div id="welcome">
     <h1>Bienvenue sur le Bestyear de l'UTC !</h1>
