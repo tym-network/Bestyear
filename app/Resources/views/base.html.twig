@@ -28,16 +28,10 @@
                         <div id="homeIcon"></div>
                     </div>
                 </a>
-                <a href="#list">
-                    <div id="listLeftBar">
-                        <div id="listIcon"></div>
-                    </div>
-                </a>
-                <a href="#user">
-                    <div id="searchUserLeftBar">
-                        <div id="searchUserIcon"></div>
-                    </div>
-                </a>
+                
+                {% block leftBar %}
+                {% endblock %}
+
             </div>
             <div id="content">
                 {% block content %}{% endblock %}
