@@ -37,10 +37,6 @@ $('.stepLink').click(function() {
     id = parseInt($(this).attr('id').replace('link',''));
     if (id <= maximumStep) {
         loadStep(id);
-        if (previousStep!= null && previousStep <= maximumStep) {
-            previousBubble = $('#bubble'+previousStep);
-            previousBubble.removeClass('current');
-        }
     }
 })
 
@@ -55,11 +51,17 @@ function nextStep() {
 }
 
 function loadStep(id) {
-    previousStep = currentStep;
+    if (id != currentStep) {
+        previousStep = currentStep;
+    }
     currentStep=id;
     if (currentStep > maximumStep) {
         maximumStep = currentStep;
+        maximumBubble = $('#bubble'+id);
+        maximumBubble.addClass('current');
     }
-    currentBubble = $('#bubble'+id);
-    currentBubble.addClass('current');
+    newArrowpos = 16+(id-1)*64;
+    $('#leftWhiteArrow')
+        .stop()
+        .animate({"marginTop": newArrowpos + "px"}, 400);
 }

@@ -29,6 +29,10 @@
     background: white;
     border-radius: 25px;
     margin-top: 15px;
+    -webkit-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    -moz-transition: all 0.2s linear;
+    transition: all 0.2s linear;
 }
 
 .numbers {
@@ -37,6 +41,10 @@
     color: #434343; 
     padding-left: 19px;
     padding-top: 10px;
+    -webkit-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    -moz-transition: all 0.2s linear;
+    transition: all 0.2s linear;
 }
 
 .complete .numbers {
