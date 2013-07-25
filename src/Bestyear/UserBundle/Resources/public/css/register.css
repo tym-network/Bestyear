@@ -81,3 +81,12 @@
 #usernameSpan .error {
     margin-left: 228px;
 }
+
+#step1 {
+    opacity: 1;
+}
+
+#step2, #step3, #step4, #step5 {
+    display: none;
+    opacity: 0;
+}

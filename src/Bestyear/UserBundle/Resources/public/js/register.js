@@ -7,6 +7,7 @@
 var currentStep = 1;
 var previousStep = null;
 var maximumStep = 1;
+nbStep = 3;
 
 function checkEmpty(obj) {
     if(!obj.val()) {
@@ -28,7 +29,7 @@ $('.required').blur(function() {
     checkEmpty($(this));
 });
 
-$('#nextStep').click(function() {
+$('.nextStep').click(function() {
     nextStep();
 });
 
@@ -41,27 +42,45 @@ $('.stepLink').click(function() {
 })
 
 function nextStep() {
-    newStep = currentStep+1;
-    loadStep(newStep);
-    if (previousStep != null) {
-        previousBubble = $('#bubble'+previousStep);
-        previousBubble.addClass('complete');
-        previousBubble.removeClass('current');
+    if (currentStep+1 <= nbStep) {
+        newStep = currentStep+1;
+        loadStep(newStep);
+        if (previousStep != null) {
+            previousBubble = $('#bubble'+previousStep);
+            previousBubble.addClass('complete');
+            previousBubble.removeClass('current');
+        }
     }
 }
 
 function loadStep(id) {
+    // Set the new currentStep
     if (id != currentStep) {
         previousStep = currentStep;
     }
     currentStep=id;
     if (currentStep > maximumStep) {
+        // Change the class of the div according to its state
         maximumStep = currentStep;
         maximumBubble = $('#bubble'+id);
         maximumBubble.addClass('current');
     }
+    // Move the arrow
     newArrowpos = 16+(id-1)*64;
     $('#leftWhiteArrow')
         .stop()
         .animate({"marginTop": newArrowpos + "px"}, 400);
+    // Hide the previous div and show the correct one
+    previousDiv = $('#step' + previousStep);
+    previousDiv
+        .stop()
+        .animate({"opacity": 0},"slow", function() { 
+            previousDiv.hide();
+            currentDiv = $('#step' + id);
+            // Display the new one
+            currentDiv
+                .show()
+                .stop()
+                .animate({"opacity": 1}, "slow");
+        });
 }

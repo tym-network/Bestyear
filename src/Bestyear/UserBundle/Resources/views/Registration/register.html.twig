@@ -9,17 +9,17 @@
         <div id="leftWhiteArrow"></div>
         <a id="link1" class="stepLink" href="#step1">
             <div id="bubble1" class="bubble current">
-                <div id="step1" class="numbers">1</div>
+                <div id="numStep1" class="numbers">1</div>
             </div>
         </a>
         <a id="link2" class="stepLink" href="#step2">
             <div id="bubble2" class="bubble">
-                <div id="step2" class="numbers">2</div>
+                <div id="numStep2" class="numbers">2</div>
             </div>
         </a>
         <a id="link3" class="stepLink" href="#step3">
             <div id="bubble3" class="bubble">
-                <div id="step3" class="numbers">3</div>
+                <div id="numStep3" class="numbers">3</div>
             </div>
         </a>
     </div>
@@ -29,15 +29,51 @@
     <h1>Inscription</h1>
     <div class="line"></div>
     <div id="form">
-        <span class="" id="usernameSpan">
-            <input type="text" id="username" name="_username" placeholder="Login UTC" class="required"/>@etu.utc.fr
-            <div class="error"></div>
-        </span><br/>
-        <span class="">
-            <input type="password" id="password" name="_password" placeholder="Mot de passe" class="required"/>
-            <div class="error"></div>
-        </span><br/>
-        <input type="button" class="button" name="nextStep" id="nextStep" value="Étape suivante"/>
+        <div id="step1">
+            <span class="" id="usernameSpan">
+                <input type="text" id="username" name="_username" placeholder="Login UTC" class="required"/>@etu.utc.fr
+                <div class="error"></div>
+            </span><br/>
+            <span class="">
+                <input type="password" id="password" name="_password" placeholder="Mot de passe" class="required"/>
+                <div class="error"></div>
+            </span><br/>
+            <span class="">
+                <input type="password" id="password" name="_password" placeholder="Confirmer votre mot de passe" class="required"/>
+                <div class="error"></div>
+            </span><br/>
+            <input type="button" class="button nextStep" name="nextStep" value="Étape suivante"/>
+        </div>
+        <div id="step2">
+            <span class="" id="usernameSpan">
+                <input type="text" id="username" name="_username" placeholder="Login UTC" class="required"/>@etu.utc.fr
+                <div class="error"></div>
+            </span><br/>
+            <span class="">
+                <input type="password" id="password" name="_password" placeholder="Mot de passe" class="required"/>
+                <div class="error"></div>
+            </span><br/>
+            <span class="">
+                <input type="password" id="password" name="_password" placeholder="Confirmer votre mot de passe" class="required"/>
+                <div class="error"></div>
+            </span><br/>
+            <input type="button" class="button nextStep" name="nextStep" value="Étape suivante"/>
+        </div>
+        <div id="step3">
+            <span class="" id="usernameSpan">
+                <input type="text" id="username" name="_username" placeholder="Login UTC" class="required"/>@etu.utc.fr
+                <div class="error"></div>
+            </span><br/>
+            <span class="">
+                <input type="password" id="password" name="_password" placeholder="Mot de passe" class="required"/>
+                <div class="error"></div>
+            </span><br/>
+            <span class="">
+                <input type="password" id="password" name="_password" placeholder="Confirmer votre mot de passe" class="required"/>
+                <div class="error"></div>
+            </span><br/>
+            <input type="button" class="button nextStep" name="nextStep" value="Étape suivante"/>
+        </div>
     </div>
 {% endblock %}
 
