@@ -62,4 +62,14 @@
 #form {
     margin: auto;
     text-align: center;
+    font-family: "MavenProBold", "Century Gothic";
+}
+
+#username {
+    width: 200px;
+    margin-left: -20px;
+}
+
+#usernameSpan .error {
+    margin-left: 228px;
 }

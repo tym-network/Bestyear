@@ -1,0 +1,46 @@
+{% extends '::baseForm.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/bestyearuser/css/register.css') }}" type="text/css"/>
+{% endblock %}
+
+{% block leftBar %}
+    <div id="leftBar">
+        <div id="leftWhiteArrow"></div>
+        <a id="link1" class="stepLink" href="#step1">
+            <div id="bubble1" class="bubble current">
+                <div id="step1" class="numbers">1</div>
+            </div>
+        </a>
+        <a id="link2" class="stepLink" href="#step2">
+            <div id="bubble2" class="bubble">
+                <div id="step2" class="numbers">2</div>
+            </div>
+        </a>
+        <a id="link3" class="stepLink" href="#step3">
+            <div id="bubble3" class="bubble">
+                <div id="step3" class="numbers">3</div>
+            </div>
+        </a>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <h1>Inscription</h1>
+    <div class="line"></div>
+    <div id="form">
+        <span class="" id="usernameSpan">
+            <input type="text" id="username" name="_username" placeholder="Login UTC" class="required"/>@etu.utc.fr
+            <div class="error"></div>
+        </span><br/>
+        <span class="">
+            <input type="password" id="password" name="_password" placeholder="Mot de passe" class="required"/>
+            <div class="error"></div>
+        </span><br/>
+        <input type="button" class="button" name="nextStep" id="nextStep" value="Étape suivante"/>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('bundles/bestyearuser/js/register.js') }}"></script>
+{% endblock %}

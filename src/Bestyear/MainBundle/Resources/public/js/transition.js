@@ -1,8 +1,9 @@
 /*
  * This code is used to animate the white arrow of the left menu.
  * When the user clicks on an item of the menu, the arrow moves next to the item
- * The current content changes (fade away to let the new one appear)
+ * The current content changes (fades away to let the new one appears)
 */
+
 leftArrow = $("#leftWhiteArrow");
 currentDiv = $('#welcome');
 

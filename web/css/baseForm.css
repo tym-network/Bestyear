@@ -96,7 +96,7 @@ h1 {
     width: 100%;
     height: 4px;
     background: url("../images/signIn-line.png") repeat-x;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 label {
@@ -109,10 +109,13 @@ input[type="text"], input[type="password"] {
     border-radius: 3px;
     outline: none;
     width: 300px;
-    height: 24px;
+    height: 28px;
     margin-bottom: 10px;
     font-family: "MavenProLight", "Century Gothic";
     font-size: 16px;
+    -moz-box-shadow: 0px 0px 1px rgba(0,0,0,0.2);
+    -webkit-box-shadow: 0px 0px 1px rgba(0,0,0,0.2);
+    -o-box-shadow: 0px 0px 1px rgba(0,0,0,0.2);
     box-shadow: 0px 0px 1px rgba(0,0,0,0.2);
     padding-left: 5px;
     padding-right: 5px;
@@ -120,10 +123,47 @@ input[type="text"], input[type="password"] {
     -o-transition: all 0.2s linear;
     -moz-transition: all 0.2s linear;
     transition: all 0.2s linear;
+    position: relative;
 }
 
 input[type="text"]:focus, input[type="password"]:focus {
     border: 1px solid #c5c5c5;
     box-shadow: inset 0px 0px 1px rgba(0,0,0,0.4);
     background: #f8f8f8;
+}
+
+.inputError input {
+    border-color: #d2664f;
+    background: #fceded;
+}
+
+.inputError input[type="text"]:focus, .inputError input[type="password"]:focus {
+    border-color: #d2664f;
+    background: #fceded;
+}
+
+.error {
+    width: 19px;
+    height: 19px;
+    background: url("../images/error.png") no-repeat;
+    position: absolute;
+    margin-left: 328px;
+    margin-top: -36px;
+    display: none;
+}
+
+.inputError .error {
+    display: block;
+}
+
+#errorBar {
+    width: 310px;
+    height: 26px;
+    margin: auto;
+    text-align: center;
+    background: #dd4b39;
+    border-radius: 3px;
+    color: white;
+    margin-bottom: 20px;
+    padding-top: 6px;
 }
