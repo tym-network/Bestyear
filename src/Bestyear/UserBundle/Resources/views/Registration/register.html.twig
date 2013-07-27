@@ -2,6 +2,7 @@
 
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('bundles/bestyearuser/css/register.css') }}" type="text/css"/>
+    <link rel="stylesheet" href="{{ asset('bundles/bestyearuser/css/ui-lightness/jquery-ui-1.10.3.custom.css') }}" type="text/css"/>
 {% endblock %}
 
 {% block leftBar %}
@@ -59,7 +60,7 @@
                 <div class="error"></div>
             </span><br/>
             <span class="" id="birthdateSpan">
-                <label for="birthdate">Date d'anniversaire </label><input type="date" id="birthdate" name="_birthdate" class="required"/>
+                <label for="birthdate">Date d'anniversaire </label><input type="text" placeholder="YYYY-MM-JJ" id="birthdate" name="_birthdate" class="required"/>
                 <div class="error"></div>
             </span><br/>
             <span class="">
@@ -89,8 +90,8 @@
             <input type="button" class="button nextStep" name="nextStep" value="Étape suivante"/>
         </div>
         <div id="step3">
-            Adresse permanente (des parents)<br/>
-            <span class="">
+            <h2>Adresse "permanente" : </h2>
+            <span class="streetnumberSpan">
                 <input type="text" id="streetnumber1" name="_streetnumber1" placeholder="N°"/>
                 <div class="error"></div>
             </span>
@@ -98,7 +99,7 @@
                 <input type="text" id="street1" name="_street1" placeholder="Rue"/>
                 <div class="error"></div>
             </span><br/>
-            <span class="">
+            <span class="postcodeSpan">
                 <input type="text" id="postcode1" name="_postcode1" placeholder="Code postal"/>
                 <div class="error"></div>
             </span>
@@ -106,8 +107,8 @@
                 <input type="text" id="city1" name="_city1" placeholder="Ville"/>
                 <div class="error"></div>
             </span><br/>
-            Adresse pendant les études<br/>
-            <span class="">
+            <h2>Adresse pendant les études : </h2>
+            <span class="streetnumberSpan">
                 <input type="text" id="streetnumber2" name="_streetnumber2" placeholder="N°"/>
                 <div class="error"></div>
             </span>
@@ -115,7 +116,7 @@
                 <input type="text" id="street2" name="_street2" placeholder="Rue"/>
                 <div class="error"></div>
             </span><br/>
-            <span class="">
+            <span class="postcodeSpan">
                 <input type="text" id="postcode2" name="_postcode2" value="60200" placeholder="Code postal"/>
                 <div class="error"></div>
             </span>
@@ -156,5 +157,7 @@
 {% endblock %}
 
 {% block javascripts %}
+    <script src="{{ asset('bundles/bestyearuser/js/jquery-ui-1.10.3.custom.js') }}"></script>
+    <script src="{{ asset('bundles/bestyearuser/js/jquery.ui.datepicker-fr.js') }}"></script>
     <script src="{{ asset('bundles/bestyearuser/js/register.js') }}"></script>
 {% endblock %}

@@ -12,6 +12,26 @@ nbStep = 4;
 
 /*
  * ============================
+ * Calendar support for the birthdate
+ * ============================
+ */
+
+var pickerOpts = {
+    dateFormat:"yy-mm-dd",
+    changeMonth: true,
+    changeYear: true,
+    yearRange: "-30:-14",
+    showButtonPanel: true,
+    constrainInput: false,
+    defaultDate: "-18y",
+    onSelect: function() {checkBirthdate();},
+    onClose: function() {checkBirthdate();},
+};
+$.datepicker.setDefaults( $.datepicker.regional[ "fr" ] );
+$('#birthdate').datepicker(pickerOpts);
+
+/*
+ * ============================
  * Error treatment on fields
  * ============================
  */
@@ -32,6 +52,10 @@ $('#password2')
     .keyup(function() {checkPassword();})
     .blur(function() {checkPassword();});
 
+// ********
+// STEP 2 *
+// ********
+
 $('#givenname')
     .keyup(function() {checkGivenName();})
     .blur(function() {checkGivenName();});
@@ -39,6 +63,21 @@ $('#givenname')
 $('#familyname')
     .keyup(function() {checkFamilyName();})
     .blur(function() {checkFamilyName();});
+    
+$('#birthdate')
+    .blur(function() {checkBirthdate();});
+
+// ********
+// STEP 3 *
+// ********
+
+$('#postcode1')
+    .keyup(function() {checkPostcode1();})
+    .blur(function() {checkPostcode1();});
+    
+$('#postcode2')
+    .keyup(function() {checkPostcode2();})
+    .blur(function() {checkPostcode2();});
 
 /*
  * ============================
@@ -140,6 +179,122 @@ function checkFamilyName() {
     }
 }
 
+function checkBirthdate() {
+    error = false;
+    birthdate = $('#birthdate');
+   
+    // Correct format
+    var matches = birthdate.val().match('^((19|20)[0-9]{2})-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$')
+    if (!matches) {
+        error = true;
+    } else {
+        var birthDay = parseInt(matches[4]);
+        var birthMonth = parseInt(matches[3]);
+        var birthYear = parseInt(matches[1]);
+    }
+    
+    // Compare to current date (minimum age = 10 years old)
+    var d = new Date();
+    var curr_date = d.getDate();
+    var curr_month = d.getMonth()+1;
+    var curr_year = d.getFullYear();
+    if (birthYear > curr_year-10) {
+        error = true;
+    }
+    if (birthYear == curr_year-10 && birthMonth > curr_month) {
+        error = true;
+    }
+    if (birthYear == curr_year-10 && birthMonth == curr_month && birthDay >= curr_date) {
+        error = true;
+    }
+    
+    if (error) {
+        birthdate.parents('span').addClass('inputError');
+    } else {
+        birthdate.parents('span').removeClass('inputError');
+    }
+}
+
+// ********
+// STEP 3 *
+// ********
+
+function checkPostcode1() {
+    postcode1 = $('#postcode1');
+    
+    if (postcode1.val() && !postcode1.val().match('^[0-9]{5}$')) {
+        postcode1.parents('span').addClass('inputError');
+    } else if (postcode1.val() && postcode1.val().match('^[0-9]{5}$')) {
+        postcode1.parents('span').removeClass('inputError');
+    }
+}
+
+function checkPostcode2() {
+    postcode1 = $('#postcode2');
+    
+    if (postcode2.val() && !postcode1.val().match('^[0-9]{5}$')) {
+        postcode2.parents('span').addClass('inputError');
+    } else if (postcode2.val() && postcode2.val().match('^[0-9]{5}$')) {
+        postcode2.parents('span').removeClass('inputError');
+    }
+}
+
+function checkAddress1onSubmit() {
+    streetnumber1 = $('#streetnumber1');
+    street1 = $('#street1');
+    postcode1 = $('#postcode1');
+    city1 = $('#city1');
+    
+    // If one input is filled, they should all be filled
+    if ((streetnumber1.val() || street1.val() || postcode1.val() || city1.val()) && !(streetnumber1.val() && street1.val() && postcode1.val() && city1.val())) {
+        if (!streetnumber1.val()) {
+            streetnumber1.parents('span').addClass('inputError');
+        }
+        if (!street1.val()) {
+            street1.parents('span').addClass('inputError');
+        }
+        if (!postcode1.val()) {
+            postcode1.parents('span').addClass('inputError');
+        }
+        if (!city1.val()) {
+            city1.parents('span').addClass('inputError');
+        }
+    } else {
+        streetnumber1.parents('span').removeClass('inputError');
+        street1.parents('span').removeClass('inputError');
+        postcode1.parents('span').removeClass('inputError');
+        city1.parents('span').removeClass('inputError');
+    }
+}
+
+function checkAddress2onSubmit() {
+    streetnumber2 = $('#streetnumber2');
+    street2 = $('#street2');
+    postcode2 = $('#postcode2');
+    city2 = $('#city2');
+    
+    // If one input is filled, they should all be filled
+    if ((streetnumber2.val() || street2.val() || (postcode2.val() && postcode2.val() != "60200") || (city2.val()) && city2.val() != "Compiègne") && !(streetnumber2.val() && street2.val() && postcode2.val() && city2.val())) {
+        if (!streetnumber2.val()) {
+            streetnumber2.parents('span').addClass('inputError');
+        }
+        if (!street2.val()) {
+            street2.parents('span').addClass('inputError');
+        }
+        if (!postcode2.val()) {
+            postcode2.parents('span').addClass('inputError');
+        }
+        if (!city2.val()) {
+            city2.parents('span').addClass('inputError');
+        }
+    } else {
+        streetnumber2.parents('span').removeClass('inputError');
+        street2.parents('span').removeClass('inputError');
+        postcode2.parents('span').removeClass('inputError');
+        city2.parents('span').removeClass('inputError');
+    }
+}
+
 function checkStep(id) {
     switch (id) {
         case 1:
@@ -156,11 +311,26 @@ function checkStep(id) {
         case 2:
             // Checking step2
             checkGivenName();
+            checkFamilyName();
+            checkBirthdate();
             if ($('#step2').find('.inputError').length > 0) {
                 $('#bubble2').addClass('errorBubble');
                 return false;
             }
             $('#bubble2').removeClass('errorBubble');
+            return true;
+            break;
+        case 3:
+            // Checking step3
+            checkAddress1onSubmit();
+            checkAddress2onSubmit();
+            checkPostcode1();
+            checkPostcode2();
+            if ($('#step3').find('.inputError').length > 0) {
+                $('#bubble3').addClass('errorBubble');
+                return false;
+            }
+            $('#bubble3').removeClass('errorBubble');
             return true;
             break;
     }

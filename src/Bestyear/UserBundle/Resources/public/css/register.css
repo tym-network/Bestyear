@@ -78,6 +78,14 @@
     font-family: "MavenProBold", "Century Gothic";
 }
 
+h2 {
+    text-align: left;
+    font-size: 14px;
+    margin-left: 20px;
+    margin-bottom: 8px;
+    font-weight: normal;
+}
+
 #username {
     width: 200px;
     margin-left: -20px;
@@ -85,6 +93,14 @@
 
 #usernameSpan .error {
     margin-left: 228px;
+}
+
+.postcodeSpan .error {
+    margin-left: 108px;
+}
+
+.streetnumberSpan .error {
+    margin-left: 74px;
 }
 
 #step1 {
@@ -97,11 +113,11 @@
 }
 
 #streetnumber1, #streetnumber2 {
-    width: 24px;
+    width: 44px;
 }
 
 #street1, #street2 {
-    width: 260px;
+    width: 240px;
 }
 
 #postcode1, #postcode2 {
@@ -112,7 +128,7 @@
     width: 204px;
 }
 
-#birthdateSpan .error {
-    margin-left: 340px;
-    margin-top: -24px;
+#birthdate {
+    width: 150px;
+    margin-left: 12px;
 }
