@@ -3,29 +3,35 @@
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('bundles/bestyearuser/css/register.css') }}" type="text/css"/>
     <link rel="stylesheet" href="{{ asset('bundles/bestyearuser/css/ui-lightness/jquery-ui-1.10.3.custom.css') }}" type="text/css"/>
+    <link rel="stylesheet" href="{{ asset('bundles/bestyearuser/css/jquery.qtip.css') }}" type="text/css"/>
 {% endblock %}
 
 {% block leftBar %}
     <div id="leftBar">
         <div id="leftWhiteArrow"></div>
-        <a id="link1" class="stepLink" href="#step1">
+        <a id="link1" class="stepLink" href="#">
             <div id="bubble1" class="bubble current">
                 <div id="numStep1" class="numbers">1</div>
             </div>
         </a>
-        <a id="link2" class="stepLink" href="#step2">
+        <a id="link2" class="stepLink" href="#">
             <div id="bubble2" class="bubble">
                 <div id="numStep2" class="numbers">2</div>
             </div>
         </a>
-        <a id="link3" class="stepLink" href="#step3">
+        <a id="link3" class="stepLink" href="#">
             <div id="bubble3" class="bubble">
                 <div id="numStep3" class="numbers">3</div>
             </div>
         </a>
-        <a id="link4" class="stepLink" href="#step4">
+        <a id="link4" class="stepLink" href="#">
             <div id="bubble4" class="bubble">
                 <div id="numStep4" class="numbers">4</div>
+            </div>
+        </a>
+        <a id="link5" class="stepLink" href="#">
+            <div id="bubble5" class="bubble">
+                <div id="numStep5" class="numbers">5</div>
             </div>
         </a>
     </div>
@@ -37,7 +43,7 @@
     <div id="form">
         <div id="step1">
             <span class="" id="usernameSpan">
-                <input type="text" id="username" name="_username" placeholder="Login UTC" class="required"/>@etu.utc.fr
+                <input type="text" id="username" name="_username" placeholder="Login UTC" class="required" autofocus/>@etu.utc.fr
                 <div class="error"></div>
             </span><br/>
             <span class="">
@@ -140,18 +146,57 @@
                 <div class="error"></div>
             </span><br/>
             <span class="">
-                <input type="text" id="email" name="_email" placeholder="Adresse email (hors UTC)"/>
+                <input type="email" id="email" name="_email" placeholder="Adresse email (hors UTC)"/>
                 <div class="error"></div>
             </span><br/>
             <span class="">
-                <input type="text" id="facebook" name="_facebook" placeholder="Login Facebook"/>
+                <input type="text" id="facebook" name="_facebook" placeholder="URL de votre profil Facebook"/>
                 <div class="error"></div>
             </span><br/>
             <span class="">
-                <input type="text" id="twitter" name="_twitter" placeholder="Login Twitter"/>
+                <input type="text" id="twitter" name="_twitter" placeholder="URL de votre page Twitter"/>
                 <div class="error"></div>
             </span><br/>
             <input type="button" class="button nextStep" name="nextStep" value="Étape suivante"/>
+        </div>
+        <div id="step5">
+            <h2>TN05 : </h2>
+            <span class="">
+                <input type="text" id="tn05_job" name="_tn05_job" placeholder="Position occupée"/>
+                <div class="error"></div>
+            </span><br/>
+            <span class="">
+                <input type="text" id="tn05_place" name="_tn05_place" placeholder="Entreprise"/>
+                <div class="error"></div>
+            </span><br/>
+            <h2>TN07 : </h2>
+            <span class="">
+                <input type="text" id="tn07_job" name="_tn07_job" placeholder="Position occupée"/>
+                <div class="error"></div>
+            </span><br/>
+            <span class="">
+                <input type="text" id="tn07_place" name="_tn07_place" placeholder="Entreprise"/>
+                <div class="error"></div>
+            </span><br/>
+            <h2>TN09 : </h2>
+            <span class="">
+                <input type="text" id="tn09_job" name="_tn09_job" placeholder="Position occupée"/>
+                <div class="error"></div>
+            </span><br/>
+            <span class="">
+                <input type="email" id="tn09_place" name="_tn09_place" placeholder="Entreprise"/>
+                <div class="error"></div>
+            </span><br/>
+            <h2>TN10 : </h2>
+            <span class="">
+                <input type="text" id="tn10_job" name="_tn10_job" placeholder="Position occupée"/>
+                <div class="error"></div>
+            </span><br/>
+            <span class="">
+                <input type="email" id="tn10_place" name="_tn10_place" placeholder="Entreprise"/>
+                <div class="error"></div>
+            </span><br/>
+            <input type="submit" class="button submit" name="submit" value="Valider"/>
         </div>
     </div>
 {% endblock %}
@@ -159,5 +204,6 @@
 {% block javascripts %}
     <script src="{{ asset('bundles/bestyearuser/js/jquery-ui-1.10.3.custom.js') }}"></script>
     <script src="{{ asset('bundles/bestyearuser/js/jquery.ui.datepicker-fr.js') }}"></script>
+    <script src="{{ asset('bundles/bestyearuser/js/jquery.qtip.js') }}"></script>
     <script src="{{ asset('bundles/bestyearuser/js/register.js') }}"></script>
 {% endblock %}

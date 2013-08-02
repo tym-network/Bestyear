@@ -13,7 +13,7 @@
             <div id="errorBar">Login et/ou mot de passe incorrect(s)</div>
         {% endif %}
     {% endif %}
-        <form action="{{ path('fos_user_security_check') }}" method="POST">
+        <form action="{{ path('fos_user_security_check') }}" method="POST" id="formLogin">
             <span class="">
                 <input type="text" id="username" name="_username" placeholder="Login UTC" value="{{ last_username }}" class="required"/>
                 <div class="error"></div>
