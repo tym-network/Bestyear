@@ -41,163 +41,165 @@
     <h1>Inscription</h1>
     <div class="line"></div>
     <div id="form">
-        <div id="step1">
-            <span class="" id="usernameSpan">
-                <input type="text" id="username" name="_username" placeholder="Login UTC" class="required" autofocus/>@etu.utc.fr
-                <div class="error"></div>
-            </span><br/>
-            <span class="">
-                <input type="password" id="password" name="_password" placeholder="Mot de passe" class="required"/>
-                <div class="error"></div>
-            </span><br/>
-            <span class="">
-                <input type="password" id="password2" name="_password2" placeholder="Confirmer votre mot de passe" class="required"/>
-                <div class="error"></div>
-            </span><br/>
-            <input type="button" class="button nextStep" name="nextStep" value="Étape suivante"/>
-        </div>
-        <div id="step2">
-            <span class="">
-                <input type="text" id="givenname" name="_givenname" placeholder="Prénom" class="required"/>
-                <div class="error"></div>
-            </span><br/>
-            <span class="">
-                <input type="text" id="familyname" name="_familyname" placeholder="Nom de famille" class="required"/>
-                <div class="error"></div>
-            </span><br/>
-            <span class="" id="birthdateSpan">
-                <label for="birthdate">Date d'anniversaire </label><input type="text" placeholder="YYYY-MM-JJ" id="birthdate" name="_birthdate" class="required"/>
-                <div class="error"></div>
-            </span><br/>
-            <span class="">
-                <select id="TC" name="_TC" class="required">
-                    <option value="TC">Tronc Commun</option>
-                    <option value="GB">Génie Biologique (GB)</option>
-                    <option value="GI">Génie Informatique (GI)</option>
-                    <option value="GM">Génie Mécanique (GM)</option>
-                    <option value="GP">Génie des Procédés (GP)</option>
-                    <option value="GSM">Génie des Systèmes Mécanique (GSM)</option>
-                    <option value="GSU">Génie des Systèmes Urbains (GSU)</option>
-                </select>
-            </span>
-            <span class="">
-                <select id="studylevel" name="_studylevel" class="required">
-                    <option value="01">01</option>
-                    <option value="02">02</option>
-                    <option value="03">03</option>
-                    <option value="04">04</option>
-                    <option value="05">05</option>
-                    <option value="06">06</option>
-                    <option value="07">07</option>
-                    <option value="08">08</option>
-                    <option value="09">09</option>
-                </select>
-            </span><br/>
-            <input type="button" class="button nextStep" name="nextStep" value="Étape suivante"/>
-        </div>
-        <div id="step3">
-            <h2>Adresse "permanente" : </h2>
-            <span class="streetnumberSpan">
-                <input type="text" id="streetnumber1" name="_streetnumber1" placeholder="N°"/>
-                <div class="error"></div>
-            </span>
-            <span class="">
-                <input type="text" id="street1" name="_street1" placeholder="Rue"/>
-                <div class="error"></div>
-            </span><br/>
-            <span class="postcodeSpan">
-                <input type="text" id="postcode1" name="_postcode1" placeholder="Code postal"/>
-                <div class="error"></div>
-            </span>
-            <span class="">
-                <input type="text" id="city1" name="_city1" placeholder="Ville"/>
-                <div class="error"></div>
-            </span><br/>
-            <h2>Adresse pendant les études : </h2>
-            <span class="streetnumberSpan">
-                <input type="text" id="streetnumber2" name="_streetnumber2" placeholder="N°"/>
-                <div class="error"></div>
-            </span>
-            <span class="">
-                <input type="text" id="street2" name="_street2" placeholder="Rue"/>
-                <div class="error"></div>
-            </span><br/>
-            <span class="postcodeSpan">
-                <input type="text" id="postcode2" name="_postcode2" value="60200" placeholder="Code postal"/>
-                <div class="error"></div>
-            </span>
-            <span class="">
-                <input type="text" id="city2" name="_city2" value="Compiègne" placeholder="Ville"/>
-                <div class="error"></div>
-            </span><br/>
-            <input type="button" class="button nextStep" name="nextStep" value="Étape suivante"/>
-        </div>
-        <div id="step4">
-            <span class="">
-                <input type="text" id="phone1" name="_phone1" placeholder="Téléphone fixe (adresse permanente)"/>
-                <div class="error"></div>
-            </span><br/>
-            <span class="">
-                <input type="text" id="phone2" name="_phone2" placeholder="Téléphone fixe (études)"/>
-                <div class="error"></div>
-            </span><br/>
-            <span class="">
-                <input type="text" id="cellphone" name="_cellphone" placeholder="Téléphone portable"/>
-                <div class="error"></div>
-            </span><br/>
-            <span class="">
-                <input type="email" id="email" name="_email" placeholder="Adresse email (hors UTC)"/>
-                <div class="error"></div>
-            </span><br/>
-            <span class="">
-                <input type="text" id="facebook" name="_facebook" placeholder="URL de votre profil Facebook"/>
-                <div class="error"></div>
-            </span><br/>
-            <span class="">
-                <input type="text" id="twitter" name="_twitter" placeholder="URL de votre page Twitter"/>
-                <div class="error"></div>
-            </span><br/>
-            <input type="button" class="button nextStep" name="nextStep" value="Étape suivante"/>
-        </div>
-        <div id="step5">
-            <h2>TN05 : </h2>
-            <span class="">
-                <input type="text" id="tn05_job" name="_tn05_job" placeholder="Position occupée"/>
-                <div class="error"></div>
-            </span><br/>
-            <span class="">
-                <input type="text" id="tn05_place" name="_tn05_place" placeholder="Entreprise"/>
-                <div class="error"></div>
-            </span><br/>
-            <h2>TN07 : </h2>
-            <span class="">
-                <input type="text" id="tn07_job" name="_tn07_job" placeholder="Position occupée"/>
-                <div class="error"></div>
-            </span><br/>
-            <span class="">
-                <input type="text" id="tn07_place" name="_tn07_place" placeholder="Entreprise"/>
-                <div class="error"></div>
-            </span><br/>
-            <h2>TN09 : </h2>
-            <span class="">
-                <input type="text" id="tn09_job" name="_tn09_job" placeholder="Position occupée"/>
-                <div class="error"></div>
-            </span><br/>
-            <span class="">
-                <input type="email" id="tn09_place" name="_tn09_place" placeholder="Entreprise"/>
-                <div class="error"></div>
-            </span><br/>
-            <h2>TN10 : </h2>
-            <span class="">
-                <input type="text" id="tn10_job" name="_tn10_job" placeholder="Position occupée"/>
-                <div class="error"></div>
-            </span><br/>
-            <span class="">
-                <input type="email" id="tn10_place" name="_tn10_place" placeholder="Entreprise"/>
-                <div class="error"></div>
-            </span><br/>
-            <input type="submit" class="button submit" name="submit" value="Valider"/>
-        </div>
+        <form action="{{ path('fos_user_registration_register') }}" method="POST">
+            <div id="step1">
+                <span class="" id="usernameSpan">
+                    <input type="text" id="username" name="_username" placeholder="Login UTC" class="required" autofocus/>@etu.utc.fr
+                    <div class="error"></div>
+                </span><br/>
+                <span class="">
+                    <input type="password" id="password" name="_password" placeholder="Mot de passe" class="required"/>
+                    <div class="error"></div>
+                </span><br/>
+                <span class="">
+                    <input type="password" id="password2" name="_password2" placeholder="Confirmer votre mot de passe" class="required"/>
+                    <div class="error"></div>
+                </span><br/>
+                <input type="button" class="button nextStep" name="nextStep" value="Étape suivante"/>
+            </div>
+            <div id="step2">
+                <span class="">
+                    <input type="text" id="givenname" name="_givenname" placeholder="Prénom" class="required"/>
+                    <div class="error"></div>
+                </span><br/>
+                <span class="">
+                    <input type="text" id="familyname" name="_familyname" placeholder="Nom de famille" class="required"/>
+                    <div class="error"></div>
+                </span><br/>
+                <span class="" id="birthdateSpan">
+                    <label for="birthdate">Date d'anniversaire </label><input type="text" placeholder="YYYY-MM-JJ" id="birthdate" name="_birthdate" class="required"/>
+                    <div class="error"></div>
+                </span><br/>
+                <span class="">
+                    <select id="TC" name="_TC" class="required">
+                        <option value="TC">Tronc Commun</option>
+                        <option value="GB">Génie Biologique (GB)</option>
+                        <option value="GI">Génie Informatique (GI)</option>
+                        <option value="GM">Génie Mécanique (GM)</option>
+                        <option value="GP">Génie des Procédés (GP)</option>
+                        <option value="GSM">Génie des Systèmes Mécanique (GSM)</option>
+                        <option value="GSU">Génie des Systèmes Urbains (GSU)</option>
+                    </select>
+                </span>
+                <span class="">
+                    <select id="studylevel" name="_studylevel" class="required">
+                        <option value="01">01</option>
+                        <option value="02">02</option>
+                        <option value="03">03</option>
+                        <option value="04">04</option>
+                        <option value="05">05</option>
+                        <option value="06">06</option>
+                        <option value="07">07</option>
+                        <option value="08">08</option>
+                        <option value="09">09</option>
+                    </select>
+                </span><br/>
+                <input type="button" class="button nextStep" name="nextStep" value="Étape suivante"/>
+            </div>
+            <div id="step3">
+                <h2>Adresse "permanente" : </h2>
+                <span class="streetnumberSpan">
+                    <input type="text" id="streetnumber1" name="_streetnumber1" placeholder="N°"/>
+                    <div class="error"></div>
+                </span>
+                <span class="">
+                    <input type="text" id="street1" name="_street1" placeholder="Rue"/>
+                    <div class="error"></div>
+                </span><br/>
+                <span class="postcodeSpan">
+                    <input type="text" id="postcode1" name="_postcode1" placeholder="Code postal"/>
+                    <div class="error"></div>
+                </span>
+                <span class="">
+                    <input type="text" id="city1" name="_city1" placeholder="Ville"/>
+                    <div class="error"></div>
+                </span><br/>
+                <h2>Adresse pendant les études : </h2>
+                <span class="streetnumberSpan">
+                    <input type="text" id="streetnumber2" name="_streetnumber2" placeholder="N°"/>
+                    <div class="error"></div>
+                </span>
+                <span class="">
+                    <input type="text" id="street2" name="_street2" placeholder="Rue"/>
+                    <div class="error"></div>
+                </span><br/>
+                <span class="postcodeSpan">
+                    <input type="text" id="postcode2" name="_postcode2" value="60200" placeholder="Code postal"/>
+                    <div class="error"></div>
+                </span>
+                <span class="">
+                    <input type="text" id="city2" name="_city2" value="Compiègne" placeholder="Ville"/>
+                    <div class="error"></div>
+                </span><br/>
+                <input type="button" class="button nextStep" name="nextStep" value="Étape suivante"/>
+            </div>
+            <div id="step4">
+                <span class="">
+                    <input type="text" id="phone1" name="_phone1" placeholder="Téléphone fixe (adresse permanente)"/>
+                    <div class="error"></div>
+                </span><br/>
+                <span class="">
+                    <input type="text" id="phone2" name="_phone2" placeholder="Téléphone fixe (études)"/>
+                    <div class="error"></div>
+                </span><br/>
+                <span class="">
+                    <input type="text" id="cellphone" name="_cellphone" placeholder="Téléphone portable"/>
+                    <div class="error"></div>
+                </span><br/>
+                <span class="">
+                    <input type="email" id="email" name="_email" placeholder="Adresse email (hors UTC)"/>
+                    <div class="error"></div>
+                </span><br/>
+                <span class="">
+                    <input type="text" id="facebook" name="_facebook" placeholder="URL de votre profil Facebook"/>
+                    <div class="error"></div>
+                </span><br/>
+                <span class="">
+                    <input type="text" id="twitter" name="_twitter" placeholder="URL de votre page Twitter"/>
+                    <div class="error"></div>
+                </span><br/>
+                <input type="button" class="button nextStep" name="nextStep" value="Étape suivante"/>
+            </div>
+            <div id="step5">
+                <h2>TN05 : </h2>
+                <span class="">
+                    <input type="text" id="tn05_job" name="_tn05_job" placeholder="Position occupée"/>
+                    <div class="error"></div>
+                </span><br/>
+                <span class="">
+                    <input type="text" id="tn05_place" name="_tn05_place" placeholder="Entreprise"/>
+                    <div class="error"></div>
+                </span><br/>
+                <h2>TN07 : </h2>
+                <span class="">
+                    <input type="text" id="tn07_job" name="_tn07_job" placeholder="Position occupée"/>
+                    <div class="error"></div>
+                </span><br/>
+                <span class="">
+                    <input type="text" id="tn07_place" name="_tn07_place" placeholder="Entreprise"/>
+                    <div class="error"></div>
+                </span><br/>
+                <h2>TN09 : </h2>
+                <span class="">
+                    <input type="text" id="tn09_job" name="_tn09_job" placeholder="Position occupée"/>
+                    <div class="error"></div>
+                </span><br/>
+                <span class="">
+                    <input type="email" id="tn09_place" name="_tn09_place" placeholder="Entreprise"/>
+                    <div class="error"></div>
+                </span><br/>
+                <h2>TN10 : </h2>
+                <span class="">
+                    <input type="text" id="tn10_job" name="_tn10_job" placeholder="Position occupée"/>
+                    <div class="error"></div>
+                </span><br/>
+                <span class="">
+                    <input type="email" id="tn10_place" name="_tn10_place" placeholder="Entreprise"/>
+                    <div class="error"></div>
+                </span><br/>
+                <input type="submit" class="button submit" name="submit" value="Valider"/>
+            </div>
+        </form>
     </div>
 {% endblock %}
 

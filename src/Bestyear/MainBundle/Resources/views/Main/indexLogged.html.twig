@@ -3,6 +3,24 @@
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('bundles/bestyearmain/css/listUsers.css') }}" type="text/css"/>
     <link rel="stylesheet" href="{{ asset('bundles/bestyearmain/css/userView.css') }}" type="text/css"/>
+    <link rel="stylesheet" href="{{ asset('bundles/bestyearmain/css/userPane.css') }}" type="text/css"/>
+{% endblock %}
+
+{% block topBar %}
+    <div id="searchBar">
+        <div id="searchIcon"></div>
+    </div>
+    <div id="myProfile">
+        <div id="userName">{{ app.user.givenname }} {{ app.user.familyname }}</div>
+        <div id="userLogo"></div>
+    </div>
+    <div id="userPane">
+        <ul>
+            <a href="{{ path('fos_user_profile_show') }}"><li><div id="userIcon"></div><div class="text">Mon profil</div></li></a>
+            <li><div id="gearIcon"></div><div class="text">Paramètres</div></li>
+            <a href="{{ path('fos_user_security_logout') }}"><li><div id="logoutIcon"></div><div class="text">Déconnexion</div></li></a>
+        </ul>
+    </div>
 {% endblock %}
 
 {% block leftBar %}
@@ -22,8 +40,7 @@
     <div id="welcome">
     <h1>Anniversaires</h1>
     </div>
-    
-    
+     
     <div id="userList">
         <div id="rightColumn">
             <table>
@@ -123,4 +140,5 @@
 {% endblock %}
 {% block javascripts %}
     <script src="{{ asset('bundles/bestyearmain/js/transition.js') }}"></script>
+    <script src="{{ asset('bundles/bestyearmain/js/userPane.js') }}"></script>
 {% endblock %}

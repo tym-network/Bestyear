@@ -246,7 +246,7 @@ function checkPassword() {
     pass1 = $('#password');
     pass2 = $('#password2');
     
-    // Test if the input is empty
+    // Tests if the input is empty
     if (!pass1.val()) {
         error1 = true;
         message1 = "Champ vide";
@@ -781,8 +781,8 @@ function loadStep(id) {
             currentDiv = $('#step' + id);
             // Display the new one
             currentDiv
-                .show()
                 .stop()
+                .show()
                 .animate({"opacity": 1}, "slow", function() {focusFirstInput(id);});
         });
 }
