@@ -67,8 +67,8 @@ class RegistrationFormType extends AbstractType
         $builder->add('phone2', 'text', array('required' => false));
         $builder->add('cellphone', 'text', array('required' => false));
         $builder->add('emailoptional', 'email', array('required' => false));
-        $builder->add('facebook', 'url', array('required' => false));
-        $builder->add('twitter', 'url', array('required' => false));
+        $builder->add('facebook', 'text', array('required' => false));
+        $builder->add('twitter', 'text', array('required' => false));
         $builder->add('tn05_job', 'text', array('required' => false));
         $builder->add('tn05_place', 'text', array('required' => false));
         $builder->add('tn07_job', 'text', array('required' => false));

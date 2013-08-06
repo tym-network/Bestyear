@@ -29,6 +29,11 @@ function checkPassword() {
         error = true;
     }
     
+    if (password.val() && password.val().length < 6) {
+        // The password is 6 caracters long at least
+        error = true;
+    }
+    
     if (error) {
         password.parents('span').addClass('inputError');
     } else {

@@ -1,0 +1,65 @@
+{% extends '::base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/bestyearmain/css/userView.css') }}" type="text/css" />
+{% endblock %}
+
+{% block content %}
+    <div id="userProfile">
+        <img src="{{ asset('bundles/bestyearmain/images/user.jpg') }}" id="userPicture" class="male" alt="Jane Doe"/>
+        <div id="identity">
+            <span id="name">{{ user.givenname }} {{ user.familyname }}</span><br/>
+            <span id="birthdate">21/05/1991 (22 ans)</span><br/>
+            <span id="level">{{ user.TC }}{{ user.studylevel }}</span>
+        </div>
+        <div id="socialNetworks">
+            <div id="facebook">
+                <div id="facebookIcon"></div>
+            </div>
+            <div id="twitter">
+                <div id="twitterIcon"></div>
+            </div>
+        </div>
+        <div id="details">
+            <div id="couronne3" class="couronne">
+                <div id="phoneBigIcon"></div>
+            </div>
+            <div class="line">
+                <div class="line3-1">
+                    <div class="homeIcon"></div>
+                    <div class="info">03 22 22 22 22</div>
+                </div>
+                <div class="line3-2">
+                    <div class="schoolIcon"></div>
+                    <div class="info">03 22 22 22 22</div>
+                </div>
+                <div class="line3-3">
+                    <div class="smartphoneIcon"></div>
+                    <div class="info">03 22 22 22 22</div>
+                </div>
+            </div>
+            <div id="couronne1" class="couronne">
+                <div id="mailBigIcon"></div>
+            </div>
+            <div class="line">
+                <div class="line1-1">
+                    <div class="gplusIcon"></div>
+                    <div class="info">jane@doe.com</div>
+                </div>
+            </div>
+            <div id="couronne2" class="couronne">
+                <div id="compassBigIcon"></div>
+            </div>
+            <div class="line">
+                <div class="line2-1">
+                    <div class="homeIcon"></div>
+                    <div class="info">5 Rue de la rue <br/> 60200 Compiègne</div>
+                </div>
+                <div class="line2-2">
+                    <div class="schoolIcon"></div>
+                    <div class="info">12 Rue de la rue <br/> 60200 Compiègne</div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

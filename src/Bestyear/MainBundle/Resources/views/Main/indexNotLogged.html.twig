@@ -1,6 +1,7 @@
 {% extends '::base.html.twig' %}
 
 {% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/bestyearmain/css/indexNotLogged.css') }}" type="text/css"/>
     <link rel="stylesheet" href="{{ asset('bundles/bestyearmain/css/listUsers.css') }}" type="text/css"/>
     <link rel="stylesheet" href="{{ asset('bundles/bestyearmain/css/userView.css') }}" type="text/css"/>
 {% endblock %}
@@ -14,11 +15,13 @@
 
 {% block content %}
     <div id="welcome">
-    <h1>Bienvenue sur le Bestyear de l'UTC !</h1>
+    <div id="siteName">Le Bestyear</div><div id="siteDescription">L'annuaire des étudiants de l'UTC.</div>
     <h2>Qu'est-ce que le Bestyear?</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus commodo ornare aliquam. In eros nisl, gravida ultricies justo eget, sollicitudin luctus diam. Suspendisse aliquet facilisis varius. In hac habitasse platea dictumst. Nam eu risus et dolor adipiscing elementum. Curabitur mattis accumsan lectus sed fermentum. Proin dapibus malesuada laoreet.
-
-Mauris in luctus dui, ac pulvinar odio. Nulla vitae risus egestas nisi faucibus feugiat at nec tellus. Nam eget volutpat risus. Cras eget leo nisl. Aliquam vel varius tortor. Sed mollis, ipsum quis pellentesque dignissim, nunc quam malesuada mauris, eu feugiat massa justo et nunc. Nunc ullamcorper libero vitae dictum euismod. Proin varius augue arcu, eget consectetur sapien consectetur nec. Nam sit amet luctus nisl. Pellentesque quis porta metus.</p>
+    <p>L'administration de l'UTC dirait "les pages blanches", nous on appelle ça le Bestyear! C'est simple, c'est un annuaire des étudiants de l'UTC. Tu as un binôme de TP qui n'a pas fait sa partie et tu veux le contacter? Tu as pommé le téléphone de ta marraine super sexy? Tu te demandes où peux bien vivre le président du BDE? Tout est là! Chacun peut mettre toute sorte d'informations comme les numéros de téléphone, le compte Facebook, une adresse et même une photo (mais surtout pas celle de ta carté étudiante, déjà que tu te tappes l'affiche à chaque fois que tu vas à la cafet'...). </p>
+    <p>Et si tu veux être vraiment cool, tu pourras même souhaiter l'anniversaire de tes potes le jour même puisque grâce au Bestyear, tu as les dates d'anniversaires de tous les inscrits avec un rappel sur la page d'accueil des personnes ayant prix un coup de vieux le jour même. Allez, viens, on est bien bien bien bien bien.</p>
+    <h2>Nous rejoindre?</h2>
+    <a href="{{ path('fos_user_registration_register') }}"><input type="button" class="button" value="Je m'inscris"/></a>
+    <h2>Témoignages</h2>
     </div>
 {% endblock %}
 
