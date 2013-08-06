@@ -32,39 +32,39 @@ class User extends BaseUser
     protected $id;
     
     /**
-     * @Assert\Length(min="8",max="8", exactMessage="La taille du login doit être de 8 caractères")
-     * @Assert\NotBlank()
+     * @Assert\Length(min="8",max="8", exactMessage="La taille du login doit être de 8 caractères", groups={"Registration"})
+     * @Assert\NotBlank(groups={"Registration"})
      */
     protected $username;
     
     /**
      * @ORM\Column(name="givenname", type="string", length=255)
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(groups={"Registration"})
      */
     protected $givenname;
     
     /**
      * @ORM\Column(name="familyname", type="string", length=255)
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(groups={"Registration"})
      */
     protected $familyname;
     
     /**
      * @ORM\Column(name="birthdate", type="date")
-     * @Assert\NotBlank()
-     * @Assert\Type("\Date")
+     * @Assert\NotBlank(groups={"Registration"})
+     * @Assert\Date()
      */
     protected $birthdate;
     
     /**
-     * @ORM\Column(name="TC", type="string", length=3)
-     * @Assert\NotBlank()
+     * @ORM\Column(name="TC", type="string", length=40)
+     * @Assert\NotBlank(groups={"Registration"})
      */
     protected $TC;
     
     /**
-     * @ORM\Column(name="studylevel", type="integer")
-     * @Assert\NotBlank()
+     * @ORM\Column(name="studylevel", type="string", length=3)
+     * @Assert\NotBlank(groups={"Registration"})
      */
     protected $studylevel;
         
@@ -126,8 +126,8 @@ class User extends BaseUser
     protected $cellphone;
     
     /**
-     * @ORM\Column(name="$emailoptional", type="string", length=255)
-     * @Assert\Email(message = "Email invalide")
+     * @ORM\Column(name="emailoptional", type="string", length=255)
+     * @Assert\Email(message = "Email invalide", groups={"Registration"})
      */
     protected $emailoptional;
     
@@ -174,7 +174,7 @@ class User extends BaseUser
     protected $tn09_place;
     
     /**
-     * @ORM\Column(name="$tn10_job", type="string", length=255)
+     * @ORM\Column(name="tn10_job", type="string", length=255)
      */
     protected $tn10_job;
     
@@ -270,7 +270,7 @@ class User extends BaseUser
      */
     public function setBirthdate($birthdate)
     {
-        $this->birthdate = $birthdate;
+        $this->birthdate = new \DateTime($birthdate);
     
         return $this;
     }
@@ -293,7 +293,7 @@ class User extends BaseUser
      */
     public function setTC($tC)
     {
-        if (!in_array($status, array(self::BRANCHE_TC, self::BRANCHE_GB, self::BRANCHE_GI, self::BRANCHE_GM, self::BRANCHE_GP, self::BRANCHE_GSM, self::BRANCHE_GSU))) {
+        if (!in_array($tC, array(self::BRANCHE_TC, self::BRANCHE_GB, self::BRANCHE_GI, self::BRANCHE_GM, self::BRANCHE_GP, self::BRANCHE_GSM, self::BRANCHE_GSU))) {
             throw new \InvalidArgumentException("Branche invalide");
         }
         $this->TC = $tC;

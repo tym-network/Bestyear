@@ -86,7 +86,7 @@ h2 {
     font-weight: normal;
 }
 
-#username {
+#usernameSpan input {
     width: 200px;
     margin-left: -20px;
 }
@@ -112,23 +112,23 @@ h2 {
     opacity: 0;
 }
 
-#streetnumber1, #streetnumber2 {
+#streetnumber1Span input, #streetnumber2Span input {
     width: 44px;
 }
 
-#street1, #street2 {
+#street1Span input, #street2Span input {
     width: 240px;
 }
 
-#postcode1, #postcode2 {
+#postcode1Span input, #postcode2Span input {
     width: 80px;
 }
 
-#city1, #city2 {
+#city1Span input, #city2Span input {
     width: 204px;
 }
 
-#birthdate {
+#birthdateSpan input {
     width: 150px;
     margin-left: 12px;
 }

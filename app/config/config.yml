@@ -68,5 +68,13 @@ fos_user:
     firewall_name: 	main
     user_class: 	Bestyear\UserBundle\Entity\User
     registration:
+        form:
+            type: bestyear_user_registration
         confirmation:
             enabled: true
+
+services:
+    user_bundle.listener.user_registration:
+        class: Bestyear\UserBundle\EventListener\RegistrationListener
+        tags:
+            - { name: kernel.event_listener, event: fos_user.registration.initialize, method: overrideUserEmail }

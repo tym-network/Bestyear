@@ -41,164 +41,180 @@
     <h1>Inscription</h1>
     <div class="line"></div>
     <div id="form">
-        <form action="{{ path('fos_user_registration_register') }}" method="POST">
-            <div id="step1">
-                <span class="" id="usernameSpan">
-                    <input type="text" id="username" name="_username" placeholder="Login UTC" class="required" autofocus/>@etu.utc.fr
-                    <div class="error"></div>
-                </span><br/>
-                <span class="">
-                    <input type="password" id="password" name="_password" placeholder="Mot de passe" class="required"/>
-                    <div class="error"></div>
-                </span><br/>
-                <span class="">
-                    <input type="password" id="password2" name="_password2" placeholder="Confirmer votre mot de passe" class="required"/>
-                    <div class="error"></div>
-                </span><br/>
-                <input type="button" class="button nextStep" name="nextStep" value="Étape suivante"/>
-            </div>
-            <div id="step2">
-                <span class="">
-                    <input type="text" id="givenname" name="_givenname" placeholder="Prénom" class="required"/>
-                    <div class="error"></div>
-                </span><br/>
-                <span class="">
-                    <input type="text" id="familyname" name="_familyname" placeholder="Nom de famille" class="required"/>
-                    <div class="error"></div>
-                </span><br/>
-                <span class="" id="birthdateSpan">
-                    <label for="birthdate">Date d'anniversaire </label><input type="text" placeholder="YYYY-MM-JJ" id="birthdate" name="_birthdate" class="required"/>
-                    <div class="error"></div>
-                </span><br/>
-                <span class="">
-                    <select id="TC" name="_TC" class="required">
-                        <option value="TC">Tronc Commun</option>
-                        <option value="GB">Génie Biologique (GB)</option>
-                        <option value="GI">Génie Informatique (GI)</option>
-                        <option value="GM">Génie Mécanique (GM)</option>
-                        <option value="GP">Génie des Procédés (GP)</option>
-                        <option value="GSM">Génie des Systèmes Mécanique (GSM)</option>
-                        <option value="GSU">Génie des Systèmes Urbains (GSU)</option>
-                    </select>
-                </span>
-                <span class="">
-                    <select id="studylevel" name="_studylevel" class="required">
-                        <option value="01">01</option>
-                        <option value="02">02</option>
-                        <option value="03">03</option>
-                        <option value="04">04</option>
-                        <option value="05">05</option>
-                        <option value="06">06</option>
-                        <option value="07">07</option>
-                        <option value="08">08</option>
-                        <option value="09">09</option>
-                    </select>
-                </span><br/>
-                <input type="button" class="button nextStep" name="nextStep" value="Étape suivante"/>
-            </div>
-            <div id="step3">
-                <h2>Adresse "permanente" : </h2>
-                <span class="streetnumberSpan">
-                    <input type="text" id="streetnumber1" name="_streetnumber1" placeholder="N°"/>
-                    <div class="error"></div>
-                </span>
-                <span class="">
-                    <input type="text" id="street1" name="_street1" placeholder="Rue"/>
-                    <div class="error"></div>
-                </span><br/>
-                <span class="postcodeSpan">
-                    <input type="text" id="postcode1" name="_postcode1" placeholder="Code postal"/>
-                    <div class="error"></div>
-                </span>
-                <span class="">
-                    <input type="text" id="city1" name="_city1" placeholder="Ville"/>
-                    <div class="error"></div>
-                </span><br/>
-                <h2>Adresse pendant les études : </h2>
-                <span class="streetnumberSpan">
-                    <input type="text" id="streetnumber2" name="_streetnumber2" placeholder="N°"/>
-                    <div class="error"></div>
-                </span>
-                <span class="">
-                    <input type="text" id="street2" name="_street2" placeholder="Rue"/>
-                    <div class="error"></div>
-                </span><br/>
-                <span class="postcodeSpan">
-                    <input type="text" id="postcode2" name="_postcode2" value="60200" placeholder="Code postal"/>
-                    <div class="error"></div>
-                </span>
-                <span class="">
-                    <input type="text" id="city2" name="_city2" value="Compiègne" placeholder="Ville"/>
-                    <div class="error"></div>
-                </span><br/>
-                <input type="button" class="button nextStep" name="nextStep" value="Étape suivante"/>
-            </div>
-            <div id="step4">
-                <span class="">
-                    <input type="text" id="phone1" name="_phone1" placeholder="Téléphone fixe (adresse permanente)"/>
-                    <div class="error"></div>
-                </span><br/>
-                <span class="">
-                    <input type="text" id="phone2" name="_phone2" placeholder="Téléphone fixe (études)"/>
-                    <div class="error"></div>
-                </span><br/>
-                <span class="">
-                    <input type="text" id="cellphone" name="_cellphone" placeholder="Téléphone portable"/>
-                    <div class="error"></div>
-                </span><br/>
-                <span class="">
-                    <input type="email" id="email" name="_email" placeholder="Adresse email (hors UTC)"/>
-                    <div class="error"></div>
-                </span><br/>
-                <span class="">
-                    <input type="text" id="facebook" name="_facebook" placeholder="URL de votre profil Facebook"/>
-                    <div class="error"></div>
-                </span><br/>
-                <span class="">
-                    <input type="text" id="twitter" name="_twitter" placeholder="URL de votre page Twitter"/>
-                    <div class="error"></div>
-                </span><br/>
-                <input type="button" class="button nextStep" name="nextStep" value="Étape suivante"/>
-            </div>
-            <div id="step5">
-                <h2>TN05 : </h2>
-                <span class="">
-                    <input type="text" id="tn05_job" name="_tn05_job" placeholder="Position occupée"/>
-                    <div class="error"></div>
-                </span><br/>
-                <span class="">
-                    <input type="text" id="tn05_place" name="_tn05_place" placeholder="Entreprise"/>
-                    <div class="error"></div>
-                </span><br/>
-                <h2>TN07 : </h2>
-                <span class="">
-                    <input type="text" id="tn07_job" name="_tn07_job" placeholder="Position occupée"/>
-                    <div class="error"></div>
-                </span><br/>
-                <span class="">
-                    <input type="text" id="tn07_place" name="_tn07_place" placeholder="Entreprise"/>
-                    <div class="error"></div>
-                </span><br/>
-                <h2>TN09 : </h2>
-                <span class="">
-                    <input type="text" id="tn09_job" name="_tn09_job" placeholder="Position occupée"/>
-                    <div class="error"></div>
-                </span><br/>
-                <span class="">
-                    <input type="email" id="tn09_place" name="_tn09_place" placeholder="Entreprise"/>
-                    <div class="error"></div>
-                </span><br/>
-                <h2>TN10 : </h2>
-                <span class="">
-                    <input type="text" id="tn10_job" name="_tn10_job" placeholder="Position occupée"/>
-                    <div class="error"></div>
-                </span><br/>
-                <span class="">
-                    <input type="email" id="tn10_place" name="_tn10_place" placeholder="Entreprise"/>
-                    <div class="error"></div>
-                </span><br/>
-                <input type="submit" class="button submit" name="submit" value="Valider"/>
-            </div>
+        <form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST">
+            {{ form_start(form) }}
+                {{ form_errors(form) }}
+                
+                <div id="step1">
+                    <span class="" id="usernameSpan">
+                        {{ form_errors(form.username) }}
+                        {{ form_widget(form.username, {'attr': {'placeholder': 'Login UTC'} }) }}@etu.utc.fr
+                        <div class="error"></div>
+                    </span><br/>
+                    <span class="" id="passwordSpan">
+                        {{ form_errors(form.plainPassword.first) }}
+                        {{ form_widget(form.plainPassword.first, {'attr': {'placeholder': 'Mot de passe'} }) }}
+                        <div class="error"></div>
+                    </span><br/>
+                    <span class="" id="password2Span">
+                        {{ form_errors(form.plainPassword.second) }}
+                        {{ form_widget(form.plainPassword.second, {'attr': {'placeholder': 'Confirmer votre mot de passe'} }) }}
+                        <div class="error"></div>
+                    </span><br/>
+                    <input type="button" class="button nextStep" name="nextStep" value="Étape suivante"/>
+                </div>
+                <div id="step2">
+                    <span class="" id="givennameSpan">
+                        {{ form_errors(form.givenname) }}
+                        {{ form_widget(form.givenname, {'attr': {'placeholder': 'Prénom'} }) }}
+                        <div class="error"></div>
+                    </span><br/>
+                    <span class="" id="familynameSpan">
+                        {{ form_errors(form.familyname) }}
+                        {{ form_widget(form.familyname, {'attr': {'placeholder': 'Nom de famille'} }) }}
+                        <div class="error"></div>
+                    </span><br/>
+                    <span class="" id="birthdateSpan">
+                        {{ form_errors(form.birthdate) }}
+                        <label for="birthdate">Date d'anniversaire </label>{{ form_widget(form.birthdate, {'attr': {'placeholder': 'YYYY-MM-JJ'} }) }}
+                        <div class="error"></div>
+                    </span><br/>
+                    <span class="" id="TCSpan">
+                        {{ form_errors(form.TC) }}
+                        {{ form_widget(form.TC) }}
+                    </span>
+                    <span class="" id="studylevelSpan">
+                        {{ form_errors(form.studylevel) }}
+                        {{ form_widget(form.studylevel) }}
+                    </span><br/>
+                    <input type="button" class="button nextStep" name="nextStep" value="Étape suivante"/>
+                </div>
+                <div id="step3">
+                    <h2>Adresse "permanente" : </h2>
+                    <span class="streetnumberSpan" id="streetnumber1Span">
+                        {{ form_errors(form.streetnumber1) }}
+                        {{ form_widget(form.streetnumber1, {'attr': {'placeholder': 'N°'} }) }}
+                        <div class="error"></div>
+                    </span>
+                    <span class="" id="street1Span">
+                        {{ form_errors(form.street1) }}
+                        {{ form_widget(form.street1, {'attr': {'placeholder': 'Rue'} }) }}
+                        <div class="error"></div>
+                    </span><br/>
+                    <span class="postcodeSpan" id="postcode1Span">
+                        {{ form_errors(form.postcode1) }}
+                        {{ form_widget(form.postcode1, {'attr': {'placeholder': 'Code postal'} }) }}
+                        <div class="error"></div>
+                    </span>
+                    <span class="" id="city1Span">
+                        {{ form_errors(form.city1) }}
+                        {{ form_widget(form.city1, {'attr': {'placeholder': 'Ville'} }) }}
+                        <div class="error"></div>
+                    </span><br/>
+                    <h2>Adresse pendant les études : </h2>
+                    <span class="streetnumberSpan" id="streetnumber2Span">
+                        {{ form_errors(form.streetnumber2) }}
+                        {{ form_widget(form.streetnumber2, {'attr': {'placeholder': 'N°'} }) }}
+                        <div class="error"></div>
+                    </span>
+                    <span class="" id="street2Span">
+                        {{ form_errors(form.street2) }}
+                        {{ form_widget(form.street2, {'attr': {'placeholder': 'Rue'} }) }}
+                        <div class="error"></div>
+                    </span><br/>
+                    <span class="postcodeSpan" id="postcode2Span">
+                        {{ form_errors(form.postcode2) }}
+                        {{ form_widget(form.postcode2, {'attr': {'placeholder': 'Code postal', 'value': '60200'} }) }}
+                        <div class="error"></div>
+                    </span>
+                    <span class="" id="city2Span">
+                        {{ form_errors(form.city2) }}
+                        {{ form_widget(form.city2, {'attr': {'placeholder': 'Ville', 'value': 'Compiègne'} }) }}
+                        <div class="error"></div>
+                    </span><br/>
+                    <input type="button" class="button nextStep" name="nextStep" value="Étape suivante"/>
+                </div>
+                <div id="step4">
+                    <span class="" id="phone1Span">
+                        {{ form_errors(form.phone1) }}
+                        {{ form_widget(form.phone1, {'attr': {'placeholder': 'Téléphone fixe (adresse permanente)'} }) }}
+                        <div class="error"></div>
+                    </span><br/>
+                    <span class="" id="phone2Span">
+                        {{ form_errors(form.phone2) }}
+                        {{ form_widget(form.phone2, {'attr': {'placeholder': 'Téléphone fixe (études)'} }) }}
+                        <div class="error"></div>
+                    </span><br/>
+                    <span class="" id="cellphoneSpan">
+                        {{ form_errors(form.cellphone) }}
+                        {{ form_widget(form.cellphone, {'attr': {'placeholder': 'Téléphone portable'} }) }}
+                        <div class="error"></div>
+                    </span><br/>
+                    <span class="" id="emailSpan">
+                        {{ form_errors(form.emailoptional) }}
+                        {{ form_widget(form.emailoptional, {'attr': {'placeholder': 'Adresse email (hors UTC)'} }) }}
+                        <div class="error"></div>
+                    </span><br/>
+                    <span class="" id="facebookSpan">
+                        {{ form_errors(form.facebook) }}
+                        {{ form_widget(form.facebook, {'attr': {'placeholder': 'URL de votre profil Facebook'} }) }}
+                        <div class="error"></div>
+                    </span><br/>
+                    <span class="" id="twitterSpan">
+                        {{ form_errors(form.twitter) }}
+                        {{ form_widget(form.twitter, {'attr': {'placeholder': 'URL de votre page Twitter'} }) }}
+                        <div class="error"></div>
+                    </span><br/>
+                    <input type="button" class="button nextStep" name="nextStep" value="Étape suivante"/>
+                </div>
+                <div id="step5">
+                    <h2>TN05 : </h2>
+                    <span class="" id="tn05_jobSpan">
+                        {{ form_errors(form.tn05_job) }}
+                        {{ form_widget(form.tn05_job, {'attr': {'placeholder': 'Position occupée'} }) }}
+                        <div class="error"></div>
+                    </span><br/>
+                    <span class="" id="tn05_placeSpan">
+                        {{ form_errors(form.tn05_place) }}
+                        {{ form_widget(form.tn05_place, {'attr': {'placeholder': 'Entreprise'} }) }}
+                        <div class="error"></div>
+                    </span><br/>
+                    <h2>TN07 : </h2>
+                    <span class="" id="tn07_jobSpan">
+                        {{ form_errors(form.tn07_job) }}
+                        {{ form_widget(form.tn07_job, {'attr': {'placeholder': 'Position occupée'} }) }}
+                        <div class="error"></div>
+                    </span><br/>
+                    <span class="" id="tn07_placeSpan">
+                        {{ form_errors(form.tn07_place) }}
+                        {{ form_widget(form.tn07_place, {'attr': {'placeholder': 'Entreprise'} }) }}
+                        <div class="error"></div>
+                    </span><br/>
+                    <h2>TN09 : </h2>
+                    <span class="" id="tn09_jobSpan">
+                        {{ form_errors(form.tn09_job) }}
+                        {{ form_widget(form.tn09_job, {'attr': {'placeholder': 'Position occupée'} }) }}
+                        <div class="error"></div>
+                    </span><br/>
+                    <span class="" id="tn09_placeSpan">
+                        {{ form_errors(form.tn09_place) }}
+                        {{ form_widget(form.tn09_place, {'attr': {'placeholder': 'Entreprise'} }) }}
+                        <div class="error"></div>
+                    </span><br/>
+                    <h2>TN10 : </h2>
+                    <span class="" id="tn10_jobSpan">
+                        {{ form_errors(form.tn10_job) }}
+                        {{ form_widget(form.tn10_job, {'attr': {'placeholder': 'Position occupée'} }) }}
+                        <div class="error"></div>
+                    </span><br/>
+                    <span class="" id="tn10_placeSpan">
+                        {{ form_errors(form.tn10_place) }}
+                        {{ form_widget(form.tn10_place, {'attr': {'placeholder': 'Entreprise'} }) }}
+                        <div class="error"></div>
+                    </span><br/>
+                    <input type="submit" class="button submit" name="submit" value="Valider"/>
+                </div>
+            {{ form_end(form) }}
         </form>
     </div>
 {% endblock %}

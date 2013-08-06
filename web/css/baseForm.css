@@ -104,7 +104,7 @@ label {
     font-size:14px;
 }
 
-input[type="text"], input[type="password"], input[type="email"] {
+input[type="text"], input[type="password"], input[type="email"], input[type="url"] {
     border: 1px solid #dddddd;
     border-radius: 3px;
     outline: none;
@@ -126,7 +126,7 @@ input[type="text"], input[type="password"], input[type="email"] {
     position: relative;
 }
 
-input[type="text"]:focus, input[type="password"]:focus, input[type="date"]:focus, input[type="email"]:focus {
+input[type="text"]:focus, input[type="password"]:focus, input[type="date"]:focus, input[type="email"]:focus, input[type="url"]:focus {
     border: 1px solid #c5c5c5;
     box-shadow: inset 0px 0px 1px rgba(0,0,0,0.4);
     background: #f8f8f8;
@@ -154,7 +154,7 @@ select {
     background: #fceded;
 }
 
-.inputError input[type="text"]:focus, .inputError input[type="password"]:focus, .inputError input[type="email"]:focus {
+.inputError input[type="text"]:focus, .inputError input[type="password"]:focus, .inputError input[type="email"]:focus, .inputError input[type="url"]:focus {
     border-color: #d2664f;
     background: #fceded;
 }
@@ -166,11 +166,11 @@ select {
     position: absolute;
     margin-left: 328px;
     margin-top: -36px;
-    display: none;
+    opacity: 0;
 }
 
 .inputError .error {
-    display: block;
+    opacity: 1;
 }
 
 #errorBar {

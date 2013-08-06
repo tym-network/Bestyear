@@ -47,37 +47,15 @@ $(".submit").keypress(function(e) {
  */
  
 $(document).ready(function () {
-    $("#username").focus(); 
+    $("#usernameSpan input").focus(); 
 });
 
 /*
  * Handles the tooltips when there is an error
  */
 
-var qtip_options = {
-    style: {
-        classes: "qtip-bootstrap",
-        tip: {
-            corner: true,
-            width: 8,
-        },
-    },
-    position: {
-        my: 'bottom center',
-        at: 'top center',
-        target: $(this).next()
-    },
-    show: {
-        event: false,
-        ready: true
-    },
-    hide: {
-        event: false
-    }
-};
-
 function updateErrorMessage(obj) {
-    var errorLogo = obj.next();
+    var errorLogo = obj.parent().find(".error");
     obj.qtip({
         style: {
             classes: "qtip-bootstrap",
@@ -93,8 +71,7 @@ function updateErrorMessage(obj) {
         },
         show: {
             event: false,
-            ready: true,
-            solo: true
+            ready: true
         },
         hide: {
             event: false
@@ -103,7 +80,9 @@ function updateErrorMessage(obj) {
 }
 
 $("input").focus(function() {
-    updateErrorMessage($(this));
+    if(!('object' === typeof $(this).data('qtip'))) {
+        updateErrorMessage($(this));
+    }
 });
 
 $("input").keyup(function() {
@@ -136,7 +115,7 @@ var pickerOpts = {
     onClose: function() {checkBirthdate();},
 };
 $.datepicker.setDefaults( $.datepicker.regional[ "fr" ] );
-$('#birthdate').datepicker(pickerOpts);
+$('#birthdateSpan input').datepicker(pickerOpts);
 
 /*
  * ============================
@@ -148,15 +127,15 @@ $('#birthdate').datepicker(pickerOpts);
 // STEP 1 *
 // ********
 
-$('#username')
+$('#usernameSpan input')
     .keyup(function() {checkUsername();})
     .blur(function() {checkUsername();});
 
-$('#password')
+$('#passwordSpan input')
     .keyup(function() {checkPassword();})
     .blur(function() {checkPassword();});
 
-$('#password2')
+$('#password2Span input')
     .keyup(function() {checkPassword();})
     .blur(function() {checkPassword();});
 
@@ -164,26 +143,26 @@ $('#password2')
 // STEP 2 *
 // ********
 
-$('#givenname')
+$('#givennameSpan input')
     .keyup(function() {checkGivenName();})
     .blur(function() {checkGivenName();});
     
-$('#familyname')
+$('#familynameSpan input')
     .keyup(function() {checkFamilyName();})
     .blur(function() {checkFamilyName();});
     
-$('#birthdate')
+$('#birthdateSpan input')
     .blur(function() {checkBirthdate();});
 
 // ********
 // STEP 3 *
 // ********
 
-$('#postcode1')
+$('#postcode1Span input')
     .keyup(function() {checkPostcode1();})
     .blur(function() {checkPostcode1();});
     
-$('#postcode2')
+$('#postcode2Span input')
     .keyup(function() {checkPostcode2();})
     .blur(function() {checkPostcode2();});
 
@@ -191,15 +170,15 @@ $('#postcode2')
 // STEP 4 *
 // ********
     
-$('#email')
+$('#emailSpan input')
     .keyup(function() {checkMail();})
     .blur(function() {checkMail();});
     
-$('#facebook')
+$('#facebookSpan input')
     .keyup(function() {checkURLFacebook();})
     .blur(function() {checkURLFacebook();});
     
-$('#twitter')
+$('#twitterSpan input')
     .keyup(function() {checkURLTwitter();})
     .blur(function() {checkURLTwitter();});
 
@@ -209,6 +188,15 @@ $('#twitter')
  * ============================
  */
  
+function removeErrors(obj) {
+    if('object' === typeof obj.data('qtip')) {
+        obj.qtip('destroy');
+    }
+    obj.parents('span').removeClass('inputError');
+    obj.attr("title", "");   
+    
+}
+ 
 // ********
 // STEP 1 *
 // ********
@@ -217,7 +205,7 @@ $('#twitter')
 function checkUsername() {
     error = false;
     message = null;
-    username = $('#username');
+    username = $('#usernameSpan input');
     if (!username.val()) {
         // If the field is empty
         error = true;
@@ -232,8 +220,7 @@ function checkUsername() {
         username.parents('span').addClass('inputError');
         username.attr("title", message);
     } else {
-        username.parents('span').removeClass('inputError');
-        username.attr("title", "");
+        removeErrors(username);
     }
 }
 
@@ -243,8 +230,8 @@ function checkPassword() {
     message1 = null;
     error2 = false;
     message2 = null;
-    pass1 = $('#password');
-    pass2 = $('#password2');
+    pass1 = $('#passwordSpan input');
+    pass2 = $('#password2Span input');
     
     // Tests if the input is empty
     if (!pass1.val()) {
@@ -273,16 +260,14 @@ function checkPassword() {
         pass1.parents('span').addClass('inputError');
         pass1.attr("title", message1);
     } else {
-        pass1.parents('span').removeClass('inputError');
-        pass1.attr("title", "");
+        removeErrors(pass1);
     }
     
     if (error2) {
         pass2.parents('span').addClass('inputError');
         pass2.attr("title", message2);
     } else {
-        pass2.parents('span').removeClass('inputError');
-        pass2.attr("title", "");
+        removeErrors(pass2);
     }
 }
 
@@ -293,7 +278,7 @@ function checkPassword() {
 function checkGivenName() {
     error = false;
     message = null;
-    givenname = $('#givenname');
+    givenname = $('#givennameSpan input');
     
     // Check if not empty
     if (!givenname.val()) {
@@ -305,15 +290,14 @@ function checkGivenName() {
         givenname.parents('span').addClass('inputError');
         givenname.attr("title", message);
     } else {
-        givenname.parents('span').removeClass('inputError');
-        givenname.attr("title", "");
+        removeErrors(givenname);
     }
 }
 
 function checkFamilyName() {
     error = false;
     message = null;
-    familyname = $('#familyname');
+    familyname = $('#familynameSpan input');
     
     // Check if not empty
     if (!familyname.val()) {
@@ -325,15 +309,14 @@ function checkFamilyName() {
         familyname.parents('span').addClass('inputError');
         familyname.attr("title", message);
     } else {
-        familyname.parents('span').removeClass('inputError');
-        familyname.attr("title", "");
+        removeErrors(familyname);
     }
 }
 
 function checkBirthdate() {
     error = false;
     message = null;
-    birthdate = $('#birthdate');
+    birthdate = $('#birthdateSpan input');
    
     // Correct format
     var matches = birthdate.val().match('^((19|20)[0-9]{2})-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$')
@@ -368,8 +351,7 @@ function checkBirthdate() {
         birthdate.parents('span').addClass('inputError');
         birthdate.attr("title", message);
     } else {
-        birthdate.parents('span').removeClass('inputError');
-        birthdate.attr("title", "");
+        removeErrors(birthdate);
     }
 }
 
@@ -378,7 +360,7 @@ function checkBirthdate() {
 // ********
 
 function checkPostcode1() {
-    postcode1 = $('#postcode1');
+    postcode1 = $('#postcode1Span input');
     message = null;
     
     if (postcode1.val() && !postcode1.val().match('^[0-9]{5}$')) {
@@ -392,7 +374,7 @@ function checkPostcode1() {
 }
 
 function checkPostcode2() {
-    postcode2 = $('#postcode2');
+    postcode2 = $('#postcode2Span input');
      message = null;
     
     if (postcode2.val() && !postcode2.val().match('^[0-9]{5}$')) {
@@ -406,10 +388,10 @@ function checkPostcode2() {
 }
 
 function checkAddress1onSubmit() {
-    streetnumber1 = $('#streetnumber1');
-    street1 = $('#street1');
-    postcode1 = $('#postcode1');
-    city1 = $('#city1');
+    streetnumber1 = $('#streetnumber1Span input');
+    street1 = $('#street1Span input');
+    postcode1 = $('#postcode1Span input');
+    city1 = $('#city1Span input');
     
     // If one input is filled, they should all be filled
     if ((streetnumber1.val() || street1.val() || postcode1.val() || city1.val()) && !(streetnumber1.val() && street1.val() && postcode1.val() && city1.val())) {
@@ -430,22 +412,18 @@ function checkAddress1onSubmit() {
             city1.attr("title", "Champ vide");
         }
     } else {
-        streetnumber1.parents('span').removeClass('inputError');
-        street1.parents('span').removeClass('inputError');
-        postcode1.parents('span').removeClass('inputError');
-        city1.parents('span').removeClass('inputError');
-        streetnumber1.attr("title", "");
-        street1.attr("title", "");
-        postcode1.attr("title", "");
-        city1.attr("title", "");
+        removeErrors(streetnumber1);
+        removeErrors(street1);
+        removeErrors(postcode1);
+        removeErrors(city1);
     }
 }
 
 function checkAddress2onSubmit() {
-    streetnumber2 = $('#streetnumber2');
-    street2 = $('#street2');
-    postcode2 = $('#postcode2');
-    city2 = $('#city2');
+    streetnumber2 = $('#streetnumber2Span input');
+    street2 = $('#street2Span input');
+    postcode2 = $('#postcode2Span input');
+    city2 = $('#city2Span input');
     
     // If one input is filled, they should all be filled
     if ((streetnumber2.val() || street2.val() || (postcode2.val() && postcode2.val() != "60200") || (city2.val()) && city2.val() != "Compiègne") && !(streetnumber2.val() && street2.val() && postcode2.val() && city2.val())) {
@@ -466,14 +444,10 @@ function checkAddress2onSubmit() {
             city2.attr("title", "Champ vide");
         }
     } else {
-        streetnumber2.parents('span').removeClass('inputError');
-        street2.parents('span').removeClass('inputError');
-        postcode2.parents('span').removeClass('inputError');
-        city2.parents('span').removeClass('inputError');
-        streetnumber2.attr("title", "");
-        street2.attr("title", "");
-        postcode2.attr("title", "");
-        city2.attr("title", "");
+        removeErrors(streetnumber2);
+        removeErrors(street2);
+        removeErrors(postcode2);
+        removeErrors(city2);
     }
 }
 
@@ -484,7 +458,7 @@ function checkAddress2onSubmit() {
 function checkMail() {
     error = false;
     message = null;
-    email = $('#email');
+    email = $('#emailSpan input');
    
     // Correct format
     if (email.val() && !email.val().match('^[a-zA-Z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$')) {
@@ -496,15 +470,14 @@ function checkMail() {
         email.parents('span').addClass('inputError');
         email.attr("title", message);
     } else {
-        email.parents('span').removeClass('inputError');
-        email.attr("title", "");
+        removeErrors(email);
     }
 }
 
 function checkURLFacebook() {
     error = false;
     message = null;
-    urlFacebook = $('#facebook');
+    urlFacebook = $('#facebookSpan input');
    
     if (urlFacebook.val() && !urlFacebook.val().match('^(https?:\/\/)?(www\.)?facebook\.com/[a-z.-1-9_]+$')) {
         message = "URL invalide (ex: www.facebook.com/mon.profil)";
@@ -514,15 +487,14 @@ function checkURLFacebook() {
         urlFacebook.parents('span').addClass('inputError');
         urlFacebook.attr("title", message);
     } else {
-        urlFacebook.parents('span').removeClass('inputError');
-        urlFacebook.attr("title", "");
+        removeErrors(urlFacebook);
     }
 }
 
 function checkURLTwitter() {
     error = false;
     message = null;
-    urlTwitter = $('#twitter');
+    urlTwitter = $('#twitterSpan input');
    
     if (urlTwitter.val() && !urlTwitter.val().match('^(https?:\/\/)?(www\.)?twitter\.com/[a-zA-Z.-1-9_]+$')) {
         message = "URL invalide (ex: www.twitter.com/tym-network)";
@@ -532,15 +504,14 @@ function checkURLTwitter() {
         urlTwitter.parents('span').addClass('inputError');
         urlTwitter.attr("title", message);
     } else {
-        urlTwitter.parents('span').removeClass('inputError');
-        urlTwitter.attr("title", "");
+        removeErrors(urlTwitter);
     }
 }
 
 function checkTN05() {
     message = null;
-    tn05_job = $('#tn05_job');
-    tn05_place = $("#tn05_place");
+    tn05_job = $('#tn05_jobSpan input');
+    tn05_place = $("#tn05_placeSpan input");
     
     // If only one of the two inputs isn't filled
     if ((!tn05_job.val() || !tn05_place.val()) && !(!tn05_job.val() && !tn05_place.val())) {
@@ -553,17 +524,15 @@ function checkTN05() {
             tn05_place.attr("title", message);
         }
     } else {
-        tn05_job.parents('span').removeClass('inputError');
-        tn05_place.parents('span').removeClass('inputError');
-        tn05_job.attr("title", "");
-        tn05_place.attr("title", "");
+        removeErrors(tn05_job);
+        removeErrors(tn05_place);
     }
 }
 
 function checkTN07() {
     message = null;
-    tn07_job = $('#tn07_job');
-    tn07_place = $("#tn07_place");
+    tn07_job = $('#tn07_jobSpan input');
+    tn07_place = $("#tn07_placeSpan input");
     
     // If only one of the two inputs isn't filled
     if ((!tn07_job.val() || !tn07_place.val()) && !(!tn07_job.val() && !tn07_place.val())) {
@@ -576,17 +545,15 @@ function checkTN07() {
             tn07_place.attr("title", message);
         }
     } else {
-        tn07_job.parents('span').removeClass('inputError');
-        tn07_place.parents('span').removeClass('inputError');
-        tn07_job.attr("title", "");
-        tn07_place.attr("title", "");
+        removeErrors(tn07_job);
+        removeErrors(tn07_place);
     }
 }
 
 function checkTN09() {
     message = null;
-    tn09_job = $('#tn09_job');
-    tn09_place = $("#tn09_place");
+    tn09_job = $('#tn09_jobSpan input');
+    tn09_place = $("#tn09_placeSpan input");
     
     // If only one of the two inputs isn't filled
     if ((!tn09_job.val() || !tn09_place.val()) && !(!tn09_job.val() && !tn09_place.val())) {
@@ -599,17 +566,15 @@ function checkTN09() {
             tn09_place.attr("title", message);
         }
     } else {
-        tn09_job.parents('span').removeClass('inputError');
-        tn09_place.parents('span').removeClass('inputError');
-        tn09_job.attr("title", "");
-        tn09_place.attr("title", "");
+        removeErrors(tn09_job);
+        removeErrors(tn09_place);
     }
 }
 
 function checkTN10() {
     message = null;
-    tn10_job = $('#tn10_job');
-    tn10_place = $("#tn10_place");
+    tn10_job = $('#tn10_jobSpan input');
+    tn10_place = $("#tn10_placeSpan input");
     
     // If only one of the two inputs isn't filled
     if ((!tn10_job.val() || !tn10_place.val()) && !(!tn10_job.val() && !tn10_place.val())) {
@@ -622,10 +587,8 @@ function checkTN10() {
             tn10_place.attr("title", message);
         }
     } else {
-        tn10_job.parents('span').removeClass('inputError');
-        tn10_place.parents('span').removeClass('inputError');
-        tn10_job.attr("title", "");
-        tn10_place.attr("title", "");
+        removeErrors(tn10_job);
+        removeErrors(tn10_place);
     }
 }
 
@@ -732,16 +695,18 @@ function nextStep() {
 }
 
 function submitForm() {
-    checkStep(nbStep);
+    for (i=1; i<=nbStep; i++) {
+        checkStep(i);
+    }
 }
 
 function focusFirstInput(id) {
     switch (id) {
         case 1:
-            $("#username").focus(); 
+            $("#usernameSpan input").focus(); 
             break;
         case 2:
-            $("#givenname").focus(); 
+            $("#givennameSpan input").focus(); 
             break;
         case 3:
             $("#streetnumber1").focus(); 
