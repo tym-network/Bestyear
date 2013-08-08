@@ -3,7 +3,6 @@
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('bundles/bestyearmain/css/listUsers.css') }}" type="text/css"/>
     <link rel="stylesheet" href="{{ asset('bundles/bestyearmain/css/userView.css') }}" type="text/css"/>
-    <link rel="stylesheet" href="{{ asset('bundles/bestyearmain/css/userPane.css') }}" type="text/css"/>
 {% endblock %}
 
 {% block topBar %}
@@ -89,10 +88,10 @@
             <span id="level">GB03</span>
         </div>
         <div id="socialNetworks">
-            <div id="facebook">
+            <div id="facebook" class="socialBubble">
                 <div id="facebookIcon"></div>
             </div>
-            <div id="twitter">
+            <div id="twitter" class="socialBubble">
                 <div id="twitterIcon"></div>
             </div>
         </div>
@@ -141,5 +140,4 @@
 {% endblock %}
 {% block javascripts %}
     <script src="{{ asset('bundles/bestyearmain/js/transition.js') }}"></script>
-    <script src="{{ asset('bundles/bestyearmain/js/userPane.js') }}"></script>
 {% endblock %}

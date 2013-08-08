@@ -1,8 +1,3 @@
-function checkFormOnSubmit() {
-    checkLogin();
-    checkPassword();
-}
-
 function checkLogin() {
     error = false;
     username = $('#username');
@@ -41,15 +36,20 @@ function checkPassword() {
     }
 }
 
+function checkFormOnSubmit() {
+    checkLogin();
+    checkPassword();
+}
+
 $('#username')
-    .keyup(function() {checkLogin();})
-    .blur(function() {checkLogin();});
+    .keyup(function () { checkLogin(); })
+    .blur(function () { checkLogin(); });
     
 $('#password')
-    .keyup(function() {checkPassword();})
-    .blur(function() {checkPassword();});
+    .keyup(function () { checkPassword(); })
+    .blur(function () { checkPassword(); });
 
-$('#formLogin').submit(function() {
+$('#formLogin').submit(function () {
     checkFormOnSubmit();
     if ($('#formLogin').find('.inputError').length > 0) {
         return false;
@@ -57,3 +57,6 @@ $('#formLogin').submit(function() {
     return true;
 });
 
+$(document).ready(function () {
+    $("#username").focus();
+});

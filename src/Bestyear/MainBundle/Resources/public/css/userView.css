@@ -2,10 +2,16 @@
     min-height: 500px;
 }
 
+#content {
+    padding-bottom: 0px;
+}
+
 #userProfile {
     display: none;
     opacity: 0;
-    margin: 30px;
+    margin-top: 30px;
+    margin-left: 30px;
+    margin-right: 30px;
     font-family: "MavenProLight", "Century Gothic";
 }
 
@@ -15,12 +21,34 @@
     position: absolute;
 }
 
+#userNoPicture {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+}
+
+#userNoPictureIcon {
+    width: 45px;
+    height: 41px;
+    margin-left: 27px;
+    margin-top: 29px;
+    background: url("../images/user-icon-big.png") no-repeat;
+}
+
 .female {
     border: 8px solid #e61aa0;
 }
 
 .male {
     border: 8px solid #22c2cc;
+}
+
+.female#userNoPicture {
+    background: #e61aa0;
+}
+
+.male#userNoPicture {
+    background: #22c2cc;
 }
 
 #identity {
@@ -41,12 +69,19 @@
     margin-top: 24px;
 }
 
-#facebook {
+.socialBubble {
     float:right;
     width: 70px;
     height: 70px;
-    background: #00478d;
     border-radius: 45px;
+    -webkit-transition: background 0.3s linear;
+    -o-transition: background 0.3s linear;
+    -moz-transition: background 0.3s linear;
+    transition: background 0.3s linear;
+}
+
+#facebook {
+    background: #00478d;
 }
 
 #facebookIcon {
@@ -59,12 +94,8 @@
 }
 
 #twitter {
-    float:right;
     margin-right: 20px;
-    width: 70px;
-    height: 70px;
     background: #00abee;
-    border-radius: 45px;
 }
 
 #twitterIcon {
@@ -76,9 +107,12 @@
     left: 21px;
 }
 
+#facebook:hover, #twitter:hover {
+    background: #434343;
+}
+
 #details {
-    position: relative;
-    top: 130px;
+    padding-top: 130px;
 }
 
 .couronne {
@@ -194,4 +228,66 @@
 
 .line3-3 {
     margin-top: 8px;
+}
+
+.row {
+    height: 100px;
+    width: 415px;
+}
+
+.rightColumn {
+    float: right;
+    margin-top: -100px;
+}
+
+.link {
+    text-decoration: none;
+    color: black;
+    -webkit-transition: background 0.3s linear;
+    -o-transition: background 0.3s linear;
+    -moz-transition: background 0.3s linear;
+    transition: background 0.3s linear;
+    margin-left: -5px;
+    padding-left: 5px;
+    margin-right: -5px;
+    padding-right: 5px;
+}
+
+.link:hover {
+    background: #EEEEEE;
+    border-radius: 4px;
+}
+
+#TN {
+    width: 831px;
+    margin-top: 20px;
+    margin-left: -40px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 10px;
+    padding-bottom: 30px;
+    background: url("../images/backTN.png") repeat;
+    box-shadow: inset 0px 1px 0px 0px rgba(0,0,0,0.05), inset 0px 2px 3px 0px rgba(0,0,0,0.1);
+}
+
+#TN h2 {
+    font-family: "MavenProBold", "Century Gothic";
+    font-size: 22px;
+    font-weight: normal;
+    color: #8F8F8F;
+    background: white;
+    width: 200px;
+    box-shadow: 0px 1px 0px 0px rgba(0,0,0,0.1), 0px 2px 3px 0px rgba(0,0,0,0.1);
+    position: relative;
+    top: -23px;
+    left: 298px;
+    text-align: center;
+    padding-bottom: 10px;
+    margin: 0px;
+}
+
+#TN h3 {
+    font-family: "MavenProBold", "Century Gothic";
+    font-weight: normal;
+    font-size: 20px;
 }

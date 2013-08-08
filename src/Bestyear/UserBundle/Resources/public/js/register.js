@@ -8,13 +8,13 @@ var currentStep = 1;
 var previousStep = null;
 var maximumStep = 1;
 var errors = 0;
-nbStep = 5;
+var nbStep = 5;
 
 /*
  * When enter is pressed, go to the next step
  */
  
-$(document).keypress(function(e) {
+$(document).keypress(function (e) {
     // If key "Enter" is pressed
     if (e.which == 13) {
         if (currentStep < nbStep) {
@@ -26,7 +26,7 @@ $(document).keypress(function(e) {
     }
 });
 
-$(".nextStep").keypress(function(e) {
+$(".nextStep").keypress(function (e) {
     // If the user presses "Enter" while the focus is on the button
     if (e.which == 13) {
         nextStep();
@@ -34,7 +34,7 @@ $(".nextStep").keypress(function(e) {
     }
 });
 
-$(".submit").keypress(function(e) {
+$(".submit").keypress(function (e) {
     // If the user presses "Enter" while the focus is on the button
     if (e.which == 13) {
         submitForm();
@@ -104,7 +104,7 @@ $("input").blur(function() {
  */
 
 var pickerOpts = {
-    dateFormat:"yy-mm-dd",
+    dateFormat: "yy-mm-dd",
     changeMonth: true,
     changeYear: true,
     yearRange: "-30:-14",
