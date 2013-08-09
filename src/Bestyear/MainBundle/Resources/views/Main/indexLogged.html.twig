@@ -6,21 +6,7 @@
 {% endblock %}
 
 {% block topBar %}
-    <div id="searchBar">
-        <input type="text" name="searchUser" id="searchUser">
-        <div id="searchIcon"></div>
-    </div>
-    <div id="myProfile">
-        <div id="userName">{{ app.user.givenname }} {{ app.user.familyname }}</div>
-        <div id="userLogo"></div>
-    </div>
-    <div id="userPane">
-        <ul>
-            <a href="{{ path('fos_user_profile_show') }}"><li><div id="userIcon"></div><div class="text">Mon profil</div></li></a>
-            <li><div id="gearIcon"></div><div class="text">Paramètres</div></li>
-            <a href="{{ path('fos_user_security_logout') }}"><li><div id="logoutIcon"></div><div class="text">Déconnexion</div></li></a>
-        </ul>
-    </div>
+    {{ parent() }}
 {% endblock %}
 
 {% block leftBar %}

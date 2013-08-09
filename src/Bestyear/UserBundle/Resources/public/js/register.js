@@ -189,12 +189,11 @@ $('#twitterSpan input')
  */
  
 function removeErrors(obj) {
-    if('object' === typeof obj.data('qtip')) {
+    if ('object' === typeof obj.data('qtip')) {
         obj.qtip('destroy');
     }
     obj.parents('span').removeClass('inputError');
-    obj.attr("title", "");   
-    
+    obj.attr("title", "");
 }
  
 // ********
