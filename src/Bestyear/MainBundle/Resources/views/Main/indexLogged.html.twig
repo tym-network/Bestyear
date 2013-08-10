@@ -1,6 +1,7 @@
 {% extends '::base.html.twig' %}
 
 {% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/bestyearmain/css/indexLogged.css') }}" type="text/css"/>
     <link rel="stylesheet" href="{{ asset('bundles/bestyearmain/css/listUsers.css') }}" type="text/css"/>
     <link rel="stylesheet" href="{{ asset('bundles/bestyearmain/css/userView.css') }}" type="text/css"/>
 {% endblock %}
@@ -24,7 +25,18 @@
 
 {% block content %}
     <div id="welcome">
-    <h1>Anniversaires</h1>
+        <h1>Anniversaires</h1>
+        Aujourd'hui:<br/>
+        Taille : {{ todaysBirthday|length }}<br/>
+        {% for u in todaysBirthday %}
+        Nom : {{ u.givenname }}<br/>
+        {% endfor %}
+        
+        Sous 5 jours:<br/>
+        Taille : {{ incomingBirthdayUsers|length }}<br/>
+        {% for u in incomingBirthdayUsers %}
+        Nom : {{ u.givenname }}<br/>
+        {% endfor %}
     </div>
      
     <div id="userList">

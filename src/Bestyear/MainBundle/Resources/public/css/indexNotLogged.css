@@ -47,8 +47,6 @@ h2 {
     width: 220px;
     height: 46px;
     background: #22c2cc;
-    margin-top: 20px;
-    margin-bottom: 20px;
     font-family: "MavenProLight", "Century Gothic";  
     font-size: 26px;
     color: white;
@@ -62,4 +60,8 @@ h2 {
 #welcome .button:hover {
     background: #24c761;
     cursor: pointer;
+}
+
+.center {
+    text-align: center;
 }

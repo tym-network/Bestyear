@@ -54,8 +54,14 @@ doctrine:
         # path:     %database_path%
 
     orm:
+        entity_managers:
+            default:
+                auto_mapping: true
+                dql:
+                    string_functions:
+                        date_format: Bestyear\MainBundle\DQL\DateFormat
         auto_generate_proxy_classes: %kernel.debug%
-        auto_mapping: true
+
 
 # Swiftmailer Configuration
 swiftmailer:
