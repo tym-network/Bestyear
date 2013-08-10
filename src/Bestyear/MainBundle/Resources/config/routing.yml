@@ -1,3 +1,7 @@
 bestyear_main_homepage:
     pattern:  /
     defaults: { _controller: BestyearMainBundle:Main:index }
+
+bestyear_main_searchusers:
+    pattern:  /search
+    defaults: { _controller: BestyearMainBundle:Main:searchUsers }

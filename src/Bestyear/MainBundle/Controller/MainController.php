@@ -3,6 +3,8 @@
 namespace Bestyear\MainBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response as Reponse;
+use Symfony\Component\HttpFoundation\Request;
 
 class MainController extends Controller
 {
@@ -36,8 +38,39 @@ class MainController extends Controller
         }
     }
     
-    public function inscriptionAction()
+    public function searchUsersAction(Request $request)
     {
-        return $this->render('BestyearMainBundle:Main:inscription.html.twig', array());
+        if ($this->get('security.context')->isGranted('ROLE_USER')) {
+            $em = $this->getDoctrine()->getManager();
+            $users = $em->getRepository('BestyearUserBundle:User')->findAll();
+            $data = array();
+            
+            $nowShort = date('md');
+            $nowYear = date('Y');
+            
+            $response = new Reponse();
+            $response->headers->set('Content-Type', 'text/javascript');
+            
+            foreach ($users as $user) {
+                $bdateShort = $user->getBirthdate()->format('md');
+                $bdateYear = $user->getBirthdate()->format('Y');
+                $age = $bdateShort > $nowShort ? ($nowYear - $bdateYear - 1) : ($nowYear - $bdateYear);
+                $data[] = array(
+                 "fullname" => $user->getGivenname() . " " . $user->getFamilyName(),
+                 "studies" => $user->getTC() . $user->getStudylevel(),
+                 "age" => $age
+                 );
+            }
+
+            $json = json_encode($data);
+            $page = "var json = " . $json;
+            $page .= "\n" . $request->query->get('callback') . '(json)';
+            
+            $response->setContent($page);
+
+            return $response;
+        } else {
+            return $this->indexAction();
+        }
     }
 }

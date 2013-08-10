@@ -25,7 +25,7 @@
                 <div id="userPane">
                     <ul>
                         <a href="{{ path('fos_user_profile_show') }}"><li><div id="userIcon"></div><div class="text">Mon profil</div></li></a>
-                        <a href="{{ path('fos_user_change_password') }}"><li><div id="userIcon"></div><div class="text">Mot de passe</div></li></a>
+                        <a href="{{ path('fos_user_change_password') }}"><li><div id="gearIcon"></div><div class="text">Mot de passe</div></li></a>
                         <li><div id="gearIcon"></div><div class="text">Paramètres</div></li>
                         <a href="{{ path('fos_user_security_logout') }}"><li><div id="logoutIcon"></div><div class="text">Déconnexion</div></li></a>
                     </ul>
@@ -53,8 +53,8 @@
             © <a href="http://www.theotimeloiseau.com">Théotime Loiseau</a> - 2013<br/>
         </div>
         <script src="{{ asset('js/userPane.js') }}"></script>
+        <script src="{{ asset('bundles/bestyearmain/js/searchUsers.js') }}"></script>
         {% block javascripts %}
-            
         {% endblock %}
     </body>
 </html>

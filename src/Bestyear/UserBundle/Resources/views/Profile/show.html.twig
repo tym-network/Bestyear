@@ -18,7 +18,7 @@
         <div id="userNoPicture" class="male"><div id="userNoPictureIcon"></div></div>
         <div id="identity">
             <span id="name">{{ user.givenname }} {{ user.familyname }}</span><br/>
-            <span id="birthdate">{{ user.birthdate|date("d/m/Y") }} (22 ans)</span><br/>
+            <span id="birthdate">{{ user.birthdate|date("d/m/Y") }} ({{ age }} ans)</span><br/>
             <span id="level">{{ user.TC }}{{ user.studylevel }}</span>
         </div>
         <div id="socialNetworks">

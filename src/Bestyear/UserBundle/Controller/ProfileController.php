@@ -63,6 +63,12 @@ class ProfileController extends BaseController
                 'city' =>$user->getCity2()
             );
         }
+        
+        $bdateShort = $user->getBirthdate()->format('md');
+        $bdateYear = $user->getBirthdate()->format('Y');
+        $nowShort = date('md');
+        $nowYear = date('Y');
+        $age = $bdateShort > $nowShort ? ($nowYear - $bdateYear - 1) : ($nowYear - $bdateYear);
 
         return $this->container->get('templating')->renderResponse('FOSUserBundle:Profile:show.html.'.$this->container->getParameter('fos_user.template.engine'), 
             array(
@@ -70,6 +76,7 @@ class ProfileController extends BaseController
                 'phones' => $phones,
                 'mails' => $mails,
                 'addresses' => $addresses,
+                'age' => $age,
             ));
     }
 }
