@@ -1,0 +1,146 @@
+#layout {
+    width: 470px;
+}
+
+#content {
+    margin-left: 70px;
+    min-height: 400px;
+}
+
+#leftBar {
+    float:left;
+    width: 70px;
+    height: 100%;
+    margin-top: 50px;
+}
+
+#leftWhiteArrow {
+    width: 15px;
+    height: 47px;
+    float: left;
+    position:absolute;
+    margin-left: 56px;
+    margin-top: 16px;
+    background: url("../images/left-arrow.png") no-repeat;
+}
+
+.bubble {
+    width: 50px;
+    height: 50px;
+    background: white;
+    border-radius: 25px;
+    margin-top: 15px;
+    -webkit-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    -moz-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+}
+
+.numbers {
+    font-family: "MavenProLight", "Century Gothic";
+    font-size: 26px;
+    color: #434343; 
+    padding-left: 19px;
+    padding-top: 10px;
+    -webkit-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    -moz-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+}
+
+.complete .numbers {
+    color: white;
+}
+
+.bubble.complete {
+    background-color: #24c761;
+}
+
+.current .numbers {
+    color: white;
+}
+
+.current.bubble {
+    background-color: #22c2cc;
+}
+
+.errorBubble.bubble {
+    background-color: #d2664f;
+}
+
+#leftBar a {
+    text-decoration: none;
+}
+
+#form {
+    margin: auto;
+    text-align: center;
+    font-family: "MavenProBold", "Century Gothic";
+}
+
+h2 {
+    text-align: left;
+    font-size: 14px;
+    margin-left: 20px;
+    margin-bottom: 8px;
+    font-weight: normal;
+}
+
+#usernameSpan input {
+    width: 200px;
+    margin-left: -20px;
+}
+
+#usernameSpan .error {
+    margin-left: 228px;
+}
+
+.postcodeSpan .error {
+    margin-left: 108px;
+}
+
+.streetnumberSpan .error {
+    margin-left: 74px;
+}
+
+#step1 {
+    opacity: 1;
+}
+
+#step2, #step3, #step4, #step5 {
+    display: none;
+    opacity: 0;
+}
+
+#streetnumber1Span input, #streetnumber2Span input {
+    width: 44px;
+}
+
+#street1Span input, #street2Span input {
+    width: 240px;
+}
+
+#postcode1Span input, #postcode2Span input {
+    width: 80px;
+}
+
+#city1Span input, #city2Span input {
+    width: 204px;
+}
+
+#birthdateSpan input {
+    width: 150px;
+    margin-left: 12px;
+}
+
+#ui-datepicker-div {
+    -moz-box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.5);
+    -webkit-box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.5);
+    -o-box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.5);
+    box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.5);
+    background: rgb(236,236,236);
+}
+
+.ui-datepicker-month {
+    margin-right: 4px;
+}

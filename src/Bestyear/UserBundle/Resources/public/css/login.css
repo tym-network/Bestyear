@@ -2,3 +2,20 @@
     margin: auto;
     text-align: center;
 }
+
+#form a {
+    text-decoration: none;
+    color: #434343;
+    -webkit-transition: color 0.2s linear;
+    -o-transition: color 0.2s linear;
+    -moz-transition: color 0.2s linear;
+    transition: color 0.2s linear;
+}
+
+#form a:hover {
+    color: #22c2cc;
+}
+
+#form #links {
+    margin-bottom: 20px;
+}

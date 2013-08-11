@@ -1,8 +1,13 @@
 {% extends '::base.html.twig' %}
 
 {% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/bestyearmain/css/indexLogged.css') }}" type="text/css"/>
     <link rel="stylesheet" href="{{ asset('bundles/bestyearmain/css/listUsers.css') }}" type="text/css"/>
     <link rel="stylesheet" href="{{ asset('bundles/bestyearmain/css/userView.css') }}" type="text/css"/>
+{% endblock %}
+
+{% block topBar %}
+    {{ parent() }}
 {% endblock %}
 
 {% block leftBar %}
@@ -20,105 +25,34 @@
 
 {% block content %}
     <div id="welcome">
-    <h1>Anniversaires</h1>
+        <h1>Anniversaires</h1>
+        Aujourd'hui:<br/>
+        Taille : {{ todaysBirthday|length }}<br/>
+        {% for u in todaysBirthday %}
+        Nom : {{ u.givenname }}<br/>
+        {% endfor %}
+        
+        Sous 5 jours:<br/>
+        Taille : {{ incomingBirthdayUsers|length }}<br/>
+        {% for u in incomingBirthdayUsers %}
+        Nom : {{ u.givenname }}<br/>
+        {% endfor %}
     </div>
-    
-    
+     
     <div id="userList">
-        <div id="rightColumn">
-            <table>
-                <tr>
-                    <td>
-                        <div class="circle female">
-                            <img src="{{ asset('bundles/bestyearmain/images/user.jpg') }}" class="userPicture"/>
-                            <div class="frameUserPicture"></div>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="infosSummary">
-                            <div class="name">Jane Doe</div>
-                            <div class="other">GB02 - 21 ans</div>
-                        </div>
-                    </td>
-                </tr>
+        <h2>Résultats de la recherche pour "<span id="searchContent"></span>" :</h2>
+        <div id="leftColumn">
+            <table id="leftTable">
             </table>
         </div>
-        <div id="leftColumn">
-            <table>
-                <tr>
-                    <td>
-                        <div class="circle male">
-                            <div class="userBigIcon"></div>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="infosSummary">
-                            <div class="name">John Doe</div>
-                            <div class="other">GI02 - 19 ans</div>
-                        </div>
-                    </td>
-                </tr>
+        <div id="rightColumn">
+            <table id="rightTable">
             </table>
         </div>
     </div>
 
 
     <div id="userProfile">
-        <img src="{{ asset('bundles/bestyearmain/images/user.jpg') }}" id="userPicture" class="female" alt="Jane Doe"/>
-        <div id="identity">
-            <span id="name">Jane Doe</span><br/>
-            <span id="birthdate">21/05/1991 (22 ans)</span><br/>
-            <span id="level">GB03</span>
-        </div>
-        <div id="socialNetworks">
-            <div id="facebook">
-                <div id="facebookIcon"></div>
-            </div>
-            <div id="twitter">
-                <div id="twitterIcon"></div>
-            </div>
-        </div>
-        <div id="details">
-            <div id="couronne3" class="couronne">
-                <div id="phoneBigIcon"></div>
-            </div>
-            <div class="line">
-                <div class="line3-1">
-                    <div class="homeIcon"></div>
-                    <div class="info">03 22 22 22 22</div>
-                </div>
-                <div class="line3-2">
-                    <div class="schoolIcon"></div>
-                    <div class="info">03 22 22 22 22</div>
-                </div>
-                <div class="line3-3">
-                    <div class="smartphoneIcon"></div>
-                    <div class="info">03 22 22 22 22</div>
-                </div>
-            </div>
-            <div id="couronne1" class="couronne">
-                <div id="mailBigIcon"></div>
-            </div>
-            <div class="line">
-                <div class="line1-1">
-                    <div class="gplusIcon"></div>
-                    <div class="info">jane@doe.com</div>
-                </div>
-            </div>
-            <div id="couronne2" class="couronne">
-                <div id="compassBigIcon"></div>
-            </div>
-            <div class="line">
-                <div class="line2-1">
-                    <div class="homeIcon"></div>
-                    <div class="info">5 Rue de la rue <br/> 60200 Compiègne</div>
-                </div>
-                <div class="line2-2">
-                    <div class="schoolIcon"></div>
-                    <div class="info">12 Rue de la rue <br/> 60200 Compiègne</div>
-                </div>
-            </div>
-        </div>
     </div>
 {% endblock %}
 {% block javascripts %}

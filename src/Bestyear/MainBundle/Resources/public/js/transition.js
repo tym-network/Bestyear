@@ -1,12 +1,13 @@
 /*
  * This code is used to animate the white arrow of the left menu.
  * When the user clicks on an item of the menu, the arrow moves next to the item
- * The current content changes (fade away to let the new one appear)
+ * The current content changes (fades away to let the new one appears)
 */
+
 leftArrow = $("#leftWhiteArrow");
 currentDiv = $('#welcome');
 
-$('#homeLeftBar').click(function() {
+function displayHome() {
     // Move the arrow
     leftArrow
         .stop()
@@ -23,9 +24,9 @@ $('#homeLeftBar').click(function() {
                 .stop()
                 .animate({"opacity": 1},"slow");
         });
-});
+}
 
-$('#listLeftBar').click(function() {
+function displayList() {
     // Move the arrow
     leftArrow
         .stop()
@@ -42,9 +43,9 @@ $('#listLeftBar').click(function() {
                 .stop()
                 .animate({"opacity": 1}, "slow");
         });
-});
+}
 
-$('#searchUserLeftBar').click(function() {
+function displayUserPanel() {
     // Move the arrow
     leftArrow
         .stop()
@@ -62,4 +63,16 @@ $('#searchUserLeftBar').click(function() {
                 .animate({"opacity": 1},"slow");
         });
 
+}
+
+$('#homeLeftBar').click(function() {
+    displayHome();
+});
+
+$('#listLeftBar').click(function () {
+    displayList();
+});
+
+$('#searchUserLeftBar').click(function () {
+    displayUserPanel();
 });

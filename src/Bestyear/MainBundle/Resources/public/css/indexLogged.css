@@ -1,0 +1,19 @@
+#welcome {
+    font-family: "MavenProBold", "Century Gothic";
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+#welcome h1 {
+    font-weight: normal;
+    color: #434343;
+}
+
+#listLeftBar, #searchUserLeftBar {
+    display: none;
+    opacity: 0;
+}
+
+#userList h2 {
+    font-family: "MavenProLight", "Century Gothic";
+}

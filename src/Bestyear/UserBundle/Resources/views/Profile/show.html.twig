@@ -1,0 +1,135 @@
+{% extends '::base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/bestyearmain/css/userView.css') }}" type="text/css" />
+    <link rel="stylesheet" href="{{ asset('bundles/bestyearuser/css/show.css') }}" type="text/css" />
+{% endblock %}
+
+{% block topBar %}
+    {{ parent() }}
+{% endblock %}
+
+{% block leftBar %}
+{% endblock %}
+
+{% block content %}
+    <div id="userProfile">
+        <!--img src="{{ asset('bundles/bestyearmain/images/user.jpg') }}" id="userPicture" class="male" alt="{{ user.givenname }} {{ user.familyname }}"/>-->
+        <div id="userNoPicture" class="male"><div id="userNoPictureIcon"></div></div>
+        <div id="identity">
+            <span id="name">{{ user.givenname }} {{ user.familyname }}</span><br/>
+            <span id="birthdate">{{ user.birthdate|date("d/m/Y") }} ({{ age }} ans)</span><br/>
+            <span id="level">{{ user.TC }}{{ user.studylevel }}</span>
+        </div>
+        <div id="socialNetworks">
+            {% if user.facebook %}
+                <a href="{{ user.facebook }}">
+                    <div id="facebook" class="socialBubble">
+                        <div id="facebookIcon"></div>
+                    </div>
+                </a>
+            {% endif %}
+            {% if user.twitter %}
+                <a href="{{ user.twitter }}">
+                    <div id="twitter" class="socialBubble">
+                        <div id="twitterIcon"></div>
+                    </div>
+                </a>
+            {% endif %}
+        </div>
+        <div id="details">
+            {% set column = 0 %}
+            {% set rowclass = "rightColumn" %}
+            {% if phones|length > 0 %}
+                {% if column == 1 %} 
+                    {% set rowclass = "rightColumn" %}
+                {% else %}
+                    {% set rowclass = "leftColumn" %}
+                {% endif %}
+                <div class="row {{ rowclass }}">
+                    <div id="couronne{{ phones|length }}" class="couronne">
+                        <div id="phoneBigIcon"></div>
+                    </div>
+                    <div class="line">
+                        {% set num = 1 %}
+                        {% for icon,phoneNum in phones %}
+                            <div class="line{{ phones|length }}-{{ num }}">
+                                <div class="{{ icon }}Icon"></div>
+                                <div class="info">{{ phoneNum }}</div>
+                            </div>
+                            {% set num = num+1 %}
+                        {% endfor %}
+                    </div>
+                </div>
+                {% set column = (column+1)%2 %}
+            {% endif %}
+            {% if column == 1 %} 
+                {% set rowclass = "rightColumn" %}
+            {% else %}
+                {% set rowclass = "leftColumn" %}
+            {% endif %}
+            <div class="row {{ rowclass }}">   
+                <div id="couronne{{ mails|length }}" class="couronne">
+                    <div id="mailBigIcon"></div>
+                </div>
+                <div class="line">
+                        {% set num = 1 %}
+                        {% for icon,email in mails %}
+                            <div class="line{{ mails|length }}-{{ num }}">
+                                <div class="{{ icon }}Icon"></div>
+                                <div class="info"><a href="mailto:{{ email }}" target="_blank" class="link">{{ email }}</a></div>
+                            </div>
+                            {% set num = num+1 %}
+                        {% endfor %}
+                </div>
+                {% set column = (column+1)%2 %}
+            </div>
+            {% if addresses|length > 0 %}
+                {% if column == 1 %} 
+                    {% set rowclass = "rightColumn" %}
+                {% else %}
+                    {% set rowclass = "leftColumn" %}
+                {% endif %}
+                <div class="row {{ rowclass }}">
+                    <div id="couronne{{ addresses|length }}" class="couronne">
+                        <div id="compassBigIcon"></div>
+                    </div>
+                    <div class="line">
+                        {% set num = 1 %}
+                        {% for icon,addresse in addresses %}
+                            <div class="line{{ addresses|length }}-{{ num }}">
+                                <div class="{{ icon }}Icon"></div>
+                                <div class="info">{{ addresse.num }} {{ addresse.street }}<br/>{{ addresse.postcode }} {{ addresse.city }}</div>
+                            </div>
+                            {% set num = num+1 %}
+                        {% endfor %}
+                    </div>
+                </div>
+                {% set column = (column+1)%2 %}
+            {% endif %}
+            <div id="TN">
+                <h2>STAGES</h2>
+                {% if user.tn05job != null %}
+                    <h3>TN05</h3>
+                    {{ user.tn05job }} - 
+                    {{ user.tn05place }}
+                {% endif %}
+                {% if user.tn07job != null %}
+                    <h3>TN07</h3>
+                    {{ user.tn07job }} - 
+                    {{ user.tn07place }}
+                {% endif %}
+                {% if user.tn09job != null %}
+                    <h3>TN09</h3>
+                    {{ user.tn09job }} - 
+                    {{ user.tn09place }}
+                {% endif %}
+                {% if user.tn10job != null %}
+                    <h3>TN10</h3>
+                    {{ user.tn10job }} - 
+                    {{ user.tn10place }}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

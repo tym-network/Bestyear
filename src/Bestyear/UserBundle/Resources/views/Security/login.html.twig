@@ -8,13 +8,30 @@
     <h1>Connexion</h1>
     <div class="line"></div>
     <div id="form">
-        <form action="{{ path('login_check') }}" method="POST">
-            <input type="text" name="_username" placeholder="Login UTC" value="{{ last_username }}"/><br/>
-            <input type="password" name="_password" placeholder="Mot de passe"/><br/>
-            <input type="submit" class="button" value="Connexion"/>
+    {% if error %}
+        {% if error.message=="Bad credentials" %}
+            <div id="errorBar">Login et/ou mot de passe incorrect(s)</div>
+        {% endif %}
+    {% endif %}
+        <form action="{{ path('fos_user_security_check') }}" method="POST" id="formLogin">
+            <span class="">
+                <input type="text" id="username" name="_username" placeholder="Login UTC" value="{{ last_username }}" class="required"/>
+                <div class="error"></div>
+            </span><br/>
+            <span class="">
+                <input type="password" id="password" name="_password" placeholder="Mot de passe" class="required"/>
+                <div class="error"></div>
+            </span><br/>
+            <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+            <label for="remember_me">Se souvenir de moi?</label><br/>
+            <input type="submit" id="submit" name="_submit" class="button" value="Connexion"/>
         </form>
+        <div id="links">
+            <a href="{{ path('fos_user_resetting_request') }}">Mot de passe oublié?</a> | <a href="{{ path('fos_user_registration_register') }}">Pas encore inscrit?</a>
+        </div>
     </div>
 {% endblock %}
 
 {% block javascripts %}
+    <script src="{{ asset('bundles/bestyearuser/js/formChecker.js') }}"></script>
 {% endblock %}
