@@ -59,9 +59,71 @@ class MainController extends Controller
                     $data[] = array(
                      "fullname" => $user->getGivenname() . " " . $user->getFamilyName(),
                      "studies" => $user->getTC() . $user->getStudylevel(),
-                     "age" => $age
+                     "age" => $age,
+                     "id" => $user->getId(),
                      );
                 }
+    
+                $json = json_encode($data);
+                $page = "var json = " . $json;
+                $page .= "\n" . $request->query->get('callback') . '(json)';
+                
+                $response->setContent($page);
+    
+                return $response;
+            } else {
+                return $this->indexAction();
+            }
+        } else {
+            return $this->indexAction();
+        }
+    }
+    
+    public function searchUserAction(Request $request, $id) {
+        if ($this->get('security.context')->isGranted('ROLE_USER')) {
+            if ($id != null && $request->query->get('callback') != null) {
+                $em = $this->getDoctrine()->getManager();
+                $user = $em->getRepository('BestyearUserBundle:User')->findOneById($id);
+                
+                $nowShort = date('md');
+                $nowYear = date('Y');
+                
+                $response = new Reponse();
+                $response->headers->set('Content-Type', 'text/javascript');
+                $bdateShort = $user->getBirthdate()->format('md');
+                $bdateYear = $user->getBirthdate()->format('Y');
+                $age = $bdateShort > $nowShort ? ($nowYear - $bdateYear - 1) : ($nowYear - $bdateYear);
+                $address1 = null;
+                if ($user->getStreetNumber1()) {
+                    $address1 = $user->getStreetNumber1() . " " . $user->getStreet1() . "<br/>" . $user->getPostcode1() . " " . $user->getCity1();
+                }
+                $address2 = null;
+                if ($user->getStreetNumber2()) {
+                    $address2 = $user->getStreetNumber2() . " " . $user->getStreet2() . "<br/>" . $user->getPostcode2() . " " . $user->getCity2();
+                }
+                $data = array(
+                 "id" => $user->getId(),
+                 "fullname" => $user->getGivenname() . " " . $user->getFamilyName(),
+                 "studies" => $user->getTC() . $user->getStudylevel(),
+                 "age" => $user->getBirthdate()->format('d/m/Y') . " (".$age." ans)",
+                 "address1" => $address1,
+                 "address2" => $address2,
+                 "phone1" => $user->getPhone1(),
+                 "phone2" => $user->getPhone2(),
+                 "cellphone" => $user->getCellphone(),
+                 "email" => $user->getEmail(),
+                 "emailOptional" => $user->getEmailoptional(),
+                 "facebook" => $user->getFacebook(),
+                 "twitter" => $user->getTwitter(),
+                 "tn05_job" => $user->getTn05Job(),
+                 "tn05_place" => $user->getTn05Place(),
+                 "tn07_job" => $user->getTn07Job(),
+                 "tn07_place" => $user->getTn07Place(),
+                 "tn09_job" => $user->getTn09Job(),
+                 "tn09_place" => $user->getTn09Place(),
+                 "tn010_job" => $user->getTn10Job(),
+                 "tn10_place" => $user->getTn10Place(),
+                 );
     
                 $json = json_encode($data);
                 $page = "var json = " . $json;

@@ -45,7 +45,7 @@ function displayList() {
         });
 }
 
-function displayUser() {
+function displayUserPanel() {
     // Move the arrow
     leftArrow
         .stop()
@@ -74,5 +74,5 @@ $('#listLeftBar').click(function () {
 });
 
 $('#searchUserLeftBar').click(function () {
-    displayUser();
+    displayUserPanel();
 });
