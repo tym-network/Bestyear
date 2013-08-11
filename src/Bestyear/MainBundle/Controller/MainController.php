@@ -41,34 +41,38 @@ class MainController extends Controller
     public function searchUsersAction(Request $request)
     {
         if ($this->get('security.context')->isGranted('ROLE_USER')) {
-            $em = $this->getDoctrine()->getManager();
-            $users = $em->getRepository('BestyearUserBundle:User')->findAll();
-            $data = array();
-            
-            $nowShort = date('md');
-            $nowYear = date('Y');
-            
-            $response = new Reponse();
-            $response->headers->set('Content-Type', 'text/javascript');
-            
-            foreach ($users as $user) {
-                $bdateShort = $user->getBirthdate()->format('md');
-                $bdateYear = $user->getBirthdate()->format('Y');
-                $age = $bdateShort > $nowShort ? ($nowYear - $bdateYear - 1) : ($nowYear - $bdateYear);
-                $data[] = array(
-                 "fullname" => $user->getGivenname() . " " . $user->getFamilyName(),
-                 "studies" => $user->getTC() . $user->getStudylevel(),
-                 "age" => $age
-                 );
+            if ($request->query->get('callback') != null && $request->query->get('input') != null) {
+                $em = $this->getDoctrine()->getManager();
+                $users = $em->getRepository('BestyearUserBundle:User')->findAll();
+                $data = array();
+                
+                $nowShort = date('md');
+                $nowYear = date('Y');
+                
+                $response = new Reponse();
+                $response->headers->set('Content-Type', 'text/javascript');
+                
+                foreach ($users as $user) {
+                    $bdateShort = $user->getBirthdate()->format('md');
+                    $bdateYear = $user->getBirthdate()->format('Y');
+                    $age = $bdateShort > $nowShort ? ($nowYear - $bdateYear - 1) : ($nowYear - $bdateYear);
+                    $data[] = array(
+                     "fullname" => $user->getGivenname() . " " . $user->getFamilyName(),
+                     "studies" => $user->getTC() . $user->getStudylevel(),
+                     "age" => $age
+                     );
+                }
+    
+                $json = json_encode($data);
+                $page = "var json = " . $json;
+                $page .= "\n" . $request->query->get('callback') . '(json)';
+                
+                $response->setContent($page);
+    
+                return $response;
+            } else {
+                return $this->indexAction();
             }
-
-            $json = json_encode($data);
-            $page = "var json = " . $json;
-            $page .= "\n" . $request->query->get('callback') . '(json)';
-            
-            $response->setContent($page);
-
-            return $response;
         } else {
             return $this->indexAction();
         }

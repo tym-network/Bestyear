@@ -69,117 +69,117 @@ class User extends BaseUser
     protected $studylevel;
         
     /**
-     * @ORM\Column(name="streetnumber1", type="string", length=15)
+     * @ORM\Column(name="streetnumber1", type="string", length=15, nullable=true)
      */
     protected $streetnumber1;
         
     /**
-     * @ORM\Column(name="street1", type="string", length=255)
+     * @ORM\Column(name="street1", type="string", length=255, nullable=true)
      */
     protected $street1;
     
     /**
-     * @ORM\Column(name="postcode1", type="string", length=5)
+     * @ORM\Column(name="postcode1", type="string", length=5, nullable=true)
      * @Assert\Regex("#^[0-9]{5}$#")
      */
     protected $postcode1;
         
     /**
-     * @ORM\Column(name="city1", type="string", length=255)
+     * @ORM\Column(name="city1", type="string", length=255, nullable=true)
      */
     protected $city1;
         
     /**
-     * @ORM\Column(name="streetnumber2", type="string", length=15)
+     * @ORM\Column(name="streetnumber2", type="string", length=15, nullable=true)
      */
     protected $streetnumber2;
         
     /**
-     * @ORM\Column(name="street2", type="string", length=255)
+     * @ORM\Column(name="street2", type="string", length=255, nullable=true)
      */
     protected $street2;
     
     /**
-     * @ORM\Column(name="postcode2", type="string", length=5)
+     * @ORM\Column(name="postcode2", type="string", length=5, nullable=true)
      * @Assert\Regex("#^[0-9]{5}$#")
      */
     protected $postcode2;
         
     /**
-     * @ORM\Column(name="city2", type="string", length=255)
+     * @ORM\Column(name="city2", type="string", length=255, nullable=true)
      */
     protected $city2;
         
     /**
-     * @ORM\Column(name="phone1", type="string", length=30)
+     * @ORM\Column(name="phone1", type="string", length=30, nullable=true)
      */
     protected $phone1;
         
     /**
-     * @ORM\Column(name="phone2", type="string", length=30)
+     * @ORM\Column(name="phone2", type="string", length=30, nullable=true)
      */
     protected $phone2;
         
     /**
-     * @ORM\Column(name="cellphone", type="string", length=30)
+     * @ORM\Column(name="cellphone", type="string", length=30, nullable=true)
      */
     protected $cellphone;
     
     /**
-     * @ORM\Column(name="emailoptional", type="string", length=255)
+     * @ORM\Column(name="emailoptional", type="string", length=255, nullable=true)
      * @Assert\Email(message = "Email invalide", groups={"Registration"})
      */
     protected $emailoptional;
     
     /**
-     * @ORM\Column(name="facebook", type="string", length=255)
+     * @ORM\Column(name="facebook", type="string", length=255, nullable=true)
      * @Assert\Regex("#^(https?:\/\/)?(www\.)?facebook\.com/[a-z.-1-9_]+$#")
      */
     protected $facebook;
     
     /**
-     * @ORM\Column(name="twitter", type="string", length=255)
+     * @ORM\Column(name="twitter", type="string", length=255, nullable=true)
      * @Assert\Regex("#(https?:\/\/)?(www\.)?twitter\.com/[a-zA-Z.-1-9_]+$#")
      */
     protected $twitter;
         
     /**
-     * @ORM\Column(name="tn05_job", type="string", length=255)
+     * @ORM\Column(name="tn05_job", type="string", length=255, nullable=true)
      */
     protected $tn05_job;
         
     /**
-     * @ORM\Column(name="tn05_place", type="string", length=255)
+     * @ORM\Column(name="tn05_place", type="string", length=255, nullable=true)
      */
     protected $tn05_place;
         
     /**
-     * @ORM\Column(name="tn07_job", type="string", length=255)
+     * @ORM\Column(name="tn07_job", type="string", length=255, nullable=true)
      */
     protected $tn07_job;
         
     /**
-     * @ORM\Column(name="tn07_place", type="string", length=255)
+     * @ORM\Column(name="tn07_place", type="string", length=255, nullable=true)
      */
     protected $tn07_place; 
        
     /**
-     * @ORM\Column(name="tn09_job", type="string", length=255)
+     * @ORM\Column(name="tn09_job", type="string", length=255, nullable=true)
      */
     protected $tn09_job;
     
     /**
-     * @ORM\Column(name="tn09_place", type="string", length=255)
+     * @ORM\Column(name="tn09_place", type="string", length=255, nullable=true)
      */
     protected $tn09_place;
     
     /**
-     * @ORM\Column(name="tn10_job", type="string", length=255)
+     * @ORM\Column(name="tn10_job", type="string", length=255, nullable=true)
      */
     protected $tn10_job;
     
     /**
-     * @ORM\Column(name="tn10_place", type="string", length=255)
+     * @ORM\Column(name="tn10_place", type="string", length=255, nullable=true)
      */
     protected $tn10_place;
 

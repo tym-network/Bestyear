@@ -1,3 +1,5 @@
+var num = 0;
+
 function send(sUrl, oParams) {
     for (sName  in oParams) {
             if (sUrl.indexOf("?")  != -1) {
@@ -16,8 +18,21 @@ function send(sUrl, oParams) {
 }
 
 function handleResults(json) {
-    var num = 1;
-    alert(json);
+    
+    alert("Test");
+    
+    $.each(json, function () {
+        // Add the case with a picture when it will be implemented
+        htmlUser = '<tr><td><div class="circle male"><div class="userBigIcon"></div></div></div></div></td>';
+        htmlUser += '<td><div class="infosSummary"><div class="name">' + this.fullname + '</div><div class="other">' + this.studies + ' - ' +  this.age + 'ans</div></div></td></tr>';
+        
+        if (num%2 == 0) {
+            $(htmlUser).appendTo('#leftTable');
+        } else {
+            $(htmlUser).appendTo('#rightTable');
+        }
+        num += 1;
+    });
 }
 
 $('#searchUser').keypress(function (e) {
