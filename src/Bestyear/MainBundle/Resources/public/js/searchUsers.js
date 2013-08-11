@@ -1,4 +1,10 @@
+/*
+ * Submit the search to a PHP script and display the results properly
+ * It relies on transition.js
+ */
+
 var num = 0;
+var panelActivated = false;
 
 function send(sUrl, oParams) {
     for (sName  in oParams) {
@@ -18,13 +24,24 @@ function send(sUrl, oParams) {
 }
 
 function handleResults(json) {
+    // Display the icon in the left bar if not already shown
+    if (!panelActivated) {
+        $("#listLeftBar")
+            .show()
+            .stop()
+            .animate({"opacity": 1}, 100);
+        panelActivated = true;
+    }
     
-    alert("Test");
-    
+    // Display the results
+    if (!$('#userList').is(":visible")) {
+        displayList();
+    }
+
     $.each(json, function () {
         // Add the case with a picture when it will be implemented
         htmlUser = '<tr><td><div class="circle male"><div class="userBigIcon"></div></div></div></div></td>';
-        htmlUser += '<td><div class="infosSummary"><div class="name">' + this.fullname + '</div><div class="other">' + this.studies + ' - ' +  this.age + 'ans</div></div></td></tr>';
+        htmlUser += '<td><div class="infosSummary"><div class="name">' + this.fullname + '</div><div class="other">' + this.studies + ' - ' +  this.age + ' ans</div></div></td></tr>';
         
         if (num%2 == 0) {
             $(htmlUser).appendTo('#leftTable');
@@ -38,11 +55,12 @@ function handleResults(json) {
 $('#searchUser').keypress(function (e) {
     // If key "Enter" is pressed
     if (e.which == 13) {
-        alert('test');
-        var params = {
-            "input": $('#searchUser').val(),
-            "callback": "handleResults"
-        };
-        send("./search",params);
+        if ($('#searchUser').val()) {
+            var params = {
+                "input": $('#searchUser').val(),
+                "callback": "handleResults"
+            };
+            send("./search",params);
+        }
     }
 });

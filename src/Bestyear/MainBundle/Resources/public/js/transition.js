@@ -7,7 +7,7 @@
 leftArrow = $("#leftWhiteArrow");
 currentDiv = $('#welcome');
 
-$('#homeLeftBar').click(function() {
+function displayHome() {
     // Move the arrow
     leftArrow
         .stop()
@@ -24,9 +24,9 @@ $('#homeLeftBar').click(function() {
                 .stop()
                 .animate({"opacity": 1},"slow");
         });
-});
+}
 
-$('#listLeftBar').click(function() {
+function displayList() {
     // Move the arrow
     leftArrow
         .stop()
@@ -43,9 +43,9 @@ $('#listLeftBar').click(function() {
                 .stop()
                 .animate({"opacity": 1}, "slow");
         });
-});
+}
 
-$('#searchUserLeftBar').click(function() {
+function displayUser() {
     // Move the arrow
     leftArrow
         .stop()
@@ -63,4 +63,16 @@ $('#searchUserLeftBar').click(function() {
                 .animate({"opacity": 1},"slow");
         });
 
+}
+
+$('#homeLeftBar').click(function() {
+    displayHome();
+});
+
+$('#listLeftBar').click(function () {
+    displayList();
+});
+
+$('#searchUserLeftBar').click(function () {
+    displayUser();
 });
