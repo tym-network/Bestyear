@@ -4,7 +4,7 @@ imports:
 
 framework:
     #esi:             ~
-    #translator:      { fallback: %locale% }
+    translator:      { fallback: %locale% }
     secret:          %secret%
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -54,18 +54,33 @@ doctrine:
         # path:     %database_path%
 
     orm:
+        entity_managers:
+            default:
+                auto_mapping: true
+                dql:
+                    string_functions:
+                        date_format: Bestyear\MainBundle\DQL\DateFormat
         auto_generate_proxy_classes: %kernel.debug%
-        auto_mapping: true
+
 
 # Swiftmailer Configuration
 swiftmailer:
-    transport: %mailer_transport%
-    host:      %mailer_host%
-    username:  %mailer_user%
-    password:  %mailer_password%
-    spool:     { type: memory }
+    transport: gmail
+    username:  theotime.loiseau
+    password:  %swiftpass%
 
 fos_user:
     db_driver: 		orm
     firewall_name: 	main
     user_class: 	Bestyear\UserBundle\Entity\User
+    registration:
+        form:
+            type: bestyear_user_registration
+        confirmation:
+            enabled: true
+
+services:
+    user_bundle.listener.user_registration:
+        class: Bestyear\UserBundle\EventListener\RegistrationListener
+        tags:
+            - { name: kernel.event_listener, event: fos_user.registration.initialize, method: overrideUserEmail }

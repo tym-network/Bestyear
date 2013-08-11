@@ -35,21 +35,34 @@ body {
 
 #content {
     width: 400px;
-    min-height: 300px;
+    min-height: 200px;
     background: white;
     border: 1px solid #cecece;
+}
+
+#form {
+    font-family: "MavenProBold", "Century Gothic";
+    font-size: 14px;
 }
 
 .button {
     width: 200px;
     height: 36px;
     background: #24c761;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
     font-family: "MavenProLight", "Century Gothic";  
     font-size: 20px;
     color: white;
     border: none;
+    -webkit-transition: background-color 0.3s linear;
+    -o-transition: background-color 0.3s linear;
+    -moz-transition: background-color 0.3s linear;
+    transition: background-color 0.3s linear;
+}
+
+.button:hover {
+    background-color: #0bdd12;
 }
 
 #footer {
@@ -81,20 +94,104 @@ h1 {
     text-align: center;
     margin-top: 12px;
     margin-bottom: 10px;
+    font-weight: normal;
 }
 
 .line {
     width: 100%;
     height: 4px;
     background: url("../images/signIn-line.png") repeat-x;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
-input {
+label {
+    font-family: "MavenProBold", "Century Gothic";
+    font-size:14px;
+}
+
+input[type="text"], input[type="password"], input[type="email"], input[type="url"] {
     border: 1px solid #dddddd;
-    border-radius: 2px;
+    border-radius: 3px;
     outline: none;
     width: 300px;
-    height: 24px;
+    height: 28px;
     margin-bottom: 10px;
+    font-family: "MavenProLight", "Century Gothic";
+    font-size: 16px;
+    -moz-box-shadow: 0px 0px 1px rgba(0,0,0,0.2);
+    -webkit-box-shadow: 0px 0px 1px rgba(0,0,0,0.2);
+    -o-box-shadow: 0px 0px 1px rgba(0,0,0,0.2);
+    box-shadow: 0px 0px 1px rgba(0,0,0,0.2);
+    padding-left: 5px;
+    padding-right: 5px;
+    -webkit-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    -moz-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+    position: relative;
+}
+
+input[type="text"]:focus, input[type="password"]:focus, input[type="date"]:focus, input[type="email"]:focus, input[type="url"]:focus {
+    border: 1px solid #c5c5c5;
+    box-shadow: inset 0px 0px 1px rgba(0,0,0,0.4);
+    background: #f8f8f8;
+}
+
+input[type="date"] {
+    border: 1px solid #dddddd;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    font-family: "MavenProBold", "Century Gothic";
+    font-size: 12px;
+    -moz-box-shadow: 0px 0px 1px rgba(0,0,0,0.2);
+    -webkit-box-shadow: 0px 0px 1px rgba(0,0,0,0.2);
+    -o-box-shadow: 0px 0px 1px rgba(0,0,0,0.2);
+    box-shadow: 0px 0px 1px rgba(0,0,0,0.2);
+    outline: none;
+}
+
+select {
+    height: 20px;
+}
+
+.inputError input {
+    border-color: #d2664f;
+    background: #fceded;
+}
+
+.inputError input[type="text"]:focus, .inputError input[type="password"]:focus, .inputError input[type="email"]:focus, .inputError input[type="url"]:focus {
+    border-color: #d2664f;
+    background: #fceded;
+}
+
+.error {
+    width: 19px;
+    height: 19px;
+    background: url("../images/error.png") no-repeat;
+    position: absolute;
+    margin-left: 328px;
+    margin-top: -36px;
+    opacity: 0;
+}
+
+.inputError .error {
+    opacity: 1;
+}
+
+#errorBar {
+    width: 310px;
+    margin: auto;
+    text-align: center;
+    background: #dd4b39;
+    border-radius: 3px;
+    color: white;
+    margin-bottom: 20px;
+    padding-top: 6px;
+}
+
+ul {
+    list-style: none;
+    margin-top: 0px;
+    padding-left: 0px;
+    padding-bottom: 5px;
 }

@@ -1,0 +1,67 @@
+@font-face {
+	font-family: 'MavenProBold';
+	src: url('../fonts/MavenProLight-300.otf');
+}
+
+#welcome {
+    height: 100%;
+    font-family: "MavenProBold", "Century Gothic";
+    font-size: 16px;
+    padding-top: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: justify;
+}
+
+#welcome p {
+    text-indent: 20px;
+}
+
+h2 {
+    font-family: "MavenProBold", "Century Gothic";
+    font-size: 24px;
+}
+
+#siteName {
+    font-family: "MavenProLight", "Century Gothic";
+    float: left;
+    font-size: 36px;
+    width: 435px;
+    height: 46px;
+    text-align: right;
+    border-right: solid 1px #eee;
+    padding-right: 10px;
+    font-weight: bold;
+}
+
+#siteDescription {
+    font-family: "MavenProLight", "Century Gothic";
+    height: 46px;
+    font-size: 20px;
+    margin-left: 455px;
+    padding-top: 11px;
+    color: #434343;
+}
+
+#welcome .button{
+    width: 220px;
+    height: 46px;
+    background: #22c2cc;
+    font-family: "MavenProLight", "Century Gothic";  
+    font-size: 26px;
+    color: white;
+    border: none;
+    -webkit-transition: background-color 0.3s linear;
+    -o-transition: background-color 0.3s linear;
+    -moz-transition: background-color 0.3s linear;
+    transition: background-color 0.3s linear;
+}
+
+#welcome .button:hover {
+    background: #24c761;
+    cursor: pointer;
+}
+
+.center {
+    text-align: center;
+}

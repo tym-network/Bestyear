@@ -40,6 +40,18 @@ body {
     margin-top: 20px;
 }
 
+#searchUser {
+    width: 285px;
+    height: 30px;
+    float: left;
+    margin-top: 10px;
+    margin-left: 10px;
+    border: none;
+    outline: none;
+    font-family: "MavenProBold", "Century Gothic";
+    font-size: 18px;
+}
+
 #searchIcon {
     width: 24px;
     height: 26px;
@@ -170,4 +182,25 @@ body {
     float: left;
     margin-top: 20px;
     margin-left:72px;
+}
+
+#topLinks {
+    float:right;
+    margin-top: 30px;
+    font-family: "MavenProLight", "Century Gothic";
+    font-size: 22px;
+}
+
+#topLinks a {
+    text-decoration: none;
+    color: black;
+    margin-left:20px;
+    -webkit-transition: color 0.2s linear;
+    -o-transition: color 0.2s linear;
+    -moz-transition: color 0.2s linear;
+    transition: color 0.2s linear;
+}
+
+#topLinks a:hover {
+    color: #22c2cc;
 }

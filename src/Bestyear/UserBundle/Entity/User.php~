@@ -1,0 +1,196 @@
+<?php
+
+namespace Bestyear\UserBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use FOS\UserBundle\Entity\User as BaseUser;
+use Symfony\Component\Validator\Constraints as Assert;
+use Bestyear\UserBundle\Validator\Constraints as UserAssert;
+
+/**
+ * User
+ *
+ * @ORM\Table()
+ * @ORM\Entity
+ * @UserAssert\FieldsNotBlank
+ */
+class User extends BaseUser
+{
+    const BRANCHE_TC = 'TC';
+    const BRANCHE_GB = 'GB';
+    const BRANCHE_GI = 'GI';
+    const BRANCHE_GM = 'GM';
+    const BRANCHE_GP = 'GP';
+    const BRANCHE_GSM = 'GSM';
+    const BRANCHE_GSU = 'GSU';
+    
+    /**
+    * @ORM\Id
+    * @ORM\Column(type="integer")
+    * @ORM\GeneratedValue(strategy="AUTO")     
+    */
+    protected $id;
+    
+    /**
+     * @ORM\Column(name="username", type="string", length=255, unique = true)
+     * @Assert\Length(min="8",max="8", exactMessage="La taille du login doit être de 8 caractères")
+     * @Assert\NotBlank()
+     */
+    protected $username;
+    
+    /**
+     * @ORM\Column(name="givenname", type="string", length=255)
+     * @Assert\NotBlank()
+     */
+    protected $givenname;
+    
+    /**
+     * @ORM\Column(name="familyname", type="string", length=255)
+     * @Assert\NotBlank()
+     */
+    protected $familyname;
+    
+    /**
+     * @ORM\Column(name="birthdate", type="date")
+     * @Assert\NotBlank()
+     * @Assert\Type("\Date")
+     */
+    protected $birthdate;
+    
+    /**
+     * @ORM\Column(name="TC", type="string", length=3)
+     * @Assert\NotBlank()
+     */
+    protected $TC;
+    
+    /**
+     * @ORM\Column(name="studylevel", type="integer")
+     * @Assert\NotBlank()
+     */
+    protected $studylevel;
+        
+    /**
+     * @ORM\Column(name="streetnumber1", type="string", length=15)
+     */
+    protected $streetnumber1;
+        
+    /**
+     * @ORM\Column(name="street1", type="string", length=255)
+     */
+    protected $street1;
+    
+    /**
+     * @ORM\Column(name="postcode1", type="string", length=5)
+     * @Assert\Regex("#^[0-9]{5}$#")
+     */
+    protected $postcode1;
+        
+    /**
+     * @ORM\Column(name="city1", type="string", length=255)
+     */
+    protected $city1;
+        
+    /**
+     * @ORM\Column(name="streetnumber2", type="string", length=15)
+     */
+    protected $streetnumber2;
+        
+    /**
+     * @ORM\Column(name="street2", type="string", length=255)
+     */
+    protected $street2;
+    
+    /**
+     * @ORM\Column(name="postcode2", type="string", length=5)
+     * @Assert\Regex("#^[0-9]{5}$#")
+     */
+    protected $postcode2;
+        
+    /**
+     * @ORM\Column(name="city2", type="string", length=255)
+     */
+    protected $city2;
+        
+    /**
+     * @ORM\Column(name="phone1", type="string", length=30)
+     */
+    protected $phone1;
+        
+    /**
+     * @ORM\Column(name="phone2", type="string", length=30)
+     */
+    protected $phone2;
+        
+    /**
+     * @ORM\Column(name="cellphone", type="string", length=30)
+     */
+    protected $cellphone;
+    
+    /**
+     * @ORM\Column(name="email", type="string", length=255)
+     * @Assert\Email(message = "Email invalide")
+     */
+    protected $email;
+    
+    /**
+     * @ORM\Column(name="facebook", type="string", length=255)
+     * @Assert\Regex("#^(https?:\/\/)?(www\.)?facebook\.com/[a-z.-1-9_]+$#")
+     */
+    protected $facebook;
+    
+    /**
+     * @ORM\Column(name="twitter", type="string", length=255)
+     * @Assert\Regex("#(https?:\/\/)?(www\.)?twitter\.com/[a-zA-Z.-1-9_]+$#")
+     */
+    protected $twitter;
+        
+    /**
+     * @ORM\Column(name="tn05_job", type="string", length=255)
+     */
+    protected $tn05_job;
+        
+    /**
+     * @ORM\Column(name="tn05_place", type="string", length=255)
+     */
+    protected $tn05_place;
+        
+    /**
+     * @ORM\Column(name="tn07_job", type="string", length=255)
+     */
+    protected $tn07_job;
+        
+    /**
+     * @ORM\Column(name="tn07_place", type="string", length=255)
+     */
+    protected $tn07_place; 
+       
+    /**
+     * @ORM\Column(name="tn09_job", type="string", length=255)
+     */
+    protected $tn09_job;
+    
+    /**
+     * @ORM\Column(name="tn09_place", type="string", length=255)
+     */
+    protected $tn09_place;
+    
+    /**
+     * @ORM\Column(name="$tn10_job", type="string", length=255)
+     */
+    protected $tn10_job;
+    
+    /**
+     * @ORM\Column(name="tn10_place", type="string", length=255)
+     */
+    protected $tn10_place;
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+}

@@ -20,13 +20,12 @@ security:
             anonymous: true
             provider:  main
             form_login:
-                login_path: login
-                check_path: login_check
-                username_parameter: _username
-                password_parameter: _password
+                login_path: fos_user_security_login
+                check_path: fos_user_security_check
             logout:
-                path:   logout
+                path:   fos_user_security_logout
                 target: /
+                invalidate_session: false
             remember_me:
                 key: %secret%
 

@@ -1,0 +1,35 @@
+{% extends '::baseForm.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/bestyearuser/css/request.css') }}" type="text/css"/>
+    <link rel="stylesheet" href="{{ asset('bundles/bestyearuser/css/jquery.qtip.css') }}" type="text/css"/>
+{% endblock %}
+
+{% block content %}
+    <h1>Mot de passe oublié</h1>
+    <div class="line"></div>
+    <div id="form">
+        {% if form_errors(form) %}
+            <div id="errorBar">{{ form_errors(form) }}</div>
+        {% endif %}
+        <form action="{{ path('fos_user_resetting_reset', {'token': token}) }}" {{ form_enctype(form) }} method="POST" id="form">
+            <span class="" id="newPassword1Span">
+                {{ form_errors(form.plainPassword.first) }}
+                {{ form_widget(form.plainPassword.first, {'attr': {'placeholder': 'Nouveau mot de passe'} }) }}
+                <div class="error"></div>
+            </span><br/>
+            <span class="" id="newPassword2Span">
+                {{ form_errors(form.plainPassword.second) }}
+                {{ form_widget(form.plainPassword.second, {'attr': {'placeholder': 'Confirmation du mot de passe'} }) }}
+                <div class="error"></div>
+            </span><br/>
+            {{ form_rest(form) }}
+            <input type="submit" id="submit" name="_submit" class="button" value="Valider"/>
+        </form>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('bundles/bestyearuser/js/jquery.qtip.js') }}"></script>
+    <script src="{{ asset('bundles/bestyearuser/js/reset.js') }}"></script>
+{% endblock %}
