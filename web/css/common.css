@@ -1,0 +1,61 @@
+@font-face {
+    font-family: 'MavenProLight';
+    src: url('../fonts/MavenProLight-200.eot?') format('eot'), url('../fonts/MavenProLight-200.woff') format('woff'), url('../fonts/MavenProLight-200.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'MavenProBold';
+    src: url('../fonts/MavenProLight-300.eot?') format('eot'), url('../fonts/MavenProLight-300.woff') format('woff'), url('../fonts/MavenProLight-300.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'LigatureSymbols';
+    src: url('../fonts/LigatureSymbols-2.11.eot?') format('eot'), url('../fonts/LigatureSymbols-2.11.woff') format('woff'), url('../fonts/LigatureSymbols-2.11.ttf') format('truetype');
+}
+
+/**
+ * Icon font
+ */
+.icon:before {
+    font-family: "LigatureSymbols";
+}
+
+.icon-single:before {
+    display: block;
+}
+
+.icon-grey:before {
+    color: #434343;
+}
+
+.icon-green:before {
+    color: #24c761;
+}
+
+.icon-160:before {
+    font-size: 160px;
+}
+
+.mail:before {
+    content: "\E08a";
+}
+
+.check:before {
+    content: "\E029";
+}
+
+/**
+ * Other
+ */
+
+body {
+    background: rgb(236,236,236);
+    height: 100%;
+    margin: 0px;
+}
+
+#logo {
+    width: 180px;
+    height: 89px;
+    background: url("../images/logo.png") no-repeat;
+}

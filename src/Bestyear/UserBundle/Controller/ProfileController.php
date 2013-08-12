@@ -56,7 +56,7 @@ class ProfileController extends BaseController
         }
         
         if ($user->getStreetnumber2() != null) {
-            $addresses['study'] = array(
+            $addresses['school'] = array(
                 'num' => $user->getStreetnumber2(),
                 'street' => $user->getStreet2(),
                 'postcode' => $user->getPostcode2(),

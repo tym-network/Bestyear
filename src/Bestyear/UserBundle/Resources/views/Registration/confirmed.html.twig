@@ -5,11 +5,12 @@
 {% endblock %}
 
 {% block content %}
-    <h1>Mot de passe oublié</h1>
+    <h1>Inscription</h1>
     <div class="line"></div>
     <div id="form">
-        Un e-mail a été envoyé à l'adresse  {{ email }}. Il contient un lien sur lequel il vous faudra cliquer afin de réinitialiser votre mot de passe.
-        <span class="icon mail icon-grey icon-160"></span>
+        Félicitations {{ user.givenname }}, votre compte est maintenant activé.<br/>
+        <span class="icon check icon-green icon-160"></span><br/>
+        <a href="{{ path('bestyear_main_homepage') }}">Retour à l'accueil</a>
     </div>
 {% endblock %}
 

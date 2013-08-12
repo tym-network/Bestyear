@@ -1,7 +1,7 @@
 {% extends '::baseForm.html.twig' %}
 
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('bundles/bestyearuser/css/request.css') }}" type="text/css"/>
+    <link rel="stylesheet" href="{{ asset('bundles/bestyearuser/css/informPage.css') }}" type="text/css"/>
     <link rel="stylesheet" href="{{ asset('bundles/bestyearuser/css/jquery.qtip.css') }}" type="text/css"/>
 {% endblock %}
 
@@ -12,7 +12,7 @@
         {% if form_errors(form) %}
             <div id="errorBar">{{ form_errors(form) }}</div>
         {% endif %}
-        <form action="{{ path('fos_user_resetting_reset', {'token': token}) }}" {{ form_enctype(form) }} method="POST" id="form">
+        <form action="{{ path('fos_user_resetting_reset', {'token': token}) }}" {{ form_enctype(form) }} method="POST">
             <span class="" id="newPassword1Span">
                 {{ form_errors(form.plainPassword.first) }}
                 {{ form_widget(form.plainPassword.first, {'attr': {'placeholder': 'Nouveau mot de passe'} }) }}

@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Le BestYear{% endblock %}</title>
+        <link rel="stylesheet" href="{{ asset('css/common.css') }}" type="text/css" />
         <link rel="stylesheet" href="{{ asset('css/base.css') }}" type="text/css" />
         <link rel="stylesheet" href="{{ asset('css/userPane.css') }}" type="text/css"/>
         {% block stylesheets %}
@@ -34,13 +35,13 @@
         <div id="layout">
             <div id="leftBar">
                 <div id="leftWhiteArrow"></div>
+                
+                {% block leftBar %}
                 <a href="#home">
                     <div id="homeLeftBar">
                         <div id="homeIcon"></div>
                     </div>
                 </a>
-                
-                {% block leftBar %}
                 {% endblock %}
 
             </div>
