@@ -239,16 +239,20 @@ function displayUser(json) {
     // Internship
     htmlCode += '<div id="TN"><h2>STAGES</h2>';
     if (json.tn05_job) {
-        htmlCode += '<h3>TN05</h3>' + json.tn05_job + '-' + json.tn05_place;
+        htmlCode += '<h3>TN05</h3><span class="icon job icon-grey icon-24"></span> ' + json.tn05_job;
+        htmlCode += '<br/><span class="icon pin icon-grey icon-24"></span> ' + json.tn05_place;
     }
     if (json.tn07_job) {
-        htmlCode += '<h3>TN07</h3>' + json.tn07_job + '-' + json.tn07_place;
+        htmlCode += '<h3>TN07</h3><span class="icon job icon-grey icon-24"></span> ' + json.tn07_job;
+        htmlCode += '<br/><span class="icon pin icon-grey icon-24"></span> ' + json.tn07_place;
     }
     if (json.tn09_job) {
-        htmlCode += '<h3>TN09</h3>' + json.tn09_job + '-' + json.tn09_place;
+        htmlCode += '<h3>TN09</h3><span class="icon job icon-grey icon-24"></span> ' + json.tn09_job;
+        htmlCode += '<br/><span class="icon pin icon-grey icon-24"></span> ' + json.tn09_place;
     }
     if (json.tn10_job) {
-        htmlCode += '<h3>TN010</h3>' + json.tn10_job + '-' + json.tn10_place;
+        htmlCode += '<h3>TN10</h3><span class="icon job icon-grey icon-24"></span> ' + json.tn10_job;
+        htmlCode += '<br/><span class="icon pin icon-grey icon-24"></span> ' + json.tn10_place;
     }
     htmlCode += '</div></div>';
     
