@@ -44,24 +44,47 @@ class MainController extends Controller
             if ($request->query->get('callback') != null && $request->query->get('input') != null) {
                 $em = $this->getDoctrine()->getManager();
                 $users = $em->getRepository('BestyearUserBundle:User')->findAll();
-                $data = array();
                 
+                $search = strtoupper(htmlspecialchars($request->query->get('input')));
+                $resultUsers = array();               
+
+                foreach ($users as $user) {
+                    $comparison1 = strtoupper(substr($user->getGivenname(), 0, strlen($search)));
+                    $comparison2 = strtoupper(substr($user->getFamilyname(), 0, strlen($search)));
+                    $comparison3 = strtoupper(substr($user->getUsername(), 0, strlen($search)));
+                    $comparison4 = strtoupper(substr($user->getGivenname() + $user->getFamilyname(), 0, strlen($search)));
+                    $comparison5 = strtoupper(substr($user->getFamilyname() + $user->getGivenname(), 0, strlen($search)));
+                    
+                    if (levenshtein($search, $comparison1) <= floor(strlen($search)*35/100)) {
+                        $resultUsers[] = $user;
+                    } elseif (levenshtein($search, $comparison2) <= floor(strlen($search)*35/100)) {
+                        $resultUsers[] = $user;
+                    } elseif (levenshtein($search, $comparison3) <= floor(strlen($search)*35/100)) {
+                        $resultUsers[] = $user;
+                    } elseif (levenshtein($search, $comparison4) <= floor(strlen($search)*35/100)) {
+                        $resultUsers[] = $user;
+                    } elseif (levenshtein($search, $comparison5) <= floor(strlen($search)*35/100)) {
+                        $resultUsers[] = $user;
+                    }
+                }
+
                 $nowShort = date('md');
                 $nowYear = date('Y');
                 
                 $response = new Reponse();
                 $response->headers->set('Content-Type', 'text/javascript');
                 
-                foreach ($users as $user) {
+                $data = array();
+                foreach ($resultUsers as $user) {
                     $bdateShort = $user->getBirthdate()->format('md');
                     $bdateYear = $user->getBirthdate()->format('Y');
                     $age = $bdateShort > $nowShort ? ($nowYear - $bdateYear - 1) : ($nowYear - $bdateYear);
                     $data[] = array(
-                     "fullname" => $user->getGivenname() . " " . $user->getFamilyName(),
-                     "studies" => $user->getTC() . $user->getStudylevel(),
-                     "age" => $age,
-                     "id" => $user->getId(),
-                     );
+                        "fullname" => $user->getGivenname() . " " . $user->getFamilyName(),
+                        "studies" => $user->getTC() . $user->getStudylevel(),
+                        "age" => $age,
+                        "id" => $user->getId(),
+                    );
                 }
     
                 $json = json_encode($data);

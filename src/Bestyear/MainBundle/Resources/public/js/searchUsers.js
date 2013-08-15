@@ -32,6 +32,10 @@ function send(sUrl, oParams) {
  * Handles the search results (from a json)
  */
 function handleResults(json) {
+    // Cleaning the tab (if there was a previous search)
+    $("#rightTable").children().remove();
+    $("#leftTable").children().remove();
+    
     // Updates the string researched
     $("#searchContent").text(currentSearch);
     
@@ -78,7 +82,7 @@ function displayUser(json) {
     var numCouronne = 0;
     var column = "leftColumn";
     
-    // Cleaning the tab (if there were previous content)
+    // Cleaning the tab (if there was a previous user)
     $("#userProfile").children().remove();
     
     // Display the icon in the left bar if not already shown
@@ -220,7 +224,7 @@ function displayUser(json) {
         }
         htmlCode += '<div class="row '  + column + '">';
         htmlCode += '<div id="couronne' + nbAddresses + '" class="couronne">';
-        htmlCode += '<div id="compassBigIcon"></div></div><div class="line">';
+        htmlCode += '<div id="compassBigIcon"></div></div><div class="line address">';
         num = 1;
         $.each(addresses, function () {
             htmlCode += '<div class="line' + nbAddresses + '-' + num + '">';
@@ -259,7 +263,10 @@ $('#searchUser').keypress(function (e) {
                 "input": $('#searchUser').val(),
                 "callback": "handleResults"
             };
-            currentSearch = $('#searchUser').val();
+            currentSearch = $('#searchUser').val().replace(/</gi, '');
+            currentSearch = currentSearch.replace(/>/gi, '');
+            currentSearch = currentSearch.replace(/\(/gi, '');
+            currentSearch = currentSearch.replace(/\)/gi, '');
             send("./search",params);
         }
     }

@@ -8,15 +8,6 @@
     background: #24c761;
 }
 
-#userLeftIcon {
-    width: 39px;
-    height: 31px;
-    background: url("../images/list-icon.png") no-repeat;
-    position: relative;
-    top: 25px;
-    left: 25px;
-}
-
 #userProfile {
     display: block;
     opacity: 1;

@@ -211,7 +211,7 @@
 }
 
 .line2-2 {
-    margin-top: 8px;
+    margin-top: 22px;
 }
 
 .line3-1 {
@@ -237,6 +237,15 @@
     margin-top: -100px;
 }
 
+.address .info {
+    position: relative;
+    top: -8px;
+}
+
+.address .line2-2 {
+    margin-top: 8px;
+}
+
 .link {
     text-decoration: none;
     color: black;
@@ -256,10 +265,11 @@
 }
 
 #TN {
-    width: 831px;
+    font-size: 18px;
+    width: 811px;
     margin-top: 20px;
     margin-left: -40px;
-    padding-left: 40px;
+    padding-left: 60px;
     padding-right: 40px;
     padding-top: 10px;
     padding-bottom: 30px;
@@ -287,4 +297,11 @@
     font-family: "MavenProBold", "Century Gothic";
     font-weight: normal;
     font-size: 20px;
+    margin-bottom: 5px;
+    margin-left: -20px;
+}
+
+.pin:before {
+    margin-left: 3px;
+    margin-right: 3px;
 }

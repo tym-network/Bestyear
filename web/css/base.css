@@ -126,6 +126,15 @@
     left: 26px;
 }
 
+#userLeftIcon {
+    width: 39px;
+    height: 31px;
+    background: url("../images/userBig-icon.png") no-repeat;
+    position: relative;
+    top: 25px;
+    left: 25px;
+}
+
 #content {
     width: 891px;
     height: 100%;

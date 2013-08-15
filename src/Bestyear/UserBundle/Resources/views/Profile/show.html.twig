@@ -15,11 +15,9 @@
             <div id="homeIcon"></div>
         </div>
     </a>
-    <a href="#">
-        <div id="userLeftBar">
-            <div id="userLeftIcon"></div>
-        </div>
-    </a>
+    <div id="userLeftBar">
+        <div id="userLeftIcon"></div>
+    </div>
 {% endblock %}
 
 {% block content %}
@@ -104,7 +102,7 @@
                     <div id="couronne{{ addresses|length }}" class="couronne">
                         <div id="compassBigIcon"></div>
                     </div>
-                    <div class="line">
+                    <div class="line address">
                         {% set num = 1 %}
                         {% for icon,addresse in addresses %}
                             <div class="line{{ addresses|length }}-{{ num }}">
@@ -121,23 +119,23 @@
                 <h2>STAGES</h2>
                 {% if user.tn05job != null %}
                     <h3>TN05</h3>
-                    {{ user.tn05job }} - 
-                    {{ user.tn05place }}
+                    <span class="icon job icon-grey icon-24"></span> {{ user.tn05job }}<br/>
+                    <span class="icon pin icon-grey icon-24"></span> {{ user.tn05place }}
                 {% endif %}
                 {% if user.tn07job != null %}
                     <h3>TN07</h3>
-                    {{ user.tn07job }} - 
-                    {{ user.tn07place }}
+                    <span class="icon job icon-grey icon-24"></span> {{ user.tn07job }}<br/>
+                    <span class="icon pin icon-grey icon-24"></span> {{ user.tn07place }}
                 {% endif %}
                 {% if user.tn09job != null %}
                     <h3>TN09</h3>
-                    {{ user.tn09job }} - 
-                    {{ user.tn09place }}
+                    <span class="icon job icon-grey icon-24"></span> {{ user.tn09job }}<br/>
+                    <span class="icon pin icon-grey icon-24"></span> {{ user.tn09place }}
                 {% endif %}
                 {% if user.tn10job != null %}
                     <h3>TN10</h3>
-                    {{ user.tn10job }} - 
-                    {{ user.tn10place }}
+                    <span class="icon job icon-grey icon-24"></span> {{ user.tn10job }}<br/>
+                    <span class="icon pin icon-grey icon-24"></span> {{ user.tn10place }}
                 {% endif %}
             </div>
         </div>

@@ -73,3 +73,7 @@
     left: 32px;
     top: 34px;
 }
+
+.userPreview {
+    cursor: pointer;
+}

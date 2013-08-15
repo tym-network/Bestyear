@@ -32,6 +32,14 @@
     color: #24c761;
 }
 
+.icon-20:before {
+    font-size: 20px;
+}
+
+.icon-24:before {
+    font-size: 24px;
+}
+
 .icon-160:before {
     font-size: 160px;
 }
@@ -42,6 +50,14 @@
 
 .check:before {
     content: "\E029";
+}
+
+.job:before {
+    content: "\E173";
+}
+
+.pin:before {
+    content: "\E103";
 }
 
 /**
