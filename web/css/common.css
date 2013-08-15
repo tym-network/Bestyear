@@ -40,6 +40,14 @@
     font-size: 24px;
 }
 
+.icon-30:before {
+    font-size: 30px;
+}
+
+.icon-32:before {
+    font-size: 32px;
+}
+
 .icon-160:before {
     font-size: 160px;
 }
@@ -58,6 +66,10 @@
 
 .pin:before {
     content: "\E103";
+}
+
+.search:before {
+    content: "\E116";
 }
 
 /**

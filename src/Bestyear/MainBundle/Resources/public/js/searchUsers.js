@@ -259,20 +259,24 @@ function displayUser(json) {
     $(htmlCode).appendTo('#userProfile');
 }
 
+function search() {
+    if ($('#searchUser').val()) {
+        var params = {
+            "input": $('#searchUser').val(),
+            "callback": "handleResults"
+        };
+        currentSearch = $('#searchUser').val().replace(/</gi, '');
+        currentSearch = currentSearch.replace(/>/gi, '');
+        currentSearch = currentSearch.replace(/\(/gi, '');
+        currentSearch = currentSearch.replace(/\)/gi, '');
+        send("./search",params);
+    }
+}
+
 $('#searchUser').keypress(function (e) {
     // If key "Enter" is pressed
     if (e.which == 13) {
-        if ($('#searchUser').val()) {
-            var params = {
-                "input": $('#searchUser').val(),
-                "callback": "handleResults"
-            };
-            currentSearch = $('#searchUser').val().replace(/</gi, '');
-            currentSearch = currentSearch.replace(/>/gi, '');
-            currentSearch = currentSearch.replace(/\(/gi, '');
-            currentSearch = currentSearch.replace(/\)/gi, '');
-            send("./search",params);
-        }
+        search();
     }
 });
 
@@ -282,3 +286,11 @@ function searchUser(id) {
     };
     send("./searchUser/"+id,params);
 }
+
+/**
+ * Add function to the button
+ */ 
+
+$('#searchIcon').click(function () {
+    search();
+});

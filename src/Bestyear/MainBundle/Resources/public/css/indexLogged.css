@@ -17,3 +17,9 @@
 #userList h2 {
     font-family: "MavenProLight", "Century Gothic";
 }
+
+#welcome h2 {
+    padding-left: 10px;
+    margin-bottom: 5px;
+    font-size: 22px;
+}

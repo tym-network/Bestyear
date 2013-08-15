@@ -27,17 +27,24 @@
 {% block content %}
     <div id="welcome">
         <h1>Anniversaires</h1>
-        Aujourd'hui:<br/>
-        Taille : {{ todaysBirthday|length }}<br/>
-        {% for u in todaysBirthday %}
-        Nom : {{ u.givenname }}<br/>
-        {% endfor %}
-        
-        Sous 5 jours:<br/>
-        Taille : {{ incomingBirthdayUsers|length }}<br/>
-        {% for u in incomingBirthdayUsers %}
-        Nom : {{ u.givenname }}<br/>
-        {% endfor %}
+        <h2>Aujourd'hui:</h2>
+        {% if todaysBirthday|length == 0 %}
+            Aucun anniversaire aujourd'hui.<br/>
+        {% else %}
+            Taille : {{ todaysBirthday|length }}<br/>
+            {% for u in todaysBirthday %}
+            Nom : {{ u.givenname }}<br/>
+            {% endfor %}
+        {% endif %}
+        <h2>Dans les 5 jours:</h2>
+        {% if incomingBirthdayUsers|length == 0 %}
+            Aucun anniversaire dans les 5 jours à venir.<br/>
+        {% else %}
+            Taille : {{ incomingBirthdayUsers|length }}<br/>
+            {% for u in incomingBirthdayUsers %}
+            Nom : {{ u.givenname }}<br/>
+            {% endfor %}
+        {% endif %}
     </div>
      
     <div id="userList">

@@ -34,12 +34,19 @@
 }
 
 #searchIcon {
-    width: 24px;
-    height: 26px;
-    background: url("../images/search-icon.png") no-repeat;
     position: relative;
-    top: 10px;
-    left: 304px;
+    top: 8px;
+    left: 5px;
+    cursor: pointer;
+    color: #434343;
+    -webkit-transition: color 0.3s linear;
+    -o-transition: color 0.3s linear;
+    -moz-transition: color 0.3s linear;
+    transition: color 0.3s linear;
+}
+
+#searchIcon:hover {
+    color: #22c2cc;
 }
 
 #myProfile {
