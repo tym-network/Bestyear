@@ -115,29 +115,31 @@
                 </div>
                 {% set column = (column+1)%2 %}
             {% endif %}
-            <div id="TN">
-                <h2>STAGES</h2>
-                {% if user.tn05job != null %}
-                    <h3>TN05</h3>
-                    <span class="icon job icon-grey icon-24"></span> {{ user.tn05job }}<br/>
-                    <span class="icon pin icon-grey icon-24"></span> {{ user.tn05place }}
-                {% endif %}
-                {% if user.tn07job != null %}
-                    <h3>TN07</h3>
-                    <span class="icon job icon-grey icon-24"></span> {{ user.tn07job }}<br/>
-                    <span class="icon pin icon-grey icon-24"></span> {{ user.tn07place }}
-                {% endif %}
-                {% if user.tn09job != null %}
-                    <h3>TN09</h3>
-                    <span class="icon job icon-grey icon-24"></span> {{ user.tn09job }}<br/>
-                    <span class="icon pin icon-grey icon-24"></span> {{ user.tn09place }}
-                {% endif %}
-                {% if user.tn10job != null %}
-                    <h3>TN10</h3>
-                    <span class="icon job icon-grey icon-24"></span> {{ user.tn10job }}<br/>
-                    <span class="icon pin icon-grey icon-24"></span> {{ user.tn10place }}
-                {% endif %}
-            </div>
+            {% if user.tn05job != null or user.tn07job != null or user.tn09job != null or user.tn10job != null%}
+                <div id="TN">
+                    <h2>STAGES</h2>
+                    {% if user.tn05job != null %}
+                        <h3>TN05</h3>
+                        <span class="icon job icon-grey icon-24"></span> {{ user.tn05job }}<br/>
+                        <span class="icon pin icon-grey icon-24"></span> {{ user.tn05place }}
+                    {% endif %}
+                    {% if user.tn07job != null %}
+                        <h3>TN07</h3>
+                        <span class="icon job icon-grey icon-24"></span> {{ user.tn07job }}<br/>
+                        <span class="icon pin icon-grey icon-24"></span> {{ user.tn07place }}
+                    {% endif %}
+                    {% if user.tn09job != null %}
+                        <h3>TN09</h3>
+                        <span class="icon job icon-grey icon-24"></span> {{ user.tn09job }}<br/>
+                        <span class="icon pin icon-grey icon-24"></span> {{ user.tn09place }}
+                    {% endif %}
+                    {% if user.tn10job != null %}
+                        <h3>TN10</h3>
+                        <span class="icon job icon-grey icon-24"></span> {{ user.tn10job }}<br/>
+                        <span class="icon pin icon-grey icon-24"></span> {{ user.tn10place }}
+                    {% endif %}
+                </div>
+            {% endif %}
         </div>
     </div>
 {% endblock %}

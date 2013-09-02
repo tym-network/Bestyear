@@ -32,6 +32,7 @@ function send(sUrl, oParams) {
  * Handles the search results (from a json)
  */
 function handleResults(json) {
+    num = 0;
     // Cleaning the tab (if there was a previous search)
     $("#rightTable").children().remove();
     $("#leftTable").children().remove();
@@ -55,7 +56,7 @@ function handleResults(json) {
     }
 
     $.each(json, function () {
-        // Add the case with a picture when it will be implemented
+        // Add the support of a picture when it will be implemented
         htmlUser = '<tr id="' + this.id + '" class="userPreview"><td><div class="circle male"><div class="userBigIcon"></div></div></div></div></td>';
         htmlUser += '<td><div class="infosSummary"><div class="name">' + this.fullname + '</div><div class="other">' + this.studies + ' - ' +  this.age + ' ans</div></div></td></tr>';
         
@@ -64,7 +65,7 @@ function handleResults(json) {
         } else {
             $(htmlUser).appendTo('#rightTable');
         }
-        num += 1;
+        num++;
     });
     
     // Click on a user displays its full profile
@@ -237,24 +238,26 @@ function displayUser(json) {
     }    
     
     // Internship
-    htmlCode += '<div id="TN"><h2>STAGES</h2>';
-    if (json.tn05_job) {
-        htmlCode += '<h3>TN05</h3><span class="icon job icon-grey icon-24"></span> ' + json.tn05_job;
-        htmlCode += '<br/><span class="icon pin icon-grey icon-24"></span> ' + json.tn05_place;
+    if (json.tn05_job || json.tn07_job || json.tn09_job || json.tn10_job) {
+        htmlCode += '<div id="TN"><h2>STAGES</h2>';
+        if (json.tn05_job) {
+            htmlCode += '<h3>TN05</h3><span class="icon job icon-grey icon-24"></span> ' + json.tn05_job;
+            htmlCode += '<br/><span class="icon pin icon-grey icon-24"></span> ' + json.tn05_place;
+        }
+        if (json.tn07_job) {
+            htmlCode += '<h3>TN07</h3><span class="icon job icon-grey icon-24"></span> ' + json.tn07_job;
+            htmlCode += '<br/><span class="icon pin icon-grey icon-24"></span> ' + json.tn07_place;
+        }
+        if (json.tn09_job) {
+            htmlCode += '<h3>TN09</h3><span class="icon job icon-grey icon-24"></span> ' + json.tn09_job;
+            htmlCode += '<br/><span class="icon pin icon-grey icon-24"></span> ' + json.tn09_place;
+        }
+        if (json.tn10_job) {
+            htmlCode += '<h3>TN10</h3><span class="icon job icon-grey icon-24"></span> ' + json.tn10_job;
+            htmlCode += '<br/><span class="icon pin icon-grey icon-24"></span> ' + json.tn10_place;
+        }
+        htmlCode += '</div></div>';
     }
-    if (json.tn07_job) {
-        htmlCode += '<h3>TN07</h3><span class="icon job icon-grey icon-24"></span> ' + json.tn07_job;
-        htmlCode += '<br/><span class="icon pin icon-grey icon-24"></span> ' + json.tn07_place;
-    }
-    if (json.tn09_job) {
-        htmlCode += '<h3>TN09</h3><span class="icon job icon-grey icon-24"></span> ' + json.tn09_job;
-        htmlCode += '<br/><span class="icon pin icon-grey icon-24"></span> ' + json.tn09_place;
-    }
-    if (json.tn10_job) {
-        htmlCode += '<h3>TN10</h3><span class="icon job icon-grey icon-24"></span> ' + json.tn10_job;
-        htmlCode += '<br/><span class="icon pin icon-grey icon-24"></span> ' + json.tn10_place;
-    }
-    htmlCode += '</div></div>';
     
     $(htmlCode).appendTo('#userProfile');
 }

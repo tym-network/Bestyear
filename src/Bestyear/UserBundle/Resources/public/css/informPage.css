@@ -35,3 +35,11 @@ a:hover {
 .error {
     margin-left: 318px;
 }
+
+.basicButton {
+    background: #BBBBBB;
+}
+
+.basicButton:hover {
+    background: #434343;
+}

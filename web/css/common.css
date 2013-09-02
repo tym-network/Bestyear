@@ -58,6 +58,7 @@
 
 .check:before {
     content: "\E029";
+    line-height: 130px;
 }
 
 .job:before {

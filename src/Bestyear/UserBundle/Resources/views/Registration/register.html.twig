@@ -43,21 +43,28 @@
     <div id="form">
         <form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST">
             {{ form_start(form) }}
-                {{ form_errors(form) }}
-                
+                {% if form_errors(form) %}
+                    <div id="errorBar">{{ form_errors(form) }}</div>
+                {% endif %}
                 <div id="step1">
                     <span class="" id="usernameSpan">
-                        {{ form_errors(form.username) }}
+                        {% if form_errors(form.username) %}
+                            <div id="errorBar">{{ form_errors(form.username) }}</div>
+                        {% endif %}
                         {{ form_widget(form.username, {'attr': {'placeholder': 'Login UTC'} }) }}@etu.utc.fr
                         <div class="error"></div>
                     </span><br/>
                     <span class="" id="passwordSpan">
-                        {{ form_errors(form.plainPassword.first) }}
+                        {% if form_errors(form.plainPassword.first) %}
+                            <div id="errorBar">{{ form_errors(form.plainPassword.first) }}</div>
+                        {% endif %}
                         {{ form_widget(form.plainPassword.first, {'attr': {'placeholder': 'Mot de passe'} }) }}
                         <div class="error"></div>
                     </span><br/>
                     <span class="" id="password2Span">
-                        {{ form_errors(form.plainPassword.second) }}
+                        {% if form_errors(form.plainPassword.second) %}
+                            <div id="errorBar">{{ form_errors(form.plainPassword.second) }}</div>
+                        {% endif %}
                         {{ form_widget(form.plainPassword.second, {'attr': {'placeholder': 'Confirmer votre mot de passe'} }) }}
                         <div class="error"></div>
                     </span><br/>
@@ -65,70 +72,95 @@
                 </div>
                 <div id="step2">
                     <span class="" id="givennameSpan">
-                        {{ form_errors(form.givenname) }}
+                        {% if form_errors(form.givenname) %}
+                            <div id="errorBar">{{ form_errors(form.givenname) }}</div>
+                        {% endif %}
                         {{ form_widget(form.givenname, {'attr': {'placeholder': 'Prénom'} }) }}
                         <div class="error"></div>
                     </span><br/>
                     <span class="" id="familynameSpan">
-                        {{ form_errors(form.familyname) }}
+                        {% if form_errors(form.familyname) %}
+                            <div id="errorBar">{{ form_errors(form.familyname) }}</div>
+                        {% endif %}
                         {{ form_widget(form.familyname, {'attr': {'placeholder': 'Nom de famille'} }) }}
                         <div class="error"></div>
                     </span><br/>
                     <span class="" id="birthdateSpan">
-                        {{ form_errors(form.birthdate) }}
-                        <label for="birthdate">Date d'anniversaire </label>{{ form_widget(form.birthdate, {'attr': {'placeholder': 'YYYY-MM-JJ'} }) }}
+                        {% if form_errors(form.birthdate) %}
+                            <div id="errorBar">{{ form_errors(form.birthdate) }}</div>
+                        {% endif %}
+                        <label for="birthdate">Date d'anniversaire </label>
+                        {{ form_widget(form.birthdate, {'attr': {'placeholder': 'YYYY-MM-JJ'} }) }}
                         <div class="error"></div>
                     </span><br/>
                     <span class="" id="TCSpan">
-                        {{ form_errors(form.TC) }}
+                        {% if form_errors(form.TC) %}
+                            <div id="errorBar">{{ form_errors(form.TC) }}</div>
+                        {% endif %}
                         {{ form_widget(form.TC) }}
                     </span>
                     <span class="" id="studylevelSpan">
-                        {{ form_errors(form.studylevel) }}
+                        {% if form_errors(form.studylevel) %}
+                            <div id="errorBar">{{ form_errors(form.studylevel) }}</div>
+                        {% endif %}
                         {{ form_widget(form.studylevel) }}
                     </span><br/>
                     <input type="button" class="button nextStep" name="nextStep" value="Étape suivante"/>
                 </div>
                 <div id="step3">
                     <h2>Adresse "permanente" : </h2>
+                    {% if form_errors(form.streetnumber1) or 
+                    form_errors(form.street1) or 
+                    form_errors(form.postcode1) or 
+                    form_errors(form.city1) %}
+                        <div id="errorBar">
+                            {{ form_errors(form.streetnumber1) }}
+                            {{ form_errors(form.street1) }}
+                            {{ form_errors(form.postcode1) }}
+                            {{ form_errors(form.city1) }}
+                        </div>
+                    {% endif %}
                     <span class="streetnumberSpan" id="streetnumber1Span">
-                        {{ form_errors(form.streetnumber1) }}
                         {{ form_widget(form.streetnumber1, {'attr': {'placeholder': 'N°'} }) }}
                         <div class="error"></div>
                     </span>
                     <span class="" id="street1Span">
-                        {{ form_errors(form.street1) }}
                         {{ form_widget(form.street1, {'attr': {'placeholder': 'Rue'} }) }}
                         <div class="error"></div>
                     </span><br/>
                     <span class="postcodeSpan" id="postcode1Span">
-                        {{ form_errors(form.postcode1) }}
                         {{ form_widget(form.postcode1, {'attr': {'placeholder': 'Code postal'} }) }}
                         <div class="error"></div>
                     </span>
                     <span class="" id="city1Span">
-                        {{ form_errors(form.city1) }}
                         {{ form_widget(form.city1, {'attr': {'placeholder': 'Ville'} }) }}
                         <div class="error"></div>
                     </span><br/>
                     <h2>Adresse pendant les études : </h2>
+                    {% if form_errors(form.streetnumber2) or 
+                    form_errors(form.street2) or 
+                    form_errors(form.postcode2) or 
+                    form_errors(form.city2) %}
+                        <div id="errorBar">
+                            {{ form_errors(form.streetnumber2) }}
+                            {{ form_errors(form.street2) }}
+                            {{ form_errors(form.postcode2) }}
+                            {{ form_errors(form.city2) }}
+                        </div>
+                    {% endif %}
                     <span class="streetnumberSpan" id="streetnumber2Span">
-                        {{ form_errors(form.streetnumber2) }}
                         {{ form_widget(form.streetnumber2, {'attr': {'placeholder': 'N°'} }) }}
                         <div class="error"></div>
                     </span>
                     <span class="" id="street2Span">
-                        {{ form_errors(form.street2) }}
                         {{ form_widget(form.street2, {'attr': {'placeholder': 'Rue'} }) }}
                         <div class="error"></div>
                     </span><br/>
                     <span class="postcodeSpan" id="postcode2Span">
-                        {{ form_errors(form.postcode2) }}
                         {{ form_widget(form.postcode2, {'attr': {'placeholder': 'Code postal', 'value': '60200'} }) }}
                         <div class="error"></div>
                     </span>
                     <span class="" id="city2Span">
-                        {{ form_errors(form.city2) }}
                         {{ form_widget(form.city2, {'attr': {'placeholder': 'Ville', 'value': 'Compiègne'} }) }}
                         <div class="error"></div>
                     </span><br/>
@@ -136,32 +168,44 @@
                 </div>
                 <div id="step4">
                     <span class="" id="phone1Span">
-                        {{ form_errors(form.phone1) }}
+                        {% if form_errors(form.phone1) %}
+                            <div id="errorBar">{{ form_errors(form.phone1) }}</div>
+                        {% endif %}
                         {{ form_widget(form.phone1, {'attr': {'placeholder': 'Téléphone fixe (adresse permanente)'} }) }}
                         <div class="error"></div>
                     </span><br/>
                     <span class="" id="phone2Span">
-                        {{ form_errors(form.phone2) }}
+                        {% if form_errors(form.phone2) %}
+                            <div id="errorBar">{{ form_errors(form.phone2) }}</div>
+                        {% endif %}
                         {{ form_widget(form.phone2, {'attr': {'placeholder': 'Téléphone fixe (études)'} }) }}
                         <div class="error"></div>
                     </span><br/>
                     <span class="" id="cellphoneSpan">
-                        {{ form_errors(form.cellphone) }}
+                        {% if form_errors(form.cellphone) %}
+                            <div id="errorBar">{{ form_errors(form.cellphone) }}</div>
+                        {% endif %}
                         {{ form_widget(form.cellphone, {'attr': {'placeholder': 'Téléphone portable'} }) }}
                         <div class="error"></div>
                     </span><br/>
                     <span class="" id="emailSpan">
-                        {{ form_errors(form.emailoptional) }}
+                        {% if form_errors(form.emailoptional) %}
+                            <div id="errorBar">{{ form_errors(form.emailoptional) }}</div>
+                        {% endif %}
                         {{ form_widget(form.emailoptional, {'attr': {'placeholder': 'Adresse email (hors UTC)'} }) }}
                         <div class="error"></div>
                     </span><br/>
                     <span class="" id="facebookSpan">
-                        {{ form_errors(form.facebook) }}
+                        {% if form_errors(form.facebook) %}
+                            <div id="errorBar">{{ form_errors(form.facebook) }}</div>
+                        {% endif %}
                         {{ form_widget(form.facebook, {'attr': {'placeholder': 'URL de votre profil Facebook'} }) }}
                         <div class="error"></div>
                     </span><br/>
                     <span class="" id="twitterSpan">
-                        {{ form_errors(form.twitter) }}
+                        {% if form_errors(form.twitter) %}
+                            <div id="errorBar">{{ form_errors(form.twitter) }}</div>
+                        {% endif %}
                         {{ form_widget(form.twitter, {'attr': {'placeholder': 'URL de votre page Twitter'} }) }}
                         <div class="error"></div>
                     </span><br/>
@@ -169,6 +213,12 @@
                 </div>
                 <div id="step5">
                     <h2>TN05 : </h2>
+                    {% if form_errors(form.tn05_job) or form_errors(form.tn05_job) %}
+                        <div id="errorBar">
+                            {{ form_errors(form.tn05_job) }}
+                            {{ form_errors(form.tn05_place) }}
+                        </div>
+                    {% endif %}
                     <span class="" id="tn05_jobSpan">
                         {{ form_errors(form.tn05_job) }}
                         {{ form_widget(form.tn05_job, {'attr': {'placeholder': 'Position occupée'} }) }}
@@ -180,6 +230,12 @@
                         <div class="error"></div>
                     </span><br/>
                     <h2>TN07 : </h2>
+                    {% if form_errors(form.tn07_job) or form_errors(form.tn07_place) %}
+                        <div id="errorBar">
+                            {{ form_errors(form.tn07_job) }}
+                            {{ form_errors(form.tn07_place) }}
+                        </div>
+                    {% endif %}
                     <span class="" id="tn07_jobSpan">
                         {{ form_errors(form.tn07_job) }}
                         {{ form_widget(form.tn07_job, {'attr': {'placeholder': 'Position occupée'} }) }}
@@ -191,6 +247,12 @@
                         <div class="error"></div>
                     </span><br/>
                     <h2>TN09 : </h2>
+                    {% if form_errors(form.tn09_job) or form_errors(form.tn09_place) %}
+                        <div id="errorBar">
+                            {{ form_errors(form.tn09_job) }}
+                            {{ form_errors(form.tn09_place) }}
+                        </div>
+                    {% endif %}
                     <span class="" id="tn09_jobSpan">
                         {{ form_errors(form.tn09_job) }}
                         {{ form_widget(form.tn09_job, {'attr': {'placeholder': 'Position occupée'} }) }}
@@ -202,6 +264,12 @@
                         <div class="error"></div>
                     </span><br/>
                     <h2>TN10 : </h2>
+                    {% if form_errors(form.tn10_job) or form_errors(form.tn10_place) %}
+                        <div id="errorBar">
+                            {{ form_errors(form.tn10_job) }}
+                            {{ form_errors(form.tn10_place) }}
+                        </div>
+                    {% endif %}
                     <span class="" id="tn10_jobSpan">
                         {{ form_errors(form.tn10_job) }}
                         {{ form_widget(form.tn10_job, {'attr': {'placeholder': 'Position occupée'} }) }}
