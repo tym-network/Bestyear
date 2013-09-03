@@ -88,7 +88,12 @@ class User extends BaseUser
      * @ORM\Column(name="city1", type="string", length=255, nullable=true)
      */
     protected $city1;
-        
+      
+    /**
+     * @ORM\Column(name="addressmore1", type="string", length=255, nullable=true)
+     */
+    protected $addressmore1;
+    
     /**
      * @ORM\Column(name="streetnumber2", type="string", length=15, nullable=true)
      */
@@ -109,6 +114,11 @@ class User extends BaseUser
      * @ORM\Column(name="city2", type="string", length=255, nullable=true)
      */
     protected $city2;
+        
+    /**
+     * @ORM\Column(name="addressmore2", type="string", length=255, nullable=true)
+     */
+    protected $addressmore2;
         
     /**
      * @ORM\Column(name="phone1", type="string", length=30, nullable=true)
@@ -425,6 +435,29 @@ class User extends BaseUser
     {
         return $this->city1;
     }
+    
+    /**
+     * Set addressmore1
+     *
+     * @param string $addressmore1
+     * @return User
+     */
+    public function setAddressmore1($addressmore1)
+    {
+        $this->addressmore1 = $addressmore1;
+
+        return $this;
+    }
+    
+    /**
+     * Get addressmore1
+     *
+     * @return string 
+     */
+    public function getAddressmore1()
+    {
+        return $this->addressmore1;
+    }
 
     /**
      * Set streetnumber2
@@ -518,6 +551,29 @@ class User extends BaseUser
         return $this->city2;
     }
 
+    /**
+     * Set addressmore2
+     *
+     * @param string $addressmore2
+     * @return User
+     */
+    public function setAddressmore2($addressmore2)
+    {
+        $this->addressmore2 = $addressmore2;
+
+        return $this;
+    }
+    
+    /**
+     * Get addressmore2
+     *
+     * @return string 
+     */
+    public function getAddressmore2()
+    {
+        return $this->addressmore2;
+    }
+    
     /**
      * Set phone1
      *

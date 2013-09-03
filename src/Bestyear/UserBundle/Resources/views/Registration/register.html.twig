@@ -118,6 +118,7 @@
                             {{ form_errors(form.street1) }}
                             {{ form_errors(form.postcode1) }}
                             {{ form_errors(form.city1) }}
+                            {{ form_errors(form.addressmore1) }}
                         </div>
                     {% endif %}
                     <span class="streetnumberSpan" id="streetnumber1Span">
@@ -136,6 +137,10 @@
                         {{ form_widget(form.city1, {'attr': {'placeholder': 'Ville'} }) }}
                         <div class="error"></div>
                     </span><br/>
+                    <span class="" id="addressmore1Span">
+                        {{ form_widget(form.addressmore1, {'attr': {'placeholder': 'Complément'} }) }}
+                        <div class="error"></div>
+                    </span><br/>
                     <h2>Adresse pendant les études : </h2>
                     {% if form_errors(form.streetnumber2) or 
                     form_errors(form.street2) or 
@@ -146,6 +151,7 @@
                             {{ form_errors(form.street2) }}
                             {{ form_errors(form.postcode2) }}
                             {{ form_errors(form.city2) }}
+                            {{ form_errors(form.addressmore2) }}
                         </div>
                     {% endif %}
                     <span class="streetnumberSpan" id="streetnumber2Span">
@@ -162,6 +168,10 @@
                     </span>
                     <span class="" id="city2Span">
                         {{ form_widget(form.city2, {'attr': {'placeholder': 'Ville', 'value': 'Compiègne'} }) }}
+                        <div class="error"></div>
+                    </span><br/>
+                    <span class="" id="addressmore2Span">
+                        {{ form_widget(form.addressmore2, {'attr': {'placeholder': 'Complément'} }) }}
                         <div class="error"></div>
                     </span><br/>
                     <input type="button" class="button nextStep" name="nextStep" value="Étape suivante"/>

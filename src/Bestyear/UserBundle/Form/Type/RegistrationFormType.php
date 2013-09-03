@@ -59,10 +59,12 @@ class RegistrationFormType extends AbstractType
         $builder->add('street1', 'text', array('required' => false));
         $builder->add('postcode1', 'text', array('required' => false));
         $builder->add('city1', 'text', array('required' => false));
+        $builder->add('addressmore1', 'text', array('required' => false));
         $builder->add('streetnumber2', 'text', array('required' => false));
         $builder->add('street2', 'text', array('required' => false));
         $builder->add('postcode2', 'text', array('required' => false));
         $builder->add('city2', 'text', array('required' => false));
+        $builder->add('addressmore2', 'text', array('required' => false));
         $builder->add('phone1', 'text', array('required' => false));
         $builder->add('phone2', 'text', array('required' => false));
         $builder->add('cellphone', 'text', array('required' => false));
