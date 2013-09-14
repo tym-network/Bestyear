@@ -8,7 +8,7 @@ use Symfony\Component\Validator\Constraint;
  */
 class FieldsNotBlank extends Constraint
 {
-    public $message = 'Champ vide';
+    public $message = 'Veuillez remplir tous les champs';
     
     public function getTargets()
     {

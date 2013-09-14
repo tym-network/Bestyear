@@ -2,8 +2,6 @@
 
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('bundles/bestyearmain/css/indexLogged.css') }}" type="text/css"/>
-    <link rel="stylesheet" href="{{ asset('bundles/bestyearmain/css/listUsers.css') }}" type="text/css"/>
-    <link rel="stylesheet" href="{{ asset('bundles/bestyearmain/css/userView.css') }}" type="text/css"/>
 {% endblock %}
 
 {% block topBar %}
@@ -11,35 +9,63 @@
 {% endblock %}
 
 {% block leftBar %}
-    <a href="#list">
-        <div id="listLeftBar">
-            <div id="listIcon"></div>
-        </div>
-    </a>
-    <a href="#user">
-        <div id="searchUserLeftBar">
-            <div id="searchUserIcon"></div>
-        </div>
-    </a>
+    {{ parent() }}
 {% endblock %}
 
 {% block content %}
-    <div id="welcome">
-        <h1>Anniversaires</h1>
-        Aujourd'hui:<br/>
-        Taille : {{ todaysBirthday|length }}<br/>
-        {% for u in todaysBirthday %}
-        Nom : {{ u.givenname }}<br/>
-        {% endfor %}
+    <div id="div1" class="welcome mainDiv">
+        <h1><span class="icon present icon-grey icon-50"></span> Anniversaires</h1>
+        <h2>Aujourd'hui:</h2>
+        {% if todaysBirthday|length == 0 %}
+            Aucun anniversaire aujourd'hui.<br/>
+        {% else %}
+            <table class="birthdayUsers">
+                {% set num = 1 %}
+                {% for u in todaysBirthday %}
+                    {% if num == 1 %}
+                        <tr>
+                    {% endif %}
+                            <td>
+                                <div id="{{ u.id }}" class="birthdayUser">
+                                    <div class="picUser"><span class="icon icon-single user icon-white icon-30"></span></div>
+                                    <div class="infoUser">{{ u.fullname }}<br/>{{ u.age }} ans</div>
+                                </div>
+                            </td>
+                            {% set num = num+1 %}
+                    {% if num == 4 %}
+                        {% set num = 1 %}
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+            </table>
+        {% endif %}
         
-        Sous 5 jours:<br/>
-        Taille : {{ incomingBirthdayUsers|length }}<br/>
-        {% for u in incomingBirthdayUsers %}
-        Nom : {{ u.givenname }}<br/>
-        {% endfor %}
+        <h2>Dans les 5 jours:</h2>
+        {% if incomingBirthdayUsers|length == 0 %}
+            Aucun anniversaire dans les 5 jours à venir.<br/>
+        {% else %}
+            <table class="birthdayUsers">
+                {% set num = 1 %}
+                {% for u in incomingBirthdayUsers %}
+                    {% if num == 1 %}
+                        <tr>
+                    {% endif %}
+                            <td>
+                                <div id="{{ u.id }}" class="birthdayUser">
+                                    <div class="picUser"><span class="icon icon-single user icon-white icon-30"></span></div>
+                                    <div class="infoUser">{{ u.fullname }}<br/>{{ u.age }} ans</div>
+                                </div>
+                            </td>
+                            {% set num = num+1 %}
+                    {% if num == 4 %}
+                        {% set num = 1 %}
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+            </table>
+        {% endif %}
     </div>
-     
-    <div id="userList">
+    <div id="div2" class="userList">
         <h2>Résultats de la recherche pour "<span id="searchContent"></span>" :</h2>
         <div id="leftColumn">
             <table id="leftTable">
@@ -51,10 +77,6 @@
         </div>
     </div>
 
-
-    <div id="userProfile">
+    <div id="div3" class="userProfile profile">
     </div>
-{% endblock %}
-{% block javascripts %}
-    <script src="{{ asset('bundles/bestyearmain/js/transition.js') }}"></script>
 {% endblock %}

@@ -1,7 +1,7 @@
 {% extends '::baseForm.html.twig' %}
 
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('bundles/bestyearuser/css/request.css') }}" type="text/css"/>
+    <link rel="stylesheet" href="{{ asset('bundles/bestyearuser/css/informPage.css') }}" type="text/css"/>
 {% endblock %}
 
 {% block content %}
@@ -11,7 +11,7 @@
         {% if invalid_username is defined %}
             <div id="errorBar">Login ou email invalide</div>
         {% endif %}
-        <form action="{{ path('fos_user_resetting_send_email') }}" method="POST" id="form">
+        <form action="{{ path('fos_user_resetting_send_email') }}" method="POST">
             <span class="">
                 <input type="text" id="username" name="username" placeholder="Login UTC ou adresse email UTC" required/>
             </span><br/>

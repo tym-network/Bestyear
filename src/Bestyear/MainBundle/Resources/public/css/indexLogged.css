@@ -1,19 +1,54 @@
-#welcome {
+.welcome {
     font-family: "MavenProBold", "Century Gothic";
     padding-left: 20px;
     padding-right: 20px;
 }
 
-#welcome h1 {
+.welcome h1 {
     font-weight: normal;
     color: #434343;
 }
 
-#listLeftBar, #searchUserLeftBar {
-    display: none;
-    opacity: 0;
+.welcome h2 {
+    padding-left: 10px;
+    margin-bottom: 5px;
+    font-size: 22px;
 }
 
-#userList h2 {
-    font-family: "MavenProLight", "Century Gothic";
+.birthdayUsers td {
+    width: 270px;
+}
+
+.birthdayUsers .picUser {
+    position: absolute;
+    width: 32px;
+    height: 37px;
+    padding-left: 10px;
+    padding-top: 5px;
+    background: #22c2cc;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    border-radius: 7px;
+}
+
+.birthdayUsers .infoUser {
+    margin-left: 48px;
+    font-size: 20px;
+}
+
+.birthdayUser {
+    padding-left: 10px;
+    height: 52px;
+    padding-top: 10px;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    border-radius: 7px;
+    -webkit-transition: background 0.5s ease;
+    -o-transition: background 0.5s ease;
+    -moz-transition: background 0.5s ease;
+    transition: background 0.5s ease;
+}
+
+.birthdayUser:hover {
+    background: rgb(236,236,236);
 }

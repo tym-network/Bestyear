@@ -1,0 +1,114 @@
+@font-face {
+    font-family: 'MavenProLight';
+    src: url('../fonts/MavenProLight-200.eot?') format('eot'), url('../fonts/MavenProLight-200.woff') format('woff'), url('../fonts/MavenProLight-200.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'MavenProBold';
+    src: url('../fonts/MavenProLight-300.eot?') format('eot'), url('../fonts/MavenProLight-300.woff') format('woff'), url('../fonts/MavenProLight-300.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'LigatureSymbols';
+    src: url('../fonts/LigatureSymbols-2.11.eot?') format('eot'), url('../fonts/LigatureSymbols-2.11.woff') format('woff'), url('../fonts/LigatureSymbols-2.11.ttf') format('truetype');
+}
+
+/**
+ * Icon font
+ */
+.icon:before {
+    font-family: "LigatureSymbols";
+}
+
+.icon-single:before {
+    display: block;
+}
+
+.icon-grey:before {
+    color: #434343;
+}
+
+.icon-white:before {
+    color: #ffffff;
+}
+
+.icon-green:before {
+    color: #24c761;
+}
+
+.icon-blue:before {
+    color: #22c2cc;
+}
+
+.icon-pink:before {
+    color: #e61aa0;
+}
+
+.icon-20:before {
+    font-size: 20px;
+}
+
+.icon-24:before {
+    font-size: 24px;
+}
+
+.icon-30:before {
+    font-size: 30px;
+}
+
+.icon-32:before {
+    font-size: 32px;
+}
+
+.icon-50:before {
+    font-size: 50px;
+}
+
+.icon-160:before {
+    font-size: 160px;
+}
+
+.mail:before {
+    content: "\E08a";
+}
+
+.check:before {
+    content: "\E029";
+    line-height: 130px;
+}
+
+.job:before {
+    content: "\E173";
+}
+
+.pin:before {
+    content: "\E103";
+}
+
+.search:before {
+    content: "\E116";
+}
+
+.user:before {
+    content: "\E137";
+}
+
+.present:before {
+    content: "\E109";
+}
+
+/**
+ * Other
+ */
+
+body {
+    background: rgb(236,236,236);
+    height: 100%;
+    margin: 0px;
+}
+
+#logo {
+    width: 180px;
+    height: 89px;
+    background: url("../images/logo.png") no-repeat;
+}

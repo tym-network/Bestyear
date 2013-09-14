@@ -19,3 +19,7 @@
 #form #links {
     margin-bottom: 20px;
 }
+
+#errorBar {
+    padding-bottom: 6px;
+}

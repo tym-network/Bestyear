@@ -88,7 +88,7 @@ h2 {
 
 #usernameSpan input {
     width: 200px;
-    margin-left: -20px;
+    margin-left: -32px;
 }
 
 #usernameSpan .error {
@@ -131,6 +131,10 @@ h2 {
 #birthdateSpan input {
     width: 150px;
     margin-left: 12px;
+}
+
+#errorBar {
+    margin-bottom: 0px;
 }
 
 #ui-datepicker-div {
