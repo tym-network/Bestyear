@@ -47,6 +47,7 @@
     -o-transition: background 0.5s ease;
     -moz-transition: background 0.5s ease;
     transition: background 0.5s ease;
+    cursor: pointer;
 }
 
 .birthdayUser:hover {
