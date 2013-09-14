@@ -116,7 +116,7 @@
                         {% for icon,addresse in addresses %}
                             <div class="line{{ addresses|length }}-{{ num }}">
                                 <div class="{{ icon }}Icon"></div>
-                                <div class="info">{{ addresse.num }} {{ addresse.street }}<br/>{{ addresse.postcode }} {{ addresse.city }}</div>
+                                <div class="info"><a href="https://maps.google.fr/?q={{ addresse.num }}+{{ addresse.street }}+{{ addresse.postcode }}+{{ addresse.city }}" class="link" target="_blank">{{ addresse.num }} {{ addresse.street }}<br/>{{ addresse.postcode }} {{ addresse.city }}</a></div>
                             </div>
                             {% set num = num+1 %}
                         {% endfor %}
