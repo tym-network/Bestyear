@@ -12,17 +12,20 @@ var currentSearch = "";
  * Handles the DSL script
  */
 function send(sUrl, oParams) {
+    // Get the "basic" URL (find a proper way to do it)
+    Url = $("#home").attr("href") + sUrl;
+    
     for (sName  in oParams) {
-        if (sUrl.indexOf("?")  != -1) {
-                sUrl  += "&";
+        if (Url.indexOf("?")  != -1) {
+                Url  += "&";
         }  else {
-                sUrl  += "?";
+                Url  += "?";
         }
-        sUrl  += encodeURIComponent(sName) + "=" +  encodeURIComponent(oParams[sName]);
+        Url  += encodeURIComponent(sName) + "=" +  encodeURIComponent(oParams[sName]);
     }
 
     var DSLScript  = document.createElement("script");
-    DSLScript.src  = sUrl;
+    DSLScript.src  = Url;
     DSLScript.type = "text/javascript";
     document.body.appendChild(DSLScript);
     document.body.removeChild(DSLScript);
@@ -32,12 +35,20 @@ function send(sUrl, oParams) {
  * Handles the search results (from a json)
  */
 function handleResults(json) {
+    num = 0;
+    // Cleaning the tab (if there was a previous search)
+    $("#rightTable").children().remove();
+    $("#leftTable").children().remove();
+    
+    // Delete "No Result" if there were a previous search
+    $("#noresult").remove();
+    
     // Updates the string researched
     $("#searchContent").text(currentSearch);
     
     // Display the icon in the left bar if not already shown
     if (!searchPanelActivated) {
-        $("#listLeftBar")
+        $(".listLeft")
             .show()
             .stop()
             .animate({"opacity": 1}, 100);
@@ -45,23 +56,29 @@ function handleResults(json) {
     }
     
     // Display the results
-    if (!$('#userList').is(":visible")) {
+    if (!$('.userList').is(":visible")) {
         // transition.js
-        displayList();
+        displayDiv($(".listLeft"));
     }
 
-    $.each(json, function () {
-        // Add the case with a picture when it will be implemented
-        htmlUser = '<tr id="' + this.id + '" class="userPreview"><td><div class="circle male"><div class="userBigIcon"></div></div></div></div></td>';
-        htmlUser += '<td><div class="infosSummary"><div class="name">' + this.fullname + '</div><div class="other">' + this.studies + ' - ' +  this.age + ' ans</div></div></td></tr>';
-        
-        if (num%2 == 0) {
-            $(htmlUser).appendTo('#leftTable');
-        } else {
-            $(htmlUser).appendTo('#rightTable');
-        }
-        num += 1;
-    });
+    if (json.length == 0) {
+        htmlUser = "<p id=\"noresult\">Aucun résultat</p>";
+        $(htmlUser).appendTo('.userList');
+    } else {
+        $.each(json, function () {
+            // Add the support of a picture when it will be implemented
+            htmlUser = '<tr id="' + this.id + '" class="userPreview"><td><div class="circle male"><div class="userBigIcon"></div></div></div></div></td>';
+            htmlUser += '<td><div class="infosSummary"><div class="name">' + this.fullname + '</div><div class="other">' + this.studies + ' - ' +  this.age + ' ans</div></div></td></tr>';
+            
+            if (num%2 == 0) {
+                $(htmlUser).appendTo('#leftTable');
+            } else {
+                $(htmlUser).appendTo('#rightTable');
+            }
+            num++;
+        });
+    }
+    
     
     // Click on a user displays its full profile
     $('.userPreview').click(function () {
@@ -78,12 +95,12 @@ function displayUser(json) {
     var numCouronne = 0;
     var column = "leftColumn";
     
-    // Cleaning the tab (if there were previous content)
-    $("#userProfile").children().remove();
+    // Cleaning the tab (if there was a previous user)
+    $(".userProfile").children().remove();
     
     // Display the icon in the left bar if not already shown
     if (!userPanelActivated) {
-        $("#searchUserLeftBar")
+        $(".userLeft")
             .show()
             .stop()
             .animate({"opacity": 1}, 100);
@@ -91,9 +108,9 @@ function displayUser(json) {
     }
     
     // Display the user
-    if (!$('#userProfile').is(":visible")) {
+    if (!$('.userProfile').is(":visible")) {
         // transition.js
-        displayUserPanel();
+        displayDiv($(".userLeft"));
     }
     
     // Picture and basic info
@@ -220,7 +237,7 @@ function displayUser(json) {
         }
         htmlCode += '<div class="row '  + column + '">';
         htmlCode += '<div id="couronne' + nbAddresses + '" class="couronne">';
-        htmlCode += '<div id="compassBigIcon"></div></div><div class="line">';
+        htmlCode += '<div id="compassBigIcon"></div></div><div class="line address">';
         num = 1;
         $.each(addresses, function () {
             htmlCode += '<div class="line' + nbAddresses + '-' + num + '">';
@@ -233,35 +250,48 @@ function displayUser(json) {
     }    
     
     // Internship
-    htmlCode += '<div id="TN"><h2>STAGES</h2>';
-    if (json.tn05_job) {
-        htmlCode += '<h3>TN05</h3>' + json.tn05_job + '-' + json.tn05_place;
+    if (json.tn05_job || json.tn07_job || json.tn09_job || json.tn10_job) {
+        htmlCode += '<div id="TN"><h2>STAGES</h2>';
+        if (json.tn05_job) {
+            htmlCode += '<h3>TN05</h3><span class="icon job icon-grey icon-24"></span> ' + json.tn05_job;
+            htmlCode += '<br/><span class="icon pin icon-grey icon-24"></span> ' + json.tn05_place;
+        }
+        if (json.tn07_job) {
+            htmlCode += '<h3>TN07</h3><span class="icon job icon-grey icon-24"></span> ' + json.tn07_job;
+            htmlCode += '<br/><span class="icon pin icon-grey icon-24"></span> ' + json.tn07_place;
+        }
+        if (json.tn09_job) {
+            htmlCode += '<h3>TN09</h3><span class="icon job icon-grey icon-24"></span> ' + json.tn09_job;
+            htmlCode += '<br/><span class="icon pin icon-grey icon-24"></span> ' + json.tn09_place;
+        }
+        if (json.tn10_job) {
+            htmlCode += '<h3>TN10</h3><span class="icon job icon-grey icon-24"></span> ' + json.tn10_job;
+            htmlCode += '<br/><span class="icon pin icon-grey icon-24"></span> ' + json.tn10_place;
+        }
+        htmlCode += '</div></div>';
     }
-    if (json.tn07_job) {
-        htmlCode += '<h3>TN07</h3>' + json.tn07_job + '-' + json.tn07_place;
-    }
-    if (json.tn09_job) {
-        htmlCode += '<h3>TN09</h3>' + json.tn09_job + '-' + json.tn09_place;
-    }
-    if (json.tn10_job) {
-        htmlCode += '<h3>TN010</h3>' + json.tn10_job + '-' + json.tn10_place;
-    }
-    htmlCode += '</div></div>';
     
-    $(htmlCode).appendTo('#userProfile');
+    $(htmlCode).appendTo('.userProfile');
+}
+
+function search() {
+    if ($('#searchUser').val()) {
+        var params = {
+            "input": $('#searchUser').val(),
+            "callback": "handleResults"
+        };
+        currentSearch = $('#searchUser').val().replace(/</gi, '');
+        currentSearch = currentSearch.replace(/>/gi, '');
+        currentSearch = currentSearch.replace(/\(/gi, '');
+        currentSearch = currentSearch.replace(/\)/gi, '');
+        send("search",params);
+    }
 }
 
 $('#searchUser').keypress(function (e) {
     // If key "Enter" is pressed
     if (e.which == 13) {
-        if ($('#searchUser').val()) {
-            var params = {
-                "input": $('#searchUser').val(),
-                "callback": "handleResults"
-            };
-            currentSearch = $('#searchUser').val();
-            send("./search",params);
-        }
+        search();
     }
 });
 
@@ -269,5 +299,13 @@ function searchUser(id) {
     var params = {
         "callback": "displayUser"
     };
-    send("./searchUser/"+id,params);
+    send("searchUser/"+id,params);
 }
+
+/**
+ * Add function to the button
+ */ 
+
+$('#searchIcon').click(function () {
+    search();
+});

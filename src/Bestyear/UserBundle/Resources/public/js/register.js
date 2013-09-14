@@ -391,9 +391,10 @@ function checkAddress1onSubmit() {
     street1 = $('#street1Span input');
     postcode1 = $('#postcode1Span input');
     city1 = $('#city1Span input');
+    addressmore1 = $('#addressmore1Span input');
     
     // If one input is filled, they should all be filled
-    if ((streetnumber1.val() || street1.val() || postcode1.val() || city1.val()) && !(streetnumber1.val() && street1.val() && postcode1.val() && city1.val())) {
+    if ((streetnumber1.val() || street1.val() || postcode1.val() || city1.val() || addressmore1.val()) && !(streetnumber1.val() && street1.val() && postcode1.val() && city1.val() && addressmore1.val())) {
         if (!streetnumber1.val()) {
             streetnumber1.parents('span').addClass('inputError');
             streetnumber1.attr("title", "Champ vide");
@@ -410,11 +411,16 @@ function checkAddress1onSubmit() {
             city1.parents('span').addClass('inputError');
             city1.attr("title", "Champ vide");
         }
+        if (!addressmore1.val()) {
+            addressmore1.parents('span').addClass('inputError');
+            addressmore1.attr("title", "Champ vide");
+        }
     } else {
         removeErrors(streetnumber1);
         removeErrors(street1);
         removeErrors(postcode1);
         removeErrors(city1);
+        removeErrors(addressmore1);
     }
 }
 
@@ -423,9 +429,10 @@ function checkAddress2onSubmit() {
     street2 = $('#street2Span input');
     postcode2 = $('#postcode2Span input');
     city2 = $('#city2Span input');
+    addressmore2 = $('#addressmore2Span input');
     
     // If one input is filled, they should all be filled
-    if ((streetnumber2.val() || street2.val() || (postcode2.val() && postcode2.val() != "60200") || (city2.val()) && city2.val() != "Compiègne") && !(streetnumber2.val() && street2.val() && postcode2.val() && city2.val())) {
+    if ((streetnumber2.val() || street2.val() || (postcode2.val() && postcode2.val() != "60200" || addressmore2.val()) || (city2.val()) && city2.val() != "Compiègne") && !(streetnumber2.val() && street2.val() && postcode2.val() && city2.val() && addressmore2.val())) {
         if (!streetnumber2.val()) {
             streetnumber2.parents('span').addClass('inputError');
             streetnumber2.attr("title", "Champ vide");
@@ -442,11 +449,16 @@ function checkAddress2onSubmit() {
             city2.parents('span').addClass('inputError');
             city2.attr("title", "Champ vide");
         }
+        if (!addressmore2.val()) {
+            addressmore2.parents('span').addClass('inputError');
+            addressmore2.attr("title", "Champ vide");
+        }
     } else {
         removeErrors(streetnumber2);
         removeErrors(street2);
         removeErrors(postcode2);
         removeErrors(city2);
+        removeErrors(addressmore2);
     }
 }
 

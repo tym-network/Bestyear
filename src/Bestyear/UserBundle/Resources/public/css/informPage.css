@@ -1,0 +1,41 @@
+#form {
+    font-size: 16px;
+    text-align: center;
+    margin: auto;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 20px;
+}
+
+#content {
+    min-height: 170px;
+}
+
+a {
+    text-decoration: none;
+    color: #434343;
+    -webkit-transition: color 0.2s linear;
+    -o-transition: color 0.2s linear;
+    -moz-transition: color 0.2s linear;
+    transition: color 0.2s linear;
+}
+
+a:hover {
+    color: #22c2cc;
+}
+
+.button {
+    margin-bottom: 10px;
+}
+
+.error {
+    margin-left: 318px;
+}
+
+.basicButton {
+    background: #BBBBBB;
+}
+
+.basicButton:hover {
+    background: #434343;
+}

@@ -1,7 +1,7 @@
 {% extends '::baseForm.html.twig' %}
 
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('bundles/bestyearuser/css/checkEmail.css') }}" type="text/css"/>
+    <link rel="stylesheet" href="{{ asset('bundles/bestyearuser/css/informPage.css') }}" type="text/css"/>
 {% endblock %}
 
 {% block content %}
@@ -9,6 +9,7 @@
     <div class="line"></div>
     <div id="form">
         Un e-mail a été envoyé à l'adresse  {{ email }}. Il contient un lien sur lequel il vous faudra cliquer afin de réinitialiser votre mot de passe.
+        <span class="icon icon-single mail icon-grey icon-160"></span>
     </div>
 {% endblock %}
 
