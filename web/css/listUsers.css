@@ -1,4 +1,4 @@
-#userList {
+.userList {
     opacity: 0;
     display: none;
     margin-left: 20px;
@@ -12,22 +12,22 @@
     width: 425px;
 }
 
-#userList .circle {
+.userList .circle {
     width: 110px;
     height: 110px;
     border-radius: 60px;
     margin-bottom: 20px;
 }
 
-#userList .male {
+.userList .male {
     background: #22c2cc;
 }
 
-#userList .female {
+.userList .female {
     background: #e61aa0;
 }
 
-#userList .frameUserPicture {
+.userList .frameUserPicture {
     width: 75px;
     height: 75px;
     position: relative;
@@ -35,7 +35,7 @@
     top: 18px;
 }
 
-#userList .userPicture {
+.userList .userPicture {
     width: 75px;
     height: 75px;
     float: left;
@@ -43,29 +43,29 @@
     margin-left: 18px;
 }
 
-#userList .female .frameUserPicture {
-    background: url("../images/cadre-user-list-female.png") no-repeat;
+.userList .female .frameUserPicture {
+    background: url("../images/userList/cadre-user-list-female.png") no-repeat;
 }
 
-#userList .male .frameUserPicture {
-    background: url("../images/cadre-user-list-male.png") no-repeat;
+.userList .male .frameUserPicture {
+    background: url("../images/userList/cadre-user-list-male.png") no-repeat;
 }
 
-#userList .infosSummary {
+.userList .infosSummary {
     margin-left: 10px;
 }
 
-#userList .name {
+.userList .name {
     font-family: "MavenProBold", "Century Gothic";
     font-size: 26px;
 }
 
-#userList .other {
+.userList .other {
     font-family: "MavenProLight", "Century Gothic";
     font-size: 20px;
 }
 
-#userList .userBigIcon {
+.userList .userBigIcon {
     width: 45px;
     height: 41px;
     background: url("../images/user-icon-big.png") no-repeat;
@@ -76,4 +76,15 @@
 
 .userPreview {
     cursor: pointer;
+}
+
+.userList h2 {
+    font-family: "MavenProLight", "Century Gothic";
+}
+
+#noresult {
+    font-family: "MavenProBold", "Century Gothic";
+    font-size: 22px;
+    margin-left: 10px;
+    font-weight: bold;
 }

@@ -1,16 +1,3 @@
 bestyear_main_homepage:
     pattern:  /
     defaults: { _controller: BestyearMainBundle:Main:index }
-
-bestyear_main_searchusers:
-    pattern:  /search
-    defaults: { _controller: BestyearMainBundle:Main:searchUsers }
-    requirements:
-        _method: GET
-
-bestyear_main_searchuser:
-    pattern:  /searchUser/{id}
-    defaults: { _controller: BestyearMainBundle:Main:searchUser }
-    requirements:
-        id: \d+
-        _method: GET

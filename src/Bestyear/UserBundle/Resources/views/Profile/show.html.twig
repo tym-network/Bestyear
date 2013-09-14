@@ -1,7 +1,6 @@
 {% extends '::base.html.twig' %}
 
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('bundles/bestyearmain/css/userView.css') }}" type="text/css" />
     <link rel="stylesheet" href="{{ asset('bundles/bestyearuser/css/show.css') }}" type="text/css" />
 {% endblock %}
 
@@ -11,17 +10,27 @@
 
 {% block leftBar %}
     <a href="{{ path('bestyear_main_homepage') }}">
-        <div id="homeLeftBar">
+        <div id="left1" class="leftButton homeLeft">
             <div id="homeIcon"></div>
         </div>
     </a>
-    <div id="userLeftBar">
+    <div id="left2" class="leftButton profileLeft" >
         <div id="userLeftIcon"></div>
     </div>
+    <a href="#list">
+        <div id="left3" class="leftButton listLeft">
+            <div id="listIcon"></div>
+        </div>
+    </a>
+    <a href="#user">
+        <div id="left4" class="leftButton userLeft">
+            <div id="searchUserIcon"></div>
+        </div>
+    </a>
 {% endblock %}
 
 {% block content %}
-    <div id="userProfile">
+    <div id="div2" class="profile mainDiv">
         <!--img src="{{ asset('bundles/bestyearmain/images/user.jpg') }}" id="userPicture" class="male" alt="{{ user.givenname }} {{ user.familyname }}"/>-->
         <div id="userNoPicture" class="male"><div id="userNoPictureIcon"></div></div>
         <div id="identity">
@@ -141,5 +150,20 @@
                 </div>
             {% endif %}
         </div>
+    </div>
+    <div id="div3" class="userList">
+        <h2>Résultats de la recherche pour "<span id="searchContent"></span>" :</h2>
+        <div id="leftColumn">
+            <table id="leftTable">
+            </table>
+        </div>
+        <div id="rightColumn">
+            <table id="rightTable">
+            </table>
+        </div>
+    </div>
+
+
+    <div id="div4" class="userProfile profile">
     </div>
 {% endblock %}

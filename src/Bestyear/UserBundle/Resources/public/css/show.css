@@ -2,13 +2,13 @@
     margin-top: 100px;
 }
 
-#userLeftBar {
+.profileLeft {
     width: 89px;
     height: 80px;
-    background: #24c761;
+    background: #A74AC7;
 }
 
-#userProfile {
+#div2 {
     display: block;
     opacity: 1;
 }

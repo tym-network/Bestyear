@@ -6,6 +6,8 @@
         <link rel="stylesheet" href="{{ asset('css/common.css') }}" type="text/css" />
         <link rel="stylesheet" href="{{ asset('css/base.css') }}" type="text/css" />
         <link rel="stylesheet" href="{{ asset('css/userPane.css') }}" type="text/css"/>
+        <link rel="stylesheet" href="{{ asset('css/listUsers.css') }}" type="text/css"/>
+        <link rel="stylesheet" href="{{ asset('css/userView.css') }}" type="text/css"/>
         {% block stylesheets %}
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('images/favicon.png') }}" />
@@ -13,7 +15,7 @@
     </head>
     <body>
         <div id="header">
-            <a href="{{ path('bestyear_main_homepage') }}"><div id="logo"></div></a>
+            <a href="{{ path('bestyear_main_homepage') }}" id="home"><div id="logo"></div></a>
             {% block topBar %}
                 <div id="searchBar">
                     <input type="text" name="searchUser" id="searchUser">
@@ -21,7 +23,7 @@
                 </div>
                 <div id="myProfile">
                     <div id="userName">{{ app.user.givenname }} {{ app.user.familyname }}</div>
-                    <div id="userLogo"></div>
+                    <div id="userLogo"><span class="icon icon-single user icon-white icon-30"></span></div>
                 </div>
                 <div id="userPane">
                     <ul>
@@ -38,8 +40,18 @@
                 
                 {% block leftBar %}
                 <a href="#home">
-                    <div id="homeLeftBar">
+                    <div id="left1" class="leftButton homeLeft">
                         <div id="homeIcon"></div>
+                    </div>
+                </a>
+                <a href="#list">
+                    <div id="left2" class="leftButton listLeft">
+                        <div id="listIcon"></div>
+                    </div>
+                </a>
+                <a href="#user">
+                    <div id="left3" class="leftButton userLeft">
+                        <div id="searchUserIcon"></div>
                     </div>
                 </a>
                 {% endblock %}
@@ -53,7 +65,8 @@
             © <a href="http://www.theotimeloiseau.com">Théotime Loiseau</a> - 2013<br/>
         </div>
         <script src="{{ asset('js/userPane.js') }}"></script>
-        <script src="{{ asset('bundles/bestyearmain/js/searchUsers.js') }}"></script>
+        <script src="{{ asset('js/transition.js') }}"></script>
+        <script src="{{ asset('js/searchUsers.js') }}"></script>
         {% block javascripts %}
         {% endblock %}
     </body>

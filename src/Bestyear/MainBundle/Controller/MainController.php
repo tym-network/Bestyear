@@ -22,6 +22,20 @@ class MainController extends Controller
             )->setParameter('now', $now);
             
             $birthdayUsers = $query->getResult();
+            $birthdayData = array();
+            $nowShort = date('md');
+            $nowYear = date('Y');
+
+            foreach ($birthdayUsers as $user) {
+                $bdateShort = $user->getBirthdate()->format('md');
+                $bdateYear = $user->getBirthdate()->format('Y');
+                $age = $bdateShort > $nowShort ? ($nowYear - $bdateYear - 1) : ($nowYear - $bdateYear);
+                $birthdayData[] = array(
+                    "fullname" => $user->getGivenname() . " " . $user->getFamilyName(),
+                    "age" => $age,
+                    "id" => $user->getId(),
+                );
+            }
             
             // Users which birthday is coming in 4 days
             $query = $em->createQuery(
@@ -31,8 +45,20 @@ class MainController extends Controller
             )->setParameter('now', $now);
             
             $incomingBirthdayUsers = $query->getResult();
+            $incomingBirthdayData = array();
             
-            return $this->render('BestyearMainBundle:Main:indexLogged.html.twig', array('todaysBirthday' => $birthdayUsers, 'incomingBirthdayUsers' => $incomingBirthdayUsers));
+            foreach ($incomingBirthdayUsers as $user) {
+                $bdateShort = $user->getBirthdate()->format('md');
+                $bdateYear = $user->getBirthdate()->format('Y');
+                $age = $bdateShort > $nowShort ? ($nowYear - $bdateYear - 1) : ($nowYear - $bdateYear);
+                $incomingBirthdayData[] = array(
+                    "fullname" => $user->getGivenname() . " " . $user->getFamilyName(),
+                    "age" => $age,
+                    "id" => $user->getId(),
+                );
+            }
+            
+            return $this->render('BestyearMainBundle:Main:indexLogged.html.twig', array('todaysBirthday' => $birthdayData, 'incomingBirthdayUsers' => $incomingBirthdayData));
         } else {
             return $this->render('BestyearMainBundle:Main:indexNotLogged.html.twig', array());
         }

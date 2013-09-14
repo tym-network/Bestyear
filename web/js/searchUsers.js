@@ -12,17 +12,20 @@ var currentSearch = "";
  * Handles the DSL script
  */
 function send(sUrl, oParams) {
+    // Get the "basic" URL (find a proper way to do it)
+    Url = $("#home").attr("href") + sUrl;
+    
     for (sName  in oParams) {
-        if (sUrl.indexOf("?")  != -1) {
-                sUrl  += "&";
+        if (Url.indexOf("?")  != -1) {
+                Url  += "&";
         }  else {
-                sUrl  += "?";
+                Url  += "?";
         }
-        sUrl  += encodeURIComponent(sName) + "=" +  encodeURIComponent(oParams[sName]);
+        Url  += encodeURIComponent(sName) + "=" +  encodeURIComponent(oParams[sName]);
     }
 
     var DSLScript  = document.createElement("script");
-    DSLScript.src  = sUrl;
+    DSLScript.src  = Url;
     DSLScript.type = "text/javascript";
     document.body.appendChild(DSLScript);
     document.body.removeChild(DSLScript);
@@ -37,12 +40,15 @@ function handleResults(json) {
     $("#rightTable").children().remove();
     $("#leftTable").children().remove();
     
+    // Delete "No Result" if there were a previous search
+    $("#noresult").remove();
+    
     // Updates the string researched
     $("#searchContent").text(currentSearch);
     
     // Display the icon in the left bar if not already shown
     if (!searchPanelActivated) {
-        $("#listLeftBar")
+        $(".listLeft")
             .show()
             .stop()
             .animate({"opacity": 1}, 100);
@@ -50,23 +56,29 @@ function handleResults(json) {
     }
     
     // Display the results
-    if (!$('#userList').is(":visible")) {
+    if (!$('.userList').is(":visible")) {
         // transition.js
-        displayList();
+        displayDiv($(".listLeft"));
     }
 
-    $.each(json, function () {
-        // Add the support of a picture when it will be implemented
-        htmlUser = '<tr id="' + this.id + '" class="userPreview"><td><div class="circle male"><div class="userBigIcon"></div></div></div></div></td>';
-        htmlUser += '<td><div class="infosSummary"><div class="name">' + this.fullname + '</div><div class="other">' + this.studies + ' - ' +  this.age + ' ans</div></div></td></tr>';
-        
-        if (num%2 == 0) {
-            $(htmlUser).appendTo('#leftTable');
-        } else {
-            $(htmlUser).appendTo('#rightTable');
-        }
-        num++;
-    });
+    if (json.length == 0) {
+        htmlUser = "<p id=\"noresult\">Aucun résultat</p>";
+        $(htmlUser).appendTo('.userList');
+    } else {
+        $.each(json, function () {
+            // Add the support of a picture when it will be implemented
+            htmlUser = '<tr id="' + this.id + '" class="userPreview"><td><div class="circle male"><div class="userBigIcon"></div></div></div></div></td>';
+            htmlUser += '<td><div class="infosSummary"><div class="name">' + this.fullname + '</div><div class="other">' + this.studies + ' - ' +  this.age + ' ans</div></div></td></tr>';
+            
+            if (num%2 == 0) {
+                $(htmlUser).appendTo('#leftTable');
+            } else {
+                $(htmlUser).appendTo('#rightTable');
+            }
+            num++;
+        });
+    }
+    
     
     // Click on a user displays its full profile
     $('.userPreview').click(function () {
@@ -84,11 +96,11 @@ function displayUser(json) {
     var column = "leftColumn";
     
     // Cleaning the tab (if there was a previous user)
-    $("#userProfile").children().remove();
+    $(".userProfile").children().remove();
     
     // Display the icon in the left bar if not already shown
     if (!userPanelActivated) {
-        $("#searchUserLeftBar")
+        $(".userLeft")
             .show()
             .stop()
             .animate({"opacity": 1}, 100);
@@ -96,9 +108,9 @@ function displayUser(json) {
     }
     
     // Display the user
-    if (!$('#userProfile').is(":visible")) {
+    if (!$('.userProfile').is(":visible")) {
         // transition.js
-        displayUserPanel();
+        displayDiv($(".userLeft"));
     }
     
     // Picture and basic info
@@ -259,7 +271,7 @@ function displayUser(json) {
         htmlCode += '</div></div>';
     }
     
-    $(htmlCode).appendTo('#userProfile');
+    $(htmlCode).appendTo('.userProfile');
 }
 
 function search() {
@@ -272,7 +284,7 @@ function search() {
         currentSearch = currentSearch.replace(/>/gi, '');
         currentSearch = currentSearch.replace(/\(/gi, '');
         currentSearch = currentSearch.replace(/\)/gi, '');
-        send("./search",params);
+        send("search",params);
     }
 }
 
@@ -287,7 +299,7 @@ function searchUser(id) {
     var params = {
         "callback": "displayUser"
     };
-    send("./searchUser/"+id,params);
+    send("searchUser/"+id,params);
 }
 
 /**

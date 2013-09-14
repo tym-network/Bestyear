@@ -2,9 +2,12 @@
     padding-bottom: 0px;
 }
 
-#userProfile {
+.userProfile {
     display: none;
     opacity: 0;
+}
+
+.profile {
     margin-top: 30px;
     margin-left: 30px;
     margin-right: 30px;
@@ -83,7 +86,7 @@
 #facebookIcon {
     width: 23px;
     height: 23px;
-    background: url("../images/facebook-icon.png") no-repeat;
+    background: url("../images/userProfile/facebook-icon.png") no-repeat;
     position: relative;
     top: 23px;
     left: 23px;
@@ -97,7 +100,7 @@
 #twitterIcon {
     width: 27px;
     height: 21px;
-    background: url("../images/twitter-icon.png") no-repeat;
+    background: url("../images/userProfile/twitter-icon.png") no-repeat;
     position: relative;
     top: 25px;
     left: 21px;
@@ -121,21 +124,21 @@
 }
 
 #couronne1 {
-    background: url("../images/couronne1.png") no-repeat;
+    background: url("../images/userProfile/couronne1.png") no-repeat;
 }
 
 #couronne2 {
-    background: url("../images/couronne2.png") no-repeat;
+    background: url("../images/userProfile/couronne2.png") no-repeat;
 }
 
 #couronne3 {
-    background: url("../images/couronne3.png") no-repeat;
+    background: url("../images/userProfile/couronne3.png") no-repeat;
 }
 
 #phoneBigIcon {
     width: 24px;
     height: 25px;
-    background: url("../images/phone-icon.png") no-repeat;
+    background: url("../images/userProfile/phone-icon.png") no-repeat;
     position: relative;
     top: 25px;
     left: 26px;
@@ -144,7 +147,7 @@
 #mailBigIcon {
     width: 26px;
     height: 19px;
-    background: url("../images/mail-icon.png") no-repeat;
+    background: url("../images/userProfile/mail-icon.png") no-repeat;
     position: relative;
     top: 28px;
     left: 25px;
@@ -153,7 +156,7 @@
 #compassBigIcon {
     width: 25px;
     height: 25px;
-    background: url("../images/compass-icon.png") no-repeat;
+    background: url("../images/userProfile/compass-icon.png") no-repeat;
     position: relative;
     top: 25px;
     left: 26px;
@@ -162,7 +165,7 @@
 .homeIcon {
     width: 21px;
     height: 19px;
-    background: url("../images/home-icon.png") no-repeat;
+    background: url("../images/userProfile/home-icon.png") no-repeat;
     float:left;
     margin-top: -1px;
 }
@@ -170,14 +173,14 @@
 .schoolIcon {
     width: 22px;
     height: 17px;
-    background: url("../images/school-icon.png") no-repeat;
+    background: url("../images/userProfile/school-icon.png") no-repeat;
     float:left;
 }
 
 .smartphoneIcon {
     width: 14px;
     height: 22px;
-    background: url("../images/smartphone-icon.png") no-repeat;
+    background: url("../images/userProfile/smartphone-icon.png") no-repeat;
     float:left;
     margin-top: -3px;
     margin-left: 3px;
@@ -186,7 +189,7 @@
 .gplusIcon {
     width: 19px;
     height: 19px;
-    background: url("../images/gplus-icon.png") no-repeat;
+    background: url("../images/userProfile/gplus-icon.png") no-repeat;
     float:left;
     margin-top: -1px;
 }
@@ -273,7 +276,7 @@
     padding-right: 40px;
     padding-top: 10px;
     padding-bottom: 30px;
-    background: url("../images/backTN.png") repeat;
+    background: url("../images/userProfile/backTN.png") repeat;
     box-shadow: inset 0px 1px 0px 0px rgba(0,0,0,0.05), inset 0px 2px 3px 0px rgba(0,0,0,0.1);
 }
 

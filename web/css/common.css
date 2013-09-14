@@ -28,8 +28,20 @@
     color: #434343;
 }
 
+.icon-white:before {
+    color: #ffffff;
+}
+
 .icon-green:before {
     color: #24c761;
+}
+
+.icon-blue:before {
+    color: #22c2cc;
+}
+
+.icon-pink:before {
+    color: #e61aa0;
 }
 
 .icon-20:before {
@@ -46,6 +58,10 @@
 
 .icon-32:before {
     font-size: 32px;
+}
+
+.icon-50:before {
+    font-size: 50px;
 }
 
 .icon-160:before {
@@ -71,6 +87,14 @@
 
 .search:before {
     content: "\E116";
+}
+
+.user:before {
+    content: "\E137";
+}
+
+.present:before {
+    content: "\E109";
 }
 
 /**

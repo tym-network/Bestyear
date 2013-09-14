@@ -66,9 +66,20 @@
 
 #userLogo {
     width: 44px;
-    height: 44px;
-    background: url("../images/user-icon.png") no-repeat;
+    height: 40px;
+    background: #434343;
+    border-radius: 22px;
     float: right;
+    text-align: center;
+    padding-top: 4px;
+    -webkit-transition: all 0.3s linear;
+    -o-transition: all 0.3s linear;
+    -moz-transition: all 0.3s linear;
+    transition: all 0.3s linear;
+}
+
+#userLogo:hover {
+    background: #848484;
 }
 
 #layout {
@@ -88,7 +99,7 @@
     top: 0;
 }
 
-#homeLeftBar {
+.homeLeft {
     width: 89px;
     height: 80px;
     background: #22c2cc;
@@ -103,7 +114,7 @@
     left: 24px;
 }
 
-#listLeftBar {
+.listLeft {
     width: 89px;
     height: 80px;
     background: #24c761;
@@ -118,7 +129,7 @@
     left: 25px;
 }
 
-#searchUserLeftBar {
+.userLeft {
     width: 89px;
     height: 80px;
     background: #d9df3c;
@@ -140,6 +151,11 @@
     position: relative;
     top: 25px;
     left: 25px;
+}
+
+.listLeft, .userLeft {
+    display: none;
+    opacity: 0;
 }
 
 #content {

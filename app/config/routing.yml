@@ -20,3 +20,16 @@ fos_user_resetting:
 fos_user_change_password:
     resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
     prefix: /profile
+
+bestyear_main_searchusers:
+    pattern:  /search
+    defaults: { _controller: BestyearMainBundle:Main:searchUsers }
+    requirements:
+        _method: GET
+
+bestyear_main_searchuser:
+    pattern:  /searchUser/{id}
+    defaults: { _controller: BestyearMainBundle:Main:searchUser }
+    requirements:
+        id: \d+
+        _method: GET
