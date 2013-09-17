@@ -215,18 +215,20 @@ function displayUser(json) {
     // Addresses
     var nbAddresses = 0;
     var addresses = new Array();
-    if (json.address1 != null) {
+    if (json.address1_1 != null) {
         nbAddresses++;
         var address1 = new Object();
         address1.icon = 'home';
-        address1.address = json.address1;
+        address1.address1 = json.address1_1;
+        address1.address2 = json.address1_2;
         addresses.push(address1);
     }
-    if (json.address2 != null) {
+    if (json.address2_1 != null) {
         nbAddresses++;
         var address2 = new Object();
         address2.icon = 'school';
-        address2.address = json.address2;
+        address2.address1 = json.address2_1;
+        address2.address2 = json.address2_2;
         addresses.push(address2);
     }
     if (nbAddresses > 0) {
@@ -242,7 +244,7 @@ function displayUser(json) {
         $.each(addresses, function () {
             htmlCode += '<div class="line' + nbAddresses + '-' + num + '">';
             htmlCode += '<div class="' + this.icon + 'Icon"></div>';
-            htmlCode += '<div class="info">' + this.address + '</div></div>';
+            htmlCode += '<div class="info"><a href="https://maps.google.fr/?q=' + this.address1 + ' ' + this.address2 +'" class="link" target="_blank">' + this.address1 + '<br/>' + this.address2 + '</a></div></div>';
             num++;
         });
         htmlCode += '</div></div>';

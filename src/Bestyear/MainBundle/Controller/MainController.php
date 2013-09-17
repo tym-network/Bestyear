@@ -142,21 +142,27 @@ class MainController extends Controller
                 $bdateShort = $user->getBirthdate()->format('md');
                 $bdateYear = $user->getBirthdate()->format('Y');
                 $age = $bdateShort > $nowShort ? ($nowYear - $bdateYear - 1) : ($nowYear - $bdateYear);
-                $address1 = null;
+                $address1_1 = null;
+                $address1_2 = null;
                 if ($user->getStreetNumber1()) {
-                    $address1 = $user->getStreetNumber1() . " " . $user->getStreet1() . "<br/>" . $user->getPostcode1() . " " . $user->getCity1();
+                    $address1_1 = $user->getStreetNumber1() . " " . $user->getStreet1();
+                    $address1_2 = $user->getPostcode1() . " " . $user->getCity1();
                 }
-                $address2 = null;
+                $address2_1 = null;
+                $address2_2 = null;
                 if ($user->getStreetNumber2()) {
-                    $address2 = $user->getStreetNumber2() . " " . $user->getStreet2() . "<br/>" . $user->getPostcode2() . " " . $user->getCity2();
+                    $address2_1 = $user->getStreetNumber2() . " " . $user->getStreet2();
+                    $address2_2 = $user->getPostcode2() . " " . $user->getCity2();
                 }
                 $data = array(
                  "id" => $user->getId(),
                  "fullname" => $user->getGivenname() . " " . $user->getFamilyName(),
                  "studies" => $user->getTC() . $user->getStudylevel(),
                  "age" => $user->getBirthdate()->format('d/m/Y') . " (".$age." ans)",
-                 "address1" => $address1,
-                 "address2" => $address2,
+                 "address1_1" => $address1_1,
+                 "address1_2" => $address1_2,
+                 "address2_1" => $address2_1,
+                 "address2_2" => $address2_2,
                  "phone1" => $user->getPhone1(),
                  "phone2" => $user->getPhone2(),
                  "cellphone" => $user->getCellphone(),
