@@ -69,7 +69,7 @@ class MainController extends Controller
         if ($this->get('security.context')->isGranted('ROLE_USER')) {
             if ($request->query->get('callback') != null && $request->query->get('input') != null) {
                 $em = $this->getDoctrine()->getManager();
-                $users = $em->getRepository('BestyearUserBundle:User')->findAll();
+                $users = $em->getRepository('BestyearUserBundle:User')->findBy(array(), array('familyname'=>'asc'));
                 
                 $search = strtoupper(htmlspecialchars($request->query->get('input')));
                 $resultUsers = array();               
