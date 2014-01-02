@@ -97,6 +97,10 @@
     content: "\E109";
 }
 
+.lock:before {
+    content: "\E086";
+}
+
 /**
  * Other
  */

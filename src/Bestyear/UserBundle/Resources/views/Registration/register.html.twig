@@ -71,6 +71,9 @@
                     <input type="button" class="button nextStep" name="nextStep" value="Étape suivante"/>
                 </div>
                 <div id="step2">
+                    <span class="" id="genderSpan">
+                        <div id="genderBar"><div id="genderButton"></div></div>
+                    </span><br/>
                     <span class="" id="givennameSpan">
                         {% if form_errors(form.givenname) %}
                             <div id="errorBar">{{ form_errors(form.givenname) }}</div>

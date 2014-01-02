@@ -7,3 +7,15 @@ services:
         arguments: [%fos_user.model.user.class%]
         tags:
             - { name: form.type, alias: bestyear_user_registration }
+
+    bestyear_user.password_changed:
+        class: Bestyear\UserBundle\EventListener\PasswordChangedListener
+        arguments: [ @router ]
+        tags:
+            - { name: kernel.event_subscriber }
+
+    bestyear_user.password_reset:
+        class: Bestyear\UserBundle\EventListener\PasswordResetListener
+        arguments: [ @router ]
+        tags:
+            - { name: kernel.event_subscriber }

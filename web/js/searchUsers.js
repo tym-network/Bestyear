@@ -4,6 +4,7 @@
  */
 
 var num = 0;
+var numResults = -1;
 var searchPanelActivated = false;
 var userPanelActivated = false;
 var currentSearch = "";
@@ -35,14 +36,6 @@ function send(sUrl, oParams) {
  * Handles the search results (from a json)
  */
 function handleResults(json) {
-    num = 0;
-    // Cleaning the tab (if there was a previous search)
-    $("#rightTable").children().remove();
-    $("#leftTable").children().remove();
-    
-    // Delete "No Result" if there were a previous search
-    $("#noresult").remove();
-    
     // Updates the string researched
     $("#searchContent").text(currentSearch);
     
@@ -60,11 +53,41 @@ function handleResults(json) {
         // transition.js
         displayDiv($(".listLeft"));
     }
+    
+    // No previous search
+    if (numResults == -1) {
+        showResults(json);
+    } else if (numResults == 0) {
+        // Delete "No Result" if there were a previous search
+        $("#noresult").animate({"opacity": 0}, 200, function() {
+            $("#noresult").remove();
+            showResults(json);
+        });  
+    } else if (numResults >= 1) {
+        // Cleaning the tab (if there was a previous search)
+        $("#leftTable").animate({"opacity": 0}, 200);
+        $("#rightTable").animate({"opacity": 0}, 200, function() {
+            $("#rightTable").children().remove();
+            $("#leftTable").children().remove();
+            showResults(json);
+        });
+    } else {
+        showResults(json);
+    }
+    
+    
+}
 
+function showResults(json) {
+    var num = 0;
     if (json.length == 0) {
+        numResults = 0;
         htmlUser = "<p id=\"noresult\">Aucun résultat</p>";
         $(htmlUser).appendTo('.userList');
     } else {
+        numResults = 1;
+        $("#leftTable").animate({"opacity": 1}, 400);
+        $("#rightTable").animate({"opacity": 1}, 400);
         $.each(json, function () {
             // Add the support of a picture when it will be implemented
             htmlUser = '<tr id="' + this.id + '" class="userPreview"><td><div class="circle male"><div class="userBigIcon"></div></div></div></div></td>';
@@ -77,14 +100,13 @@ function handleResults(json) {
             }
             num++;
         });
+        
+        // Click on a user displays its full profile
+        $('.userPreview').click(function () {
+            id = $(this).attr('id');
+            searchUser(id);
+        });
     }
-    
-    
-    // Click on a user displays its full profile
-    $('.userPreview').click(function () {
-        id = $(this).attr('id');
-        searchUser(id);
-    });
 }
 
 /*
