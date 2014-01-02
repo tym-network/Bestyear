@@ -9,6 +9,7 @@ var previousStep = null;
 var maximumStep = 1;
 var errors = 0;
 var nbStep = 5;
+var genderSwitch = 0;
 
 /*
  * When enter is pressed, go to the next step
@@ -762,3 +763,28 @@ function loadStep(id) {
                 .animate({"opacity": 1}, "slow", function() {focusFirstInput(id);});
         });
 }
+
+function changeGender() {
+    //Change the switch to the other position
+    var genderButton = $("#genderButton");
+    var genderBar = $("#genderBar");
+    if (genderSwitch === 0) {
+        genderButton.css("left", "87px");
+        genderBar.addClass("femaleSwitch");
+        genderBar.removeClass("maleSwitch");
+        $("#femaleSymbol").addClass("active");
+        $("#maleSymbol").removeClass("active");
+        genderSwitch = 1;
+    } else {
+        genderButton.css("left", "3px");
+        genderBar.addClass("maleSwitch");
+        genderBar.removeClass("femaleSwitch");
+        $("#maleSymbol").addClass("active");
+        $("#femaleSymbol").removeClass("active");
+        genderSwitch = 0;
+    }
+}
+
+$("#genderBar").click(function() {
+    changeGender();
+});

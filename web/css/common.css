@@ -13,6 +13,11 @@
     src: url('../fonts/LigatureSymbols-2.11.eot?') format('eot'), url('../fonts/LigatureSymbols-2.11.woff') format('woff'), url('../fonts/LigatureSymbols-2.11.ttf') format('truetype');
 }
 
+@font-face {
+    font-family: 'MaleFemaleSymbols';
+    src: url('../fonts/fmsymb.eot?') format('eot'), url('../fonts/fmsymb.woff') format('woff'), url('../fonts/fmsymb.ttf') format('truetype');
+}
+
 /**
  * Icon font
  */
@@ -99,6 +104,12 @@
 
 .lock:before {
     content: "\E086";
+}
+
+.genderSymbol {
+  font-family: "MaleFemaleSymbols";
+  font-size: 30px;
+  color: #E6E6E6;
 }
 
 /**
