@@ -30,10 +30,16 @@ class MainController extends Controller
                 $bdateShort = $user->getBirthdate()->format('md');
                 $bdateYear = $user->getBirthdate()->format('Y');
                 $age = $bdateShort > $nowShort ? ($nowYear - $bdateYear - 1) : ($nowYear - $bdateYear);
+                if ($user->getGender() === "f") {
+                    $gender = "female";
+                } else {
+                    $gender = "male";
+                }
                 $birthdayData[] = array(
                     "fullname" => $user->getGivenname() . " " . $user->getFamilyName(),
                     "age" => $age,
                     "id" => $user->getId(),
+                    "gender" => $gender,
                 );
             }
             
@@ -51,10 +57,16 @@ class MainController extends Controller
                 $bdateShort = $user->getBirthdate()->format('md');
                 $bdateYear = $user->getBirthdate()->format('Y');
                 $age = $bdateShort > $nowShort ? ($nowYear - $bdateYear - 1) : ($nowYear - $bdateYear);
+                if ($user->getGender() === "f") {
+                    $gender = "female";
+                } else {
+                    $gender = "male";
+                }
                 $incomingBirthdayData[] = array(
                     "fullname" => $user->getGivenname() . " " . $user->getFamilyName(),
                     "age" => $age,
                     "id" => $user->getId(),
+                    "gender" => $gender,
                 );
             }
             
@@ -105,11 +117,17 @@ class MainController extends Controller
                     $bdateShort = $user->getBirthdate()->format('md');
                     $bdateYear = $user->getBirthdate()->format('Y');
                     $age = $bdateShort > $nowShort ? ($nowYear - $bdateYear - 1) : ($nowYear - $bdateYear);
+                    if ($user->getGender() === "f") {
+                        $gender = "female";
+                    } else {
+                        $gender = "male";
+                    }
                     $data[] = array(
                         "fullname" => $user->getGivenname() . " " . $user->getFamilyName(),
                         "studies" => $user->getTC() . $user->getStudylevel(),
                         "age" => $age,
                         "id" => $user->getId(),
+                        "gender" => $gender,
                     );
                 }
     
@@ -154,8 +172,16 @@ class MainController extends Controller
                     $address2_1 = $user->getStreetNumber2() . " " . $user->getStreet2();
                     $address2_2 = $user->getPostcode2() . " " . $user->getCity2();
                 }
+
+                if ($user->getGender() === "f") {
+                    $gender = "female";
+                } else {
+                    $gender = "male";
+                }
+
                 $data = array(
                  "id" => $user->getId(),
+                 "gender" => $gender,
                  "fullname" => $user->getGivenname() . " " . $user->getFamilyName(),
                  "studies" => $user->getTC() . $user->getStudylevel(),
                  "age" => $user->getBirthdate()->format('d/m/Y') . " (".$age." ans)",

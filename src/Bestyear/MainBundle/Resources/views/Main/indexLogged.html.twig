@@ -27,7 +27,7 @@
                     {% endif %}
                             <td>
                                 <div id="{{ u.id }}" class="birthdayUser">
-                                    <div class="picUser"><span class="icon icon-single user icon-white icon-30"></span></div>
+                                    <div class="picUser {{ u.gender }}"><span class="icon icon-single user icon-white icon-30"></span></div>
                                     <div class="infoUser">{{ u.fullname }}<br/>{{ u.age }} ans</div>
                                 </div>
                             </td>
@@ -52,7 +52,7 @@
                     {% endif %}
                             <td>
                                 <div id="{{ u.id }}" class="birthdayUser">
-                                    <div class="picUser"><span class="icon icon-single user icon-white icon-30"></span></div>
+                                    <div class="picUser {{ u.gender }}"><span class="icon icon-single user icon-white icon-30"></span></div>
                                     <div class="infoUser">{{ u.fullname }}<br/>{{ u.age }} ans</div>
                                 </div>
                             </td>
