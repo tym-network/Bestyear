@@ -24,6 +24,9 @@ class User extends BaseUser
     const BRANCHE_GSM = 'GSM';
     const BRANCHE_GSU = 'GSU';
     
+    const GENDER_MALE = 'm';
+    const GENDER_FEMALE = 'f';
+    
     /**
     * @ORM\Id
     * @ORM\Column(type="integer")
@@ -36,6 +39,12 @@ class User extends BaseUser
      * @Assert\NotBlank(groups={"Registration"})
      */
     protected $username;
+    
+    /**
+     * @ORM\Column(name="gender", type="string", length=1)
+     * @Assert\NotBlank(groups={"Registration"})
+     */
+    protected $gender;
     
     /**
      * @ORM\Column(name="givenname", type="string", length=255)
@@ -224,6 +233,32 @@ class User extends BaseUser
     public function getUsername()
     {
         return $this->username;
+    }
+    
+    /**
+     * Set gender
+     *
+     * @param string $gender
+     * @return User
+     */
+    public function setGender($gender)
+    {
+        if (!in_array($gender, array(self::GENDER_MALE, self::GENDER_FEMALE))) {
+            throw new \InvalidArgumentException("Genre invalide");
+        }
+        $this->gender = $gender;
+    
+        return $this;
+    }
+
+    /**
+     * Get Gender
+     *
+     * @return string 
+     */
+    public function getGender()
+    {
+        return $this->gender;
     }
 
     /**
