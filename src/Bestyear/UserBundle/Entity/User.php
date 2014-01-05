@@ -42,38 +42,38 @@ class User extends BaseUser
     
     /**
      * @ORM\Column(name="gender", type="string", length=1)
-     * @Assert\NotBlank(groups={"Registration"})
+     * @Assert\NotBlank(groups={"Registration", "Profile"})
      */
     protected $gender;
     
     /**
      * @ORM\Column(name="givenname", type="string", length=255)
-     * @Assert\NotBlank(groups={"Registration"})
+     * @Assert\NotBlank(groups={"Registration", "Profile"})
      */
     protected $givenname;
     
     /**
      * @ORM\Column(name="familyname", type="string", length=255)
-     * @Assert\NotBlank(groups={"Registration"})
+     * @Assert\NotBlank(groups={"Registration", "Profile"})
      */
     protected $familyname;
     
     /**
      * @ORM\Column(name="birthdate", type="date")
-     * @Assert\NotBlank(groups={"Registration"})
+     * @Assert\NotBlank(groups={"Registration", "Profile"})
      * @Assert\Date()
      */
     protected $birthdate;
     
     /**
      * @ORM\Column(name="TC", type="string", length=40)
-     * @Assert\NotBlank(groups={"Registration"})
+     * @Assert\NotBlank(groups={"Registration", "Profile"})
      */
     protected $TC;
     
     /**
      * @ORM\Column(name="studylevel", type="string", length=3)
-     * @Assert\NotBlank(groups={"Registration"})
+     * @Assert\NotBlank(groups={"Registration", "Profile"})
      */
     protected $studylevel;
         
@@ -89,7 +89,7 @@ class User extends BaseUser
     
     /**
      * @ORM\Column(name="postcode1", type="string", length=5, nullable=true)
-     * @Assert\Regex("#^[0-9]{5}$#")
+     * @Assert\Regex(pattern="#^[0-9]{5}$#", message="Format invalide (5 chiffres)", groups={"Registration", "Profile"})
      */
     protected $postcode1;
         
@@ -115,7 +115,7 @@ class User extends BaseUser
     
     /**
      * @ORM\Column(name="postcode2", type="string", length=5, nullable=true)
-     * @Assert\Regex("#^[0-9]{5}$#")
+     * @Assert\Regex(pattern="#^[0-9]{5}$#", message="Format invalide (5 chiffres)", groups={"Registration", "Profile"})
      */
     protected $postcode2;
         
@@ -146,19 +146,19 @@ class User extends BaseUser
     
     /**
      * @ORM\Column(name="emailoptional", type="string", length=255, nullable=true)
-     * @Assert\Email(message = "Email invalide", groups={"Registration"})
+     * @Assert\Email(message = "Email invalide", groups={"Registration", "Profile"})
      */
     protected $emailoptional;
     
     /**
      * @ORM\Column(name="facebook", type="string", length=255, nullable=true)
-     * @Assert\Regex("#^(https?:\/\/)?(www\.)?facebook\.com/[a-z.-1-9_]+$#")
+     * @Assert\Regex(pattern="#^(https?:\/\/)?(www\.)?facebook\.com/[a-z.-1-9_]+$#", message="Format invalide", groups={"Registration", "Profile"})
      */
     protected $facebook;
     
     /**
      * @ORM\Column(name="twitter", type="string", length=255, nullable=true)
-     * @Assert\Regex("#(https?:\/\/)?(www\.)?twitter\.com/[a-zA-Z.-1-9_]+$#")
+     * @Assert\Regex(pattern="#(https?:\/\/)?(www\.)?twitter\.com/[a-zA-Z.-1-9_]+$#", message="Format invalide", groups={"Registration", "Profile"})
      */
     protected $twitter;
         
@@ -310,13 +310,16 @@ class User extends BaseUser
     /**
      * Set birthdate
      *
-     * @param \DateTime $birthdate
-     * @return User
+     * @param string $birthdate
+     * @return \DateTime
      */
     public function setBirthdate($birthdate)
     {
-        $this->birthdate = new \DateTime($birthdate);
-    
+        if ($birthdate instanceof \DateTime) {
+            $this->birthdate = $birthdate;
+        } else {
+            $this->birthdate = new \DateTime($birthdate);
+        }
         return $this;
     }
 

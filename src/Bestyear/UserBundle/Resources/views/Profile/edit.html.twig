@@ -29,48 +29,19 @@
             <div id="numStep4" class="numbers">4</div>
         </div>
     </a>
-    <a id="link5" class="stepLink" href="#">
-        <div id="bubble5" class="bubble">
-            <div id="numStep5" class="numbers">5</div>
-        </div>
-    </a>
 </div>
 {% endblock %}
 
 {% block content %}
-<h1>Inscription</h1>
+<h1>Éditer le profil</h1>
 <div class="line"></div>
 <div id="form">
-    <form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST">
+    <form action="{{ path('fos_user_profile_edit') }}" {{ form_enctype(form) }} method="POST">
         {{ form_start(form) }}
         {% if form_errors(form) %}
         <div id="errorBar">{{ form_errors(form) }}</div>
         {% endif %}
         <div id="step1">
-            <span class="" id="usernameSpan">
-                {% if form_errors(form.username) %}
-                <div id="errorBar">{{ form_errors(form.username) }}</div>
-                {% endif %}
-                {{ form_widget(form.username, {'attr': {'placeholder': 'Login UTC'} }) }}@etu.utc.fr
-                <div class="error"></div>
-            </span><br/>
-            <span class="" id="passwordSpan">
-                {% if form_errors(form.plainPassword.first) %}
-                <div id="errorBar">{{ form_errors(form.plainPassword.first) }}</div>
-                {% endif %}
-                {{ form_widget(form.plainPassword.first, {'attr': {'placeholder': 'Mot de passe'} }) }}
-                <div class="error"></div>
-            </span><br/>
-            <span class="" id="password2Span">
-                {% if form_errors(form.plainPassword.second) %}
-                <div id="errorBar">{{ form_errors(form.plainPassword.second) }}</div>
-                {% endif %}
-                {{ form_widget(form.plainPassword.second, {'attr': {'placeholder': 'Confirmer votre mot de passe'} }) }}
-                <div class="error"></div>
-            </span><br/>
-            <input type="button" class="button nextStep" name="nextStep" value="Étape suivante"/>
-        </div>
-        <div id="step2">
             {{ form_widget(form.gender) }}
             <div id="genderSwitch">
                 <span class="genderSymbol active" id="maleSymbol"></span>
@@ -113,7 +84,7 @@
             </span><br/>
             <input type="button" class="button nextStep" name="nextStep" value="Étape suivante"/>
         </div>
-        <div id="step3">
+        <div id="step2">
             <h2>Adresse "permanente" : </h2>
             {% if form_errors(form.streetnumber1) or 
             form_errors(form.street1) or 
@@ -182,7 +153,7 @@
             </span><br/>
             <input type="button" class="button nextStep" name="nextStep" value="Étape suivante"/>
         </div>
-        <div id="step4">
+        <div id="step3">
             <span class="" id="phone1Span">
                 {% if form_errors(form.phone1) %}
                 <div id="errorBar">{{ form_errors(form.phone1) }}</div>
@@ -227,7 +198,7 @@
             </span><br/>
             <input type="button" class="button nextStep" name="nextStep" value="Étape suivante"/>
         </div>
-        <div id="step5">
+        <div id="step4">
             <h2>TN05 : </h2>
             {% if form_errors(form.tn05_job) or form_errors(form.tn05_job) %}
             <div id="errorBar">
@@ -308,6 +279,6 @@
 <script src="{{ asset('bundles/bestyearuser/js/jquery.ui.datepicker-fr.js') }}"></script>
 <script src="{{ asset('bundles/bestyearuser/js/jquery.qtip.js') }}"></script>
 <script src="{{ asset('bundles/bestyearuser/js/formHandler.js') }}"></script>
-<script src="{{ asset('bundles/bestyearuser/js/register.js') }}"></script>
+<script src="{{ asset('bundles/bestyearuser/js/editProfile.js') }}"></script>
 <script src="{{ asset('bundles/bestyearuser/js/gender.js') }}"></script>
 {% endblock %}

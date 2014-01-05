@@ -7,6 +7,12 @@ services:
         arguments: [%fos_user.model.user.class%]
         tags:
             - { name: form.type, alias: bestyear_user_registration }
+            
+    bestyear_user.profile.form.type:
+        class: Bestyear\UserBundle\Form\Type\ProfileFormType
+        arguments: [%fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: bestyear_user_profile }
 
     bestyear_user.password_changed:
         class: Bestyear\UserBundle\EventListener\PasswordChangedListener
