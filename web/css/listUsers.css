@@ -7,6 +7,16 @@
     margin-bottom: 20px;
 }
 
+.userList:before,
+.userList:after {
+    content: " ";
+    display: table;
+}
+
+.userList:after {
+    clear: both;
+}
+
 #leftColumn, #rightColumn {
     float: left;
     width: 425px;

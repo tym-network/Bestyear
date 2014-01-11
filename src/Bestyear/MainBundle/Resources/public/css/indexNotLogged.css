@@ -47,6 +47,7 @@ h2 {
     color: white;
     border: none;
     margin-bottom: 30px;
+    outline: none;
     -webkit-transition: background-color 0.3s linear;
     -o-transition: background-color 0.3s linear;
     -moz-transition: background-color 0.3s linear;
@@ -60,4 +61,9 @@ h2 {
 
 .center {
     text-align: center;
+}
+
+.center a {
+    text-decoration: none;
+    outline: none;
 }

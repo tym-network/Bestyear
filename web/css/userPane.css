@@ -1,8 +1,8 @@
 #userPane {
-    width: 170px;
+    width: 190px;
     background: rgba(0,0,0,0.75);
     position: absolute;
-    margin-left: 830px;
+    margin-left: 810px;
     margin-top: 80px;
     z-index: 1;
     -webkit-border-radius: 8px;
@@ -19,7 +19,7 @@
 }
 
 #userPane li {
-    width: 170px;
+    width: 190px;
     font-family: "MavenProLight", "Century Gothic";
     font-size: 18px;
     color: white;
