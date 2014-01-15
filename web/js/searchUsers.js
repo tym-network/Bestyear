@@ -90,7 +90,7 @@ function showResults(json) {
         $("#rightTable").animate({"opacity": 1}, 400);
         $.each(json, function () {
             // Add the support of a picture when it will be implemented
-            htmlUser = '<tr id="' + this.id + '" class="userPreview"><td><div class="circle ' + this.gender + '"><div class="userBigIcon"></div></div></div></div></td>';
+            htmlUser = '<tr id="' + this.id + '" class="userPreview"><td><div class="circle ' + this.gender + '"><span class="icon icon-single user icon-white icon-60 userBigIcon"></span></div></div></div></td>';
             htmlUser += '<td><div class="infosSummary"><div class="name">' + this.fullname + '</div><div class="other">' + this.studies + ' - ' +  this.age + ' ans</div></div></td></tr>';
             
             if (num%2 == 0) {

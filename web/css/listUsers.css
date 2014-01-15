@@ -76,12 +76,8 @@
 }
 
 .userList .userBigIcon {
-    width: 45px;
-    height: 41px;
-    background: url("../images/user-icon-big.png") no-repeat;
-    position: relative;
-    left: 32px;
-    top: 34px;
+    text-align: center;
+    line-height: 110px;
 }
 
 .userPreview {

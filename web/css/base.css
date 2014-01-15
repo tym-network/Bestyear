@@ -120,15 +120,6 @@
     background: #24c761;
 }
 
-#listIcon {
-    width: 39px;
-    height: 31px;
-    background: url("../images/list-icon.png") no-repeat;
-    position: relative;
-    top: 25px;
-    left: 25px;
-}
-
 .userLeft {
     width: 89px;
     height: 80px;
