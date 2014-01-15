@@ -99,19 +99,19 @@
     top: 0;
 }
 
+#leftBar a {
+    text-decoration: none;
+}
+
+.leftButton .icon {
+    text-align: center;
+    line-height: 80px;
+}
+
 .homeLeft {
     width: 89px;
     height: 80px;
     background: #22c2cc;
-}
-
-#homeIcon {
-    width: 40px;
-    height: 35px;
-    background: url("../images/home-icon.png") no-repeat;
-    position: relative;
-    top: 22px;
-    left: 24px;
 }
 
 .listLeft {
@@ -189,6 +189,7 @@
 }
 
 #leftWhiteArrow {
+    position: absolute;
     width: 17px;
     height: 40px;
     background: url("../images/leftmenu-arrow.png") no-repeat;
