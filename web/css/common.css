@@ -118,6 +118,18 @@
     content: "\E084";
 }
 
+.gear:before {
+    content: "\E055";
+}
+
+.pencil:before {
+    content: "\E09f";
+}
+
+.logout:before {
+    content: "\E098";
+}
+
 .genderSymbol {
   font-family: "MaleFemaleSymbols";
   font-size: 30px;

@@ -138,7 +138,7 @@ function displayUser(json) {
     // Picture and basic info
     htmlCode = '<div id="userNoPicture" class="';
     htmlCode += json.gender;
-    htmlCode += '"><div id="userNoPictureIcon"></div></div><div id="identity"><span id="name">';
+    htmlCode += '"><span class="icon icon-single user icon-white icon-60"></span></div><div id="identity"><span id="name">';
     htmlCode += json.fullname;
     htmlCode += '</span><br/><span id="birthdate">';
     htmlCode += json.age;

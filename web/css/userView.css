@@ -26,12 +26,9 @@
     position: absolute;
 }
 
-#userNoPictureIcon {
-    width: 45px;
-    height: 41px;
-    margin-left: 27px;
-    margin-top: 29px;
-    background: url("../images/user-icon-big.png") no-repeat;
+#userNoPicture .icon{
+    text-align: center;
+    line-height: 100px;
 }
 
 .female {

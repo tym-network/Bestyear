@@ -44,31 +44,9 @@
     cursor: pointer;
 }
 
-#userIcon {
-    float: left;
-    width: 21px;
-    height: 19px;
-    background: url("../images/user-icon-white.png") no-repeat;
-    margin-left: 20px;
-    margin-right: 5px;
-}
-
-#gearIcon {
-    float: left;
-    width: 21px;
-    height: 21px;
-    background: url("../images/gear-icon-white.png") no-repeat;
-    margin-left: 20px;
-    margin-right: 5px;
-}
-
-#logoutIcon {
-    float: left;
-    width: 20px;
-    height: 21px;
-    background: url("../images/logout-icon-white.png") no-repeat;
-    margin-left: 20px;
-    margin-right: 5px;
+.text .icon {
+    margin: 0 10px 0 20px;
+    vertical-align: middle;
 }
 
 .text {
