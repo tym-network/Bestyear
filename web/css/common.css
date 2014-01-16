@@ -65,6 +65,10 @@
     font-size: 32px;
 }
 
+.icon-40:before {
+    font-size: 40px;
+}
+
 .icon-50:before {
     font-size: 50px;
 }
@@ -114,6 +118,10 @@
     content: "\E072";
 }
 
+.school:before {
+    content: "\E174";
+}
+
 .list:before {
     content: "\E084";
 }
@@ -128,6 +136,26 @@
 
 .logout:before {
     content: "\E098";
+}
+
+.phone:before {
+    content: "\E100";
+}
+
+.compass:before {
+    content: "\E036";
+}
+
+.smartphone:before {
+    content: "\E078";
+}
+
+.facebook:before {
+    content: "\E047";
+}
+
+.twitter:before {
+    content: "\E12f";
 }
 
 .genderSymbol {

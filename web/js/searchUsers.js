@@ -150,11 +150,11 @@ function displayUser(json) {
     htmlCode += '<div id="socialNetworks">';
     if (json.facebook != null) {
         htmlCode += '<a href="' + json.facebook + '">';
-        htmlCode += '<div id="facebook" class="socialBubble"><div id="facebookIcon"></div></div></a>';
+        htmlCode += '<div id="facebook" class="socialBubble"><span class="icon icon-single facebook icon-white icon-30"></span></div></a>';
     }
     if (json.twitter != null) {
         htmlCode += '<a href="' + json.twitter + '">';
-        htmlCode += '<div id="twitter" class="socialBubble"><div id="twitterIcon"></div></div></a>';
+        htmlCode += '<div id="twitter" class="socialBubble"><span class="icon icon-single twitter icon-white icon-30"></span></div></a>';
     } 
     htmlCode += '</div>';
     
@@ -192,11 +192,11 @@ function displayUser(json) {
         }
         htmlCode += '<div class="row '  + column + '">';
         htmlCode += '<div id="couronne' + nbPhones + '" class="couronne">';
-        htmlCode += '<div id="phoneBigIcon"></div></div><div class="line">';
+        htmlCode += '<span class="icon icon-single phone icon-grey icon-30"></span></div><div class="line">';
         num = 1;
         $.each(phones, function () {
             htmlCode += '<div class="line' + nbPhones + '-' + num + '">';
-            htmlCode += '<div class="' + this.icon + 'Icon"></div>';
+            htmlCode += '<span class="icon ' + this.icon + ' icon-grey icon-24"></span>';
             htmlCode += '<div class="info">' + this.num + '</div></div>';
             num++;
         });
@@ -225,11 +225,11 @@ function displayUser(json) {
         }
         htmlCode += '<div class="row '  + column + '">';
         htmlCode += '<div id="couronne' + nbEmails + '" class="couronne">';
-        htmlCode += '<div id="mailBigIcon"></div></div><div class="line">';
+        htmlCode += '<span class="icon icon-single mail icon-grey icon-30"></span></div><div class="line">';
         num = 1;
         $.each(emails, function () {
             htmlCode += '<div class="line' + nbEmails + '-' + num + '">';
-            htmlCode += '<div class="' + this.icon + 'Icon"></div>';
+            htmlCode += '<span class="icon ' + this.icon + ' icon-grey icon-24"></span>';
             htmlCode += '<div class="info"><a href="mailto:' + this.address + '" target="_blank" class="link">' + this.address + '</a></div></div>';
             num++;
         });
@@ -263,11 +263,11 @@ function displayUser(json) {
         }
         htmlCode += '<div class="row '  + column + '">';
         htmlCode += '<div id="couronne' + nbAddresses + '" class="couronne">';
-        htmlCode += '<div id="compassBigIcon"></div></div><div class="line address">';
+        htmlCode += '<span class="icon icon-single compass icon-grey icon-30"></span></div><div class="line address">';
         num = 1;
         $.each(addresses, function () {
             htmlCode += '<div class="line' + nbAddresses + '-' + num + '">';
-            htmlCode += '<div class="' + this.icon + 'Icon"></div>';
+            htmlCode += '<span class="icon ' + this.icon + ' icon-grey icon-24"></span>';
             htmlCode += '<div class="info"><a href="https://maps.google.fr/?q=' + this.address1 + ' ' + this.address2 +'" class="link" target="_blank">' + this.address1 + '<br/>' + this.address2 + '</a></div></div>';
             num++;
         });
