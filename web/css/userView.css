@@ -90,15 +90,6 @@
     background: #00abee;
 }
 
-#twitterIcon {
-    width: 27px;
-    height: 21px;
-    background: url("../images/userProfile/twitter-icon.png") no-repeat;
-    position: relative;
-    top: 25px;
-    left: 21px;
-}
-
 #facebook:hover, #twitter:hover {
     background: #434343;
 }

@@ -16,19 +16,18 @@ var genderSwitch = 0;
  
 $(document).keypress(function (e) {
     // If key "Enter" is pressed
-    if (e.which == 13) {
+    if (e.which === 13) {
         if (currentStep < nbStep) {
             nextStep();
-        } else if (currentStep == nbStep) {
+        } else if (currentStep === nbStep) {
             submitForm();
         }
-        
     }
 });
 
 $(".nextStep").keypress(function (e) {
     // If the user presses "Enter" while the focus is on the button
-    if (e.which == 13) {
+    if (e.which === 13) {
         nextStep();
         return false;
     }
@@ -36,7 +35,7 @@ $(".nextStep").keypress(function (e) {
 
 $(".submit").keypress(function (e) {
     // If the user presses "Enter" while the focus is on the button
-    if (e.which == 13) {
+    if (e.which === 13) {
         submitForm();
         return false;
     }
@@ -581,29 +580,10 @@ $('.nextStep').click(function() {
     nextStep();
 });
 
-$('.submit').click(function() {
-    submitForm();
-});
-
-// When a user clicks on one of the bubble in the left
-$('.stepLink').click(function() {
-    id = parseInt($(this).attr('id').replace('link',''));
-    if (id <= maximumStep) {
-        loadStep(id);
-    }
-})
-
 function nextStep() {
     if (currentStep+1 <= nbStep) {
-        if (checkStep(currentStep)) {
-            newStep = currentStep+1;
-            loadStep(newStep);
-            if (previousStep != null) {
-                previousBubble = $('#bubble'+previousStep);
-                previousBubble.addClass('complete');
-                previousBubble.removeClass('current');
-            }
-        }
+        newStep = currentStep+1;
+        loadStep(newStep);
     }
 }
 
@@ -613,54 +593,41 @@ function submitForm() {
     }
 }
 
-function focusFirstInput(id) {
-    switch (id) {
-        case 1:
-            $("#usernameSpan input").focus(); 
-            break;
-        case 2:
-            $("#givennameSpan input").focus(); 
-            break;
-        case 3:
-            $("#streetnumber1").focus(); 
-            break;
-        case 4:
-            $("#phone1").focus(); 
-            break;
-        case 5:
-            $("#tn05_job").focus(); 
-            break;
-    }
-}
-
 function loadStep(id) {
-    // Set the new currentStep
-    if (id != currentStep) {
-        previousStep = currentStep;
+    if (checkStep(currentStep)) {
+        // Set the new currentStep
+        if (id !== currentStep) {
+            previousStep = currentStep;
+        }
+        currentStep = id;
+        
+        if (previousStep != null) {
+            previousBubble = $('#bubble'+previousStep);
+            previousBubble.addClass('complete');
+            previousBubble.removeClass('current');
+        }
+        
+        currentBubble = $('#bubble'+id);
+        if (!(currentBubble.hasClass('complete') || currentBubble.hasClass('errorBubble'))) {
+            currentBubble.addClass('current');
+        }
+        // Move the arrow
+        newArrowpos = 16+(id-1)*64;
+        $('#leftWhiteArrow')
+            .stop()
+            .animate({"marginTop": newArrowpos + "px"}, 400);
+        // Hide the previous div and show the correct one
+        previousDiv = $('#step' + previousStep);
+        previousDiv
+            .stop()
+            .animate({"opacity": 0},"slow", function() { 
+                previousDiv.hide();
+                currentDiv = $('#step' + id);
+                // Display the new one
+                currentDiv
+                    .stop()
+                    .show()
+                    .animate({"opacity": 1}, "slow", function() {focusFirstInput(id);});
+            });
     }
-    currentStep=id;
-    if (currentStep > maximumStep) {
-        // Change the class of the div according to its state
-        maximumStep = currentStep;
-        maximumBubble = $('#bubble'+id);
-        maximumBubble.addClass('current');
-    }
-    // Move the arrow
-    newArrowpos = 16+(id-1)*64;
-    $('#leftWhiteArrow')
-        .stop()
-        .animate({"marginTop": newArrowpos + "px"}, 400);
-    // Hide the previous div and show the correct one
-    previousDiv = $('#step' + previousStep);
-    previousDiv
-        .stop()
-        .animate({"opacity": 0},"slow", function() { 
-            previousDiv.hide();
-            currentDiv = $('#step' + id);
-            // Display the new one
-            currentDiv
-                .stop()
-                .show()
-                .animate({"opacity": 1}, "slow", function() {focusFirstInput(id);});
-        });
 }
