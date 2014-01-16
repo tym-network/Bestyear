@@ -2,8 +2,6 @@
 
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('bundles/bestyearmain/css/indexNotLogged.css') }}" type="text/css"/>
-    <link rel="stylesheet" href="{{ asset('bundles/bestyearmain/css/listUsers.css') }}" type="text/css"/>
-    <link rel="stylesheet" href="{{ asset('bundles/bestyearmain/css/userView.css') }}" type="text/css"/>
 {% endblock %}
 
 {% block topBar %}
@@ -28,8 +26,4 @@
         <a href="{{ path('fos_user_registration_register') }}"><input type="button" class="button" value="Je m'inscris"/></a>
     </div>
     </div>
-{% endblock %}
-
-{% block javascripts %}
-    <script src="{{ asset('bundles/bestyearmain/js/transition.js') }}"></script>
 {% endblock %}
