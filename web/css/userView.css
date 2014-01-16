@@ -26,12 +26,9 @@
     position: absolute;
 }
 
-#userNoPictureIcon {
-    width: 45px;
-    height: 41px;
-    margin-left: 27px;
-    margin-top: 29px;
-    background: url("../images/user-icon-big.png") no-repeat;
+#userNoPicture .icon{
+    text-align: center;
+    line-height: 100px;
 }
 
 .female {
@@ -83,13 +80,9 @@
     background: #00478d;
 }
 
-#facebookIcon {
-    width: 23px;
-    height: 23px;
-    background: url("../images/userProfile/facebook-icon.png") no-repeat;
-    position: relative;
-    top: 23px;
-    left: 23px;
+.socialBubble .icon {
+    text-align: center;
+    line-height: 70px;
 }
 
 #twitter {
@@ -116,8 +109,9 @@
 }
 
 .couronne {
-    width: 79px;
+    width: 76px;
     height: 76px;
+    padding-right: 3px;
     margin-top: 20px;
     float:left;
     clear:left; 
@@ -135,63 +129,18 @@
     background: url("../images/userProfile/couronne3.png") no-repeat;
 }
 
-#phoneBigIcon {
-    width: 24px;
-    height: 25px;
-    background: url("../images/userProfile/phone-icon.png") no-repeat;
-    position: relative;
-    top: 25px;
-    left: 26px;
+.couronne .icon {
+    text-align: center;
+    line-height: 78px;
 }
 
-#mailBigIcon {
-    width: 26px;
-    height: 19px;
-    background: url("../images/userProfile/mail-icon.png") no-repeat;
-    position: relative;
-    top: 28px;
-    left: 25px;
+.line .icon {
+    position: absolute;
+    line-height: 17px;
 }
 
-#compassBigIcon {
-    width: 25px;
-    height: 25px;
-    background: url("../images/userProfile/compass-icon.png") no-repeat;
-    position: relative;
-    top: 25px;
-    left: 26px;
-}
-
-.homeIcon {
-    width: 21px;
-    height: 19px;
-    background: url("../images/userProfile/home-icon.png") no-repeat;
-    float:left;
-    margin-top: -1px;
-}
-
-.schoolIcon {
-    width: 22px;
-    height: 17px;
-    background: url("../images/userProfile/school-icon.png") no-repeat;
-    float:left;
-}
-
-.smartphoneIcon {
-    width: 14px;
-    height: 22px;
-    background: url("../images/userProfile/smartphone-icon.png") no-repeat;
-    float:left;
-    margin-top: -3px;
-    margin-left: 3px;
-}
-
-.gplusIcon {
-    width: 19px;
-    height: 19px;
-    background: url("../images/userProfile/gplus-icon.png") no-repeat;
-    float:left;
-    margin-top: -1px;
+.line .smartphone {
+    margin-left: 4px;
 }
 
 .info {

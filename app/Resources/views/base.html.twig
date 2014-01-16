@@ -17,21 +17,46 @@
         <div id="header">
             <a href="{{ path('bestyear_main_homepage') }}" id="home"><div id="logo"></div></a>
             {% block topBar %}
-                <div id="searchBar">
-                    <input type="text" name="searchUser" id="searchUser">
-                    <span class="icon search icon-30" id="searchIcon"></span>
-                </div>
-                <div id="myProfile">
-                    <div id="userName">{{ app.user.givenname }} {{ app.user.familyname }}</div>
-                    <div id="userLogo"><span class="icon icon-single user icon-white icon-30"></span></div>
-                </div>
-                <div id="userPane">
-                    <ul>
-                        <a href="{{ path('fos_user_profile_show') }}"><li><div id="userIcon"></div><div class="text">Mon profil</div></li></a>
-                        <a href="{{ path('fos_user_change_password') }}"><li><div id="gearIcon"></div><div class="text">Mot de passe</div></li></a>
-                        <a href="{{ path('fos_user_security_logout') }}"><li><div id="logoutIcon"></div><div class="text">Déconnexion</div></li></a>
-                    </ul>
-                </div>
+            <div id="searchBar">
+                <input type="text" name="searchUser" id="searchUser">
+                <span class="icon search icon-30" id="searchIcon"></span>
+            </div>
+            <div id="myProfile">
+                <div id="userName">{{ app.user.givenname }} {{ app.user.familyname }}</div>
+                <div id="userLogo"><span class="icon icon-single user icon-white icon-30"></span></div>
+            </div>
+            <div id="userPane">
+                <ul>
+                    <a href="{{ path('fos_user_profile_show') }}">
+                        <li>
+                            <div class="text">
+                                <span class="icon user icon-white icon-24"></span>Mon profil
+                            </div>
+                        </li>
+                    </a>
+                    <a href="{{ path('fos_user_change_password') }}">
+                        <li>
+                            <div class="text">
+                                <span class="icon gear icon-white icon-24"></span>Mot de passe
+                            </div>
+                        </li>
+                    </a>
+                    <a href="{{ path('fos_user_profile_edit') }}">
+                        <li>
+                            <div class="text">
+                                <span class="icon pencil icon-white icon-24"></span>Éditer mon profil
+                            </div>
+                        </li>
+                    </a>
+                    <a href="{{ path('fos_user_security_logout') }}">
+                        <li>
+                            <div class="text">
+                                <span class="icon logout icon-white icon-24"></span>Déconnexion
+                            </div>
+                        </li>
+                    </a>
+                </ul>
+            </div>
             {% endblock %}
         </div>
         <div id="layout">
@@ -41,12 +66,12 @@
                 {% block leftBar %}
                 <a href="#home">
                     <div id="left1" class="leftButton homeLeft">
-                        <div id="homeIcon"></div>
+                        <span class="icon icon-single home icon-white icon-50"></span>
                     </div>
                 </a>
                 <a href="#list">
                     <div id="left2" class="leftButton listLeft">
-                        <div id="listIcon"></div>
+                        <span class="icon icon-single list icon-white icon-50"></span>
                     </div>
                 </a>
                 <a href="#user">
@@ -55,7 +80,7 @@
                     </div>
                 </a>
                 {% endblock %}
-
+                
             </div>
             <div id="content">
                 {% block content %}{% endblock %}

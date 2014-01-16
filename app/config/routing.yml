@@ -2,6 +2,10 @@ bestyear_main:
     resource: "@BestyearMainBundle/Resources/config/routing.yml"
     prefix:   /
 
+bestyear_passwordchanged:
+    resource: "@BestyearUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
 

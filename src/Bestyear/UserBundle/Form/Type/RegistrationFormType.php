@@ -34,6 +34,7 @@ class RegistrationFormType extends AbstractType
             ->add('email', 'hidden', array('label' => 'form.email', 'translation_domain' => 'FOSUserBundle'));
         
         // Custom fields
+        $builder->add('gender', 'hidden', array('data' => 'm'));
         $builder->add('givenname');
         $builder->add('familyname');
         $builder->add('birthdate', 'text');

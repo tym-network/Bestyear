@@ -18,13 +18,13 @@ var leftHeight = 80;
 function displayDiv(leftButton) {
     // Determines the div's number from the id.
     var newNum = leftButton.attr("id");
-    var newNum = newNum.substring(4, newNum.length);
-    var marginTop = 20 + (newNum-1)*leftHeight;
+    newNum = newNum.substring(4, newNum.length);
+    var marginTop = 20 + leftButton.position().top;
     
     // General variables
     var currentDiv = $("#div" + currentNum);
     var newDiv = $("#div" + newNum);
-
+    
     // Move the arrow
     leftArrow
         .stop()

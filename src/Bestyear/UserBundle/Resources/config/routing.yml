@@ -1,0 +1,7 @@
+bestyear_password_changed:
+    pattern:  /profile/password-changed
+    defaults: { _controller: BestyearUserBundle:PasswordChanged:passwordChanged }
+
+bestyear_password_reset:
+    pattern:  /resetting/password-reset
+    defaults: { _controller: BestyearUserBundle:PasswordReset:passwordReset }

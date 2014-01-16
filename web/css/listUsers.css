@@ -7,6 +7,16 @@
     margin-bottom: 20px;
 }
 
+.userList:before,
+.userList:after {
+    content: " ";
+    display: table;
+}
+
+.userList:after {
+    clear: both;
+}
+
 #leftColumn, #rightColumn {
     float: left;
     width: 425px;
@@ -66,12 +76,8 @@
 }
 
 .userList .userBigIcon {
-    width: 45px;
-    height: 41px;
-    background: url("../images/user-icon-big.png") no-repeat;
-    position: relative;
-    left: 32px;
-    top: 34px;
+    text-align: center;
+    line-height: 110px;
 }
 
 .userPreview {

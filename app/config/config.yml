@@ -78,6 +78,9 @@ fos_user:
             type: bestyear_user_registration
         confirmation:
             enabled: true
+    profile:
+        form:
+            type: bestyear_user_profile
 
 services:
     user_bundle.listener.user_registration:

@@ -25,10 +25,19 @@
     height: 37px;
     padding-left: 10px;
     padding-top: 5px;
-    background: #22c2cc;
+    
     -webkit-border-radius: 7px;
     -moz-border-radius: 7px;
     border-radius: 7px;
+    border: none;
+}
+
+.birthdayUsers .picUser.male {
+    background: #22c2cc;
+}
+
+.birthdayUsers .picUser.female {
+    background: #e61aa0;
 }
 
 .birthdayUsers .infoUser {
@@ -47,6 +56,7 @@
     -o-transition: background 0.5s ease;
     -moz-transition: background 0.5s ease;
     transition: background 0.5s ease;
+    cursor: pointer;
 }
 
 .birthdayUser:hover {

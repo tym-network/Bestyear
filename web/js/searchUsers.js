@@ -4,6 +4,7 @@
  */
 
 var num = 0;
+var numResults = -1;
 var searchPanelActivated = false;
 var userPanelActivated = false;
 var currentSearch = "";
@@ -35,14 +36,6 @@ function send(sUrl, oParams) {
  * Handles the search results (from a json)
  */
 function handleResults(json) {
-    num = 0;
-    // Cleaning the tab (if there was a previous search)
-    $("#rightTable").children().remove();
-    $("#leftTable").children().remove();
-    
-    // Delete "No Result" if there were a previous search
-    $("#noresult").remove();
-    
     // Updates the string researched
     $("#searchContent").text(currentSearch);
     
@@ -60,14 +53,44 @@ function handleResults(json) {
         // transition.js
         displayDiv($(".listLeft"));
     }
+    
+    // No previous search
+    if (numResults == -1) {
+        showResults(json);
+    } else if (numResults == 0) {
+        // Delete "No Result" if there were a previous search
+        $("#noresult").animate({"opacity": 0}, 200, function() {
+            $("#noresult").remove();
+            showResults(json);
+        });  
+    } else if (numResults >= 1) {
+        // Cleaning the tab (if there was a previous search)
+        $("#leftTable").animate({"opacity": 0}, 200);
+        $("#rightTable").animate({"opacity": 0}, 200, function() {
+            $("#rightTable").children().remove();
+            $("#leftTable").children().remove();
+            showResults(json);
+        });
+    } else {
+        showResults(json);
+    }
+    
+    
+}
 
+function showResults(json) {
+    var num = 0;
     if (json.length == 0) {
+        numResults = 0;
         htmlUser = "<p id=\"noresult\">Aucun résultat</p>";
         $(htmlUser).appendTo('.userList');
     } else {
+        numResults = 1;
+        $("#leftTable").animate({"opacity": 1}, 400);
+        $("#rightTable").animate({"opacity": 1}, 400);
         $.each(json, function () {
             // Add the support of a picture when it will be implemented
-            htmlUser = '<tr id="' + this.id + '" class="userPreview"><td><div class="circle male"><div class="userBigIcon"></div></div></div></div></td>';
+            htmlUser = '<tr id="' + this.id + '" class="userPreview"><td><div class="circle ' + this.gender + '"><span class="icon icon-single user icon-white icon-60 userBigIcon"></span></div></div></div></td>';
             htmlUser += '<td><div class="infosSummary"><div class="name">' + this.fullname + '</div><div class="other">' + this.studies + ' - ' +  this.age + ' ans</div></div></td></tr>';
             
             if (num%2 == 0) {
@@ -77,14 +100,13 @@ function handleResults(json) {
             }
             num++;
         });
+        
+        // Click on a user displays its full profile
+        $('.userPreview').click(function () {
+            id = $(this).attr('id');
+            searchUser(id);
+        });
     }
-    
-    
-    // Click on a user displays its full profile
-    $('.userPreview').click(function () {
-        id = $(this).attr('id');
-        searchUser(id);
-    });
 }
 
 /*
@@ -114,7 +136,9 @@ function displayUser(json) {
     }
     
     // Picture and basic info
-    htmlCode = '<div id="userNoPicture" class="male"><div id="userNoPictureIcon"></div></div><div id="identity"><span id="name">';
+    htmlCode = '<div id="userNoPicture" class="';
+    htmlCode += json.gender;
+    htmlCode += '"><span class="icon icon-single user icon-white icon-60"></span></div><div id="identity"><span id="name">';
     htmlCode += json.fullname;
     htmlCode += '</span><br/><span id="birthdate">';
     htmlCode += json.age;
@@ -126,11 +150,11 @@ function displayUser(json) {
     htmlCode += '<div id="socialNetworks">';
     if (json.facebook != null) {
         htmlCode += '<a href="' + json.facebook + '">';
-        htmlCode += '<div id="facebook" class="socialBubble"><div id="facebookIcon"></div></div></a>';
+        htmlCode += '<div id="facebook" class="socialBubble"><span class="icon icon-single facebook icon-white icon-30"></span></div></a>';
     }
     if (json.twitter != null) {
         htmlCode += '<a href="' + json.twitter + '">';
-        htmlCode += '<div id="twitter" class="socialBubble"><div id="twitterIcon"></div></div></a>';
+        htmlCode += '<div id="twitter" class="socialBubble"><span class="icon icon-single twitter icon-white icon-30"></span></div></a>';
     } 
     htmlCode += '</div>';
     
@@ -168,11 +192,11 @@ function displayUser(json) {
         }
         htmlCode += '<div class="row '  + column + '">';
         htmlCode += '<div id="couronne' + nbPhones + '" class="couronne">';
-        htmlCode += '<div id="phoneBigIcon"></div></div><div class="line">';
+        htmlCode += '<span class="icon icon-single phone icon-grey icon-30"></span></div><div class="line">';
         num = 1;
         $.each(phones, function () {
             htmlCode += '<div class="line' + nbPhones + '-' + num + '">';
-            htmlCode += '<div class="' + this.icon + 'Icon"></div>';
+            htmlCode += '<span class="icon ' + this.icon + ' icon-grey icon-24"></span>';
             htmlCode += '<div class="info">' + this.num + '</div></div>';
             num++;
         });
@@ -201,11 +225,11 @@ function displayUser(json) {
         }
         htmlCode += '<div class="row '  + column + '">';
         htmlCode += '<div id="couronne' + nbEmails + '" class="couronne">';
-        htmlCode += '<div id="mailBigIcon"></div></div><div class="line">';
+        htmlCode += '<span class="icon icon-single mail icon-grey icon-30"></span></div><div class="line">';
         num = 1;
         $.each(emails, function () {
             htmlCode += '<div class="line' + nbEmails + '-' + num + '">';
-            htmlCode += '<div class="' + this.icon + 'Icon"></div>';
+            htmlCode += '<span class="icon ' + this.icon + ' icon-grey icon-24"></span>';
             htmlCode += '<div class="info"><a href="mailto:' + this.address + '" target="_blank" class="link">' + this.address + '</a></div></div>';
             num++;
         });
@@ -215,18 +239,20 @@ function displayUser(json) {
     // Addresses
     var nbAddresses = 0;
     var addresses = new Array();
-    if (json.address1 != null) {
+    if (json.address1_1 != null) {
         nbAddresses++;
         var address1 = new Object();
         address1.icon = 'home';
-        address1.address = json.address1;
+        address1.address1 = json.address1_1;
+        address1.address2 = json.address1_2;
         addresses.push(address1);
     }
-    if (json.address2 != null) {
+    if (json.address2_1 != null) {
         nbAddresses++;
         var address2 = new Object();
         address2.icon = 'school';
-        address2.address = json.address2;
+        address2.address1 = json.address2_1;
+        address2.address2 = json.address2_2;
         addresses.push(address2);
     }
     if (nbAddresses > 0) {
@@ -237,12 +263,12 @@ function displayUser(json) {
         }
         htmlCode += '<div class="row '  + column + '">';
         htmlCode += '<div id="couronne' + nbAddresses + '" class="couronne">';
-        htmlCode += '<div id="compassBigIcon"></div></div><div class="line address">';
+        htmlCode += '<span class="icon icon-single compass icon-grey icon-30"></span></div><div class="line address">';
         num = 1;
         $.each(addresses, function () {
             htmlCode += '<div class="line' + nbAddresses + '-' + num + '">';
-            htmlCode += '<div class="' + this.icon + 'Icon"></div>';
-            htmlCode += '<div class="info">' + this.address + '</div></div>';
+            htmlCode += '<span class="icon ' + this.icon + ' icon-grey icon-24"></span>';
+            htmlCode += '<div class="info"><a href="https://maps.google.fr/?q=' + this.address1 + ' ' + this.address2 +'" class="link" target="_blank">' + this.address1 + '<br/>' + this.address2 + '</a></div></div>';
             num++;
         });
         htmlCode += '</div></div>';

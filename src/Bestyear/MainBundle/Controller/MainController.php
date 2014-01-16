@@ -30,10 +30,16 @@ class MainController extends Controller
                 $bdateShort = $user->getBirthdate()->format('md');
                 $bdateYear = $user->getBirthdate()->format('Y');
                 $age = $bdateShort > $nowShort ? ($nowYear - $bdateYear - 1) : ($nowYear - $bdateYear);
+                if ($user->getGender() === "f") {
+                    $gender = "female";
+                } else {
+                    $gender = "male";
+                }
                 $birthdayData[] = array(
                     "fullname" => $user->getGivenname() . " " . $user->getFamilyName(),
                     "age" => $age,
                     "id" => $user->getId(),
+                    "gender" => $gender,
                 );
             }
             
@@ -51,10 +57,16 @@ class MainController extends Controller
                 $bdateShort = $user->getBirthdate()->format('md');
                 $bdateYear = $user->getBirthdate()->format('Y');
                 $age = $bdateShort > $nowShort ? ($nowYear - $bdateYear - 1) : ($nowYear - $bdateYear);
+                if ($user->getGender() === "f") {
+                    $gender = "female";
+                } else {
+                    $gender = "male";
+                }
                 $incomingBirthdayData[] = array(
                     "fullname" => $user->getGivenname() . " " . $user->getFamilyName(),
                     "age" => $age,
                     "id" => $user->getId(),
+                    "gender" => $gender,
                 );
             }
             
@@ -69,7 +81,7 @@ class MainController extends Controller
         if ($this->get('security.context')->isGranted('ROLE_USER')) {
             if ($request->query->get('callback') != null && $request->query->get('input') != null) {
                 $em = $this->getDoctrine()->getManager();
-                $users = $em->getRepository('BestyearUserBundle:User')->findAll();
+                $users = $em->getRepository('BestyearUserBundle:User')->findBy(array(), array('familyname'=>'asc'));
                 
                 $search = strtoupper(htmlspecialchars($request->query->get('input')));
                 $resultUsers = array();               
@@ -105,11 +117,17 @@ class MainController extends Controller
                     $bdateShort = $user->getBirthdate()->format('md');
                     $bdateYear = $user->getBirthdate()->format('Y');
                     $age = $bdateShort > $nowShort ? ($nowYear - $bdateYear - 1) : ($nowYear - $bdateYear);
+                    if ($user->getGender() === "f") {
+                        $gender = "female";
+                    } else {
+                        $gender = "male";
+                    }
                     $data[] = array(
                         "fullname" => $user->getGivenname() . " " . $user->getFamilyName(),
                         "studies" => $user->getTC() . $user->getStudylevel(),
                         "age" => $age,
                         "id" => $user->getId(),
+                        "gender" => $gender,
                     );
                 }
     
@@ -142,21 +160,35 @@ class MainController extends Controller
                 $bdateShort = $user->getBirthdate()->format('md');
                 $bdateYear = $user->getBirthdate()->format('Y');
                 $age = $bdateShort > $nowShort ? ($nowYear - $bdateYear - 1) : ($nowYear - $bdateYear);
-                $address1 = null;
+                $address1_1 = null;
+                $address1_2 = null;
                 if ($user->getStreetNumber1()) {
-                    $address1 = $user->getStreetNumber1() . " " . $user->getStreet1() . "<br/>" . $user->getPostcode1() . " " . $user->getCity1();
+                    $address1_1 = $user->getStreetNumber1() . " " . $user->getStreet1();
+                    $address1_2 = $user->getPostcode1() . " " . $user->getCity1();
                 }
-                $address2 = null;
+                $address2_1 = null;
+                $address2_2 = null;
                 if ($user->getStreetNumber2()) {
-                    $address2 = $user->getStreetNumber2() . " " . $user->getStreet2() . "<br/>" . $user->getPostcode2() . " " . $user->getCity2();
+                    $address2_1 = $user->getStreetNumber2() . " " . $user->getStreet2();
+                    $address2_2 = $user->getPostcode2() . " " . $user->getCity2();
                 }
+
+                if ($user->getGender() === "f") {
+                    $gender = "female";
+                } else {
+                    $gender = "male";
+                }
+
                 $data = array(
                  "id" => $user->getId(),
+                 "gender" => $gender,
                  "fullname" => $user->getGivenname() . " " . $user->getFamilyName(),
                  "studies" => $user->getTC() . $user->getStudylevel(),
                  "age" => $user->getBirthdate()->format('d/m/Y') . " (".$age." ans)",
-                 "address1" => $address1,
-                 "address2" => $address2,
+                 "address1_1" => $address1_1,
+                 "address1_2" => $address1_2,
+                 "address2_1" => $address2_1,
+                 "address2_2" => $address2_2,
                  "phone1" => $user->getPhone1(),
                  "phone2" => $user->getPhone2(),
                  "cellphone" => $user->getCellphone(),
