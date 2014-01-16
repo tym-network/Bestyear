@@ -143,65 +143,6 @@
     margin-left: 4px;
 }
 
-#phoneBigIcon {
-    width: 24px;
-    height: 25px;
-    background: url("../images/userProfile/phone-icon.png") no-repeat;
-    position: relative;
-    top: 25px;
-    left: 26px;
-}
-
-#mailBigIcon {
-    width: 26px;
-    height: 19px;
-    background: url("../images/userProfile/mail-icon.png") no-repeat;
-    position: relative;
-    top: 28px;
-    left: 25px;
-}
-
-#compassBigIcon {
-    width: 25px;
-    height: 25px;
-    background: url("../images/userProfile/compass-icon.png") no-repeat;
-    position: relative;
-    top: 25px;
-    left: 26px;
-}
-
-.homeIcon {
-    width: 21px;
-    height: 19px;
-    background: url("../images/userProfile/home-icon.png") no-repeat;
-    float:left;
-    margin-top: -1px;
-}
-
-.schoolIcon {
-    width: 22px;
-    height: 17px;
-    background: url("../images/userProfile/school-icon.png") no-repeat;
-    float:left;
-}
-
-.smartphoneIcon {
-    width: 14px;
-    height: 22px;
-    background: url("../images/userProfile/smartphone-icon.png") no-repeat;
-    float:left;
-    margin-top: -3px;
-    margin-left: 3px;
-}
-
-.gplusIcon {
-    width: 19px;
-    height: 19px;
-    background: url("../images/userProfile/gplus-icon.png") no-repeat;
-    float:left;
-    margin-top: -1px;
-}
-
 .info {
     max-width: 200px;
     width: 200px;
