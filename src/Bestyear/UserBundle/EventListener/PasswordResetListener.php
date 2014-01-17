@@ -18,9 +18,9 @@ class PasswordResetListener implements EventSubscriberInterface {
     }
 
     public static function getSubscribedEvents() {
-        return [
+        return array(
             FOSUserEvents::RESETTING_RESET_SUCCESS => 'onPasswordResetSuccess',
-        ];
+        );
     }
 
     public function onPasswordResetSuccess(FormEvent $event) {
