@@ -269,7 +269,7 @@ class User extends BaseUser
      */
     public function setGivenname($givenname)
     {
-        $this->givenname = $givenname;
+        $this->givenname = ucwords(strtolower($givenname));
     
         return $this;
     }
@@ -292,7 +292,7 @@ class User extends BaseUser
      */
     public function setFamilyname($familyname)
     {
-        $this->familyname = $familyname;
+        $this->familyname = ucwords(strtolower($familyname));
     
         return $this;
     }

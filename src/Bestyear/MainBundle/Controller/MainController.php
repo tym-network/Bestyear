@@ -7,7 +7,30 @@ use Symfony\Component\HttpFoundation\Response as Reponse;
 use Symfony\Component\HttpFoundation\Request;
 
 class MainController extends Controller
-{
+{   
+    function removeAccents($string) {
+        $string = str_replace(
+            array(
+                'À', 'Â', 'Ä', 'á', 'Ã', 'Å',
+                'Î', 'Ï', 'Ì', 'Í',
+                'Ô', 'Ö', 'Ò', 'Ó', 'Õ', 'Ø',
+                'Ù', 'Û', 'Ü', 'Ú',
+                'É', 'È', 'Ê', 'Ë',
+                'Ç', 'Ÿ', 'Ñ',
+            ),
+            array(
+                'A', 'A', 'A', 'A', 'A', 'A',
+                'I', 'I', 'I', 'I',
+                'O', 'O', 'O', 'O', 'O', 'O',
+                'U', 'U', 'U', 'U',
+                'E', 'E', 'E', 'E',
+                'C', 'Y', 'N',
+            ),
+            $string
+        );
+        return $string;
+    }
+    
     public function indexAction()
     {
         if ($this->get('security.context')->isGranted('ROLE_USER')) {
@@ -25,7 +48,7 @@ class MainController extends Controller
             $birthdayData = array();
             $nowShort = date('md');
             $nowYear = date('Y');
-
+            
             foreach ($birthdayUsers as $user) {
                 $bdateShort = $user->getBirthdate()->format('md');
                 $bdateYear = $user->getBirthdate()->format('Y');
@@ -83,15 +106,19 @@ class MainController extends Controller
                 $em = $this->getDoctrine()->getManager();
                 $users = $em->getRepository('BestyearUserBundle:User')->findBy(array(), array('familyname'=>'asc'));
                 
-                $search = strtoupper(htmlspecialchars($request->query->get('input')));
-                $resultUsers = array();               
-
+                $search = $this->removeAccents(mb_strtoupper(htmlspecialchars($request->query->get('input')),'UTF-8'));
+                $resultUsers = array();
+                             
+                $logger = $this->get('logger');
+                
+                
                 foreach ($users as $user) {
-                    $comparison1 = strtoupper(substr($user->getGivenname(), 0, strlen($search)));
-                    $comparison2 = strtoupper(substr($user->getFamilyname(), 0, strlen($search)));
-                    $comparison3 = strtoupper(substr($user->getUsername(), 0, strlen($search)));
-                    $comparison4 = strtoupper(substr($user->getGivenname() + $user->getFamilyname(), 0, strlen($search)));
-                    $comparison5 = strtoupper(substr($user->getFamilyname() + $user->getGivenname(), 0, strlen($search)));
+                    $comparison1 = substr($this->removeAccents(mb_strtoupper($user->getGivenname(),'UTF-8')), 0, strlen($search));
+                    $logger->info("RECHERCHE : ".$search." - ".$comparison1);
+                    $comparison2 = substr($this->removeAccents(mb_strtoupper($user->getFamilyname(),'UTF-8')), 0, strlen($search));
+                    $comparison3 = substr($this->removeAccents(mb_strtoupper($user->getUsername(),'UTF-8')), 0, strlen($search));
+                    $comparison4 = substr($this->removeAccents(mb_strtoupper($user->getGivenname() + $user->getFamilyname(),'UTF-8')), 0, strlen($search));
+                    $comparison5 = substr($this->removeAccents(mb_strtoupper($user->getFamilyname() + $user->getGivenname(),'UTF-8')), 0, strlen($search));
                     
                     if (levenshtein($search, $comparison1) <= floor(strlen($search)*35/100)) {
                         $resultUsers[] = $user;
@@ -105,7 +132,7 @@ class MainController extends Controller
                         $resultUsers[] = $user;
                     }
                 }
-
+                
                 $nowShort = date('md');
                 $nowYear = date('Y');
                 
@@ -130,13 +157,13 @@ class MainController extends Controller
                         "gender" => $gender,
                     );
                 }
-    
+                
                 $json = json_encode($data);
                 $page = "var json = " . $json;
                 $page .= "\n" . $request->query->get('callback') . '(json)';
                 
                 $response->setContent($page);
-    
+                
                 return $response;
             } else {
                 return $this->indexAction();
@@ -172,46 +199,46 @@ class MainController extends Controller
                     $address2_1 = $user->getStreetNumber2() . " " . $user->getStreet2();
                     $address2_2 = $user->getPostcode2() . " " . $user->getCity2();
                 }
-
+                
                 if ($user->getGender() === "f") {
                     $gender = "female";
                 } else {
                     $gender = "male";
                 }
-
+                
                 $data = array(
-                 "id" => $user->getId(),
-                 "gender" => $gender,
-                 "fullname" => $user->getGivenname() . " " . $user->getFamilyName(),
-                 "studies" => $user->getTC() . $user->getStudylevel(),
-                 "age" => $user->getBirthdate()->format('d/m/Y') . " (".$age." ans)",
-                 "address1_1" => $address1_1,
-                 "address1_2" => $address1_2,
-                 "address2_1" => $address2_1,
-                 "address2_2" => $address2_2,
-                 "phone1" => $user->getPhone1(),
-                 "phone2" => $user->getPhone2(),
-                 "cellphone" => $user->getCellphone(),
-                 "email" => $user->getEmail(),
-                 "emailOptional" => $user->getEmailoptional(),
-                 "facebook" => $user->getFacebook(),
-                 "twitter" => $user->getTwitter(),
-                 "tn05_job" => $user->getTn05Job(),
-                 "tn05_place" => $user->getTn05Place(),
-                 "tn07_job" => $user->getTn07Job(),
-                 "tn07_place" => $user->getTn07Place(),
-                 "tn09_job" => $user->getTn09Job(),
-                 "tn09_place" => $user->getTn09Place(),
-                 "tn010_job" => $user->getTn10Job(),
-                 "tn10_place" => $user->getTn10Place(),
-                 );
-    
+                    "id" => $user->getId(),
+                    "gender" => $gender,
+                    "fullname" => $user->getGivenname() . " " . $user->getFamilyName(),
+                    "studies" => $user->getTC() . $user->getStudylevel(),
+                    "age" => $user->getBirthdate()->format('d/m/Y') . " (".$age." ans)",
+                    "address1_1" => $address1_1,
+                    "address1_2" => $address1_2,
+                    "address2_1" => $address2_1,
+                    "address2_2" => $address2_2,
+                    "phone1" => $user->getPhone1(),
+                    "phone2" => $user->getPhone2(),
+                    "cellphone" => $user->getCellphone(),
+                    "email" => $user->getEmail(),
+                    "emailOptional" => $user->getEmailoptional(),
+                    "facebook" => $user->getFacebook(),
+                    "twitter" => $user->getTwitter(),
+                    "tn05_job" => $user->getTn05Job(),
+                    "tn05_place" => $user->getTn05Place(),
+                    "tn07_job" => $user->getTn07Job(),
+                    "tn07_place" => $user->getTn07Place(),
+                    "tn09_job" => $user->getTn09Job(),
+                    "tn09_place" => $user->getTn09Place(),
+                    "tn010_job" => $user->getTn10Job(),
+                    "tn10_place" => $user->getTn10Place(),
+                );
+                
                 $json = json_encode($data);
                 $page = "var json = " . $json;
                 $page .= "\n" . $request->query->get('callback') . '(json)';
                 
                 $response->setContent($page);
-    
+                
                 return $response;
             } else {
                 return $this->indexAction();
