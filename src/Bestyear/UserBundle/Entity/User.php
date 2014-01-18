@@ -3,7 +3,7 @@
 namespace Bestyear\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use FOS\UserBundle\Entity\User as BaseUser;
+use FOS\UserBundle\Model\User as BaseUser;
 use Symfony\Component\Validator\Constraints as Assert;
 use Bestyear\UserBundle\Validator\Constraints as UserAssert;
 
@@ -269,7 +269,7 @@ class User extends BaseUser
      */
     public function setGivenname($givenname)
     {
-        $this->givenname = $givenname;
+        $this->givenname = ucwords(strtolower($givenname));
     
         return $this;
     }
@@ -292,7 +292,7 @@ class User extends BaseUser
      */
     public function setFamilyname($familyname)
     {
-        $this->familyname = $familyname;
+        $this->familyname = ucwords(strtolower($familyname));
     
         return $this;
     }

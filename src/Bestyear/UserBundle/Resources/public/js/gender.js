@@ -25,3 +25,7 @@ function changeGender() {
 $("#genderBar").click(function() {
     changeGender();
 });
+
+$(".genderSymbol").click(function() {
+    changeGender();
+});

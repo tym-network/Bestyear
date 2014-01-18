@@ -65,14 +65,18 @@ doctrine:
 
 # Swiftmailer Configuration
 swiftmailer:
-    transport: gmail
-    username:  theotime.loiseau
-    password:  %swiftpass%
+    transport: %mailer_transport%
+    host:      %mailer_host%
+    username:  %mailer_user%
+    password:  %mailer_password%
 
 fos_user:
     db_driver: 		orm
     firewall_name: 	main
     user_class: 	Bestyear\UserBundle\Entity\User
+    from_email:
+        address:        no-reply@theotimeloiseau.com
+        sender_name:    Le Bestyear
     registration:
         form:
             type: bestyear_user_registration

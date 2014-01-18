@@ -4,6 +4,14 @@
 
 var nbStep = 5;
 
+// When a user clicks on one of the bubble in the left
+$('.stepLink').click(function() {
+    id = parseInt($(this).attr('id').replace('link',''));
+    if (id <= maximumStep) {
+        loadStep(id);
+    }
+})
+
 /*
  * ============================
  * Error treatment on fields

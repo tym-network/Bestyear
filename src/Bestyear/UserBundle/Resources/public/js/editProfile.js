@@ -11,11 +11,11 @@ function checkStep(id) {
             checkGivenName();
             checkFamilyName();
             checkBirthdate();
-            if ($('#step2').find('.inputError').length > 0) {
-                $('#bubble2').addClass('errorBubble');
+            if ($('#step1').find('.inputError').length > 0) {
+                $('#bubble1').addClass('errorBubble');
                 return false;
             }
-            $('#bubble2').removeClass('errorBubble');
+            $('#bubble1').removeClass('errorBubble');
             return true;
             break;
         case 2:
@@ -24,11 +24,11 @@ function checkStep(id) {
             checkAddress2onSubmit();
             checkPostcode1();
             checkPostcode2();
-            if ($('#step3').find('.inputError').length > 0) {
-                $('#bubble3').addClass('errorBubble');
+            if ($('#step2').find('.inputError').length > 0) {
+                $('#bubble2').addClass('errorBubble');
                 return false;
             }
-            $('#bubble3').removeClass('errorBubble');
+            $('#bubble2').removeClass('errorBubble');
             return true;
             break;
         case 3:
@@ -36,11 +36,11 @@ function checkStep(id) {
             checkMail();
             checkURLFacebook();
             checkURLTwitter();
-            if ($('#step4').find('.inputError').length > 0) {
-                $('#bubble4').addClass('errorBubble');
+            if ($('#step3').find('.inputError').length > 0) {
+                $('#bubble3').addClass('errorBubble');
                 return false;
             }
-            $('#bubble4').removeClass('errorBubble');
+            $('#bubble3').removeClass('errorBubble');
             return true;
             break;
         case 4:
@@ -49,11 +49,11 @@ function checkStep(id) {
             checkTN07();
             checkTN09();
             checkTN10();
-            if ($('#step5').find('.inputError').length > 0) {
-                $('#bubble5').addClass('errorBubble');
+            if ($('#step4').find('.inputError').length > 0) {
+                $('#bubble4').addClass('errorBubble');
                 return false;
             }
-            $('#bubble5').removeClass('errorBubble');
+            $('#bubble4').removeClass('errorBubble');
             return true;
             break;
     }
@@ -75,3 +75,9 @@ function focusFirstInput(id) {
             break;
     }
 }
+
+// When a user clicks on one of the bubble in the left
+$('.stepLink').click(function() {
+    id = parseInt($(this).attr('id').replace('link',''));
+    loadStep(id);
+})

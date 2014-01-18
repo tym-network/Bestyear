@@ -41,7 +41,7 @@
 <h1>Inscription</h1>
 <div class="line"></div>
 <div id="form">
-    <form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST">
+    <form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" id="profileForm">
         {{ form_start(form) }}
         {% if form_errors(form) %}
         <div id="errorBar">{{ form_errors(form) }}</div>

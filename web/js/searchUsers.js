@@ -310,6 +310,7 @@ function search() {
         currentSearch = currentSearch.replace(/>/gi, '');
         currentSearch = currentSearch.replace(/\(/gi, '');
         currentSearch = currentSearch.replace(/\)/gi, '');
+        params.input = currentSearch;
         send("search",params);
     }
 }

@@ -2,6 +2,8 @@
 
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('bundles/bestyearuser/css/show.css') }}" type="text/css" />
+    <link rel="stylesheet" href="{{ asset('css/listUsers.css') }}" type="text/css"/>
+    <link rel="stylesheet" href="{{ asset('css/userView.css') }}" type="text/css"/>
 {% endblock %}
 
 {% block topBar %}
@@ -166,4 +168,9 @@
 
     <div id="div4" class="userProfile profile">
     </div>
+{% endblock %}
+
+
+{% block javascripts %}
+    <script src="{{ asset('js/transition.js') }}"></script>
 {% endblock %}
