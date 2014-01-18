@@ -158,6 +158,10 @@
     content: "\E12f";
 }
 
+.delete:before {
+    content: "\E10f";
+}
+
 .genderSymbol {
   font-family: "MaleFemaleSymbols";
   font-size: 30px;
