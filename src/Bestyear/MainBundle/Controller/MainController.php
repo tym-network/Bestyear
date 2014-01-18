@@ -147,6 +147,7 @@ class MainController extends Controller
                     }
                     $data[] = array(
                         "fullname" => $user->getGivenname() . " " . $user->getFamilyName(),
+                        "login" => $user->getUsername(),
                         "studies" => $user->getTC() . $user->getStudylevel(),
                         "age" => $age,
                         "id" => $user->getId(),
@@ -206,6 +207,7 @@ class MainController extends Controller
                     "id" => $user->getId(),
                     "gender" => $gender,
                     "fullname" => $user->getGivenname() . " " . $user->getFamilyName(),
+                    "login" => $user->getUsername(),
                     "studies" => $user->getTC() . $user->getStudylevel(),
                     "age" => $user->getBirthdate()->format('d/m/Y') . " (".$age." ans)",
                     "address1_1" => $address1_1,

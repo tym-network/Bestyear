@@ -91,7 +91,7 @@ function showResults(json) {
         $.each(json, function () {
             // Add the support of a picture when it will be implemented
             htmlUser = '<tr id="' + this.id + '" class="userPreview"><td><div class="circle ' + this.gender + '"><span class="icon icon-single user icon-white icon-60 userBigIcon"></span></div></div></div></td>';
-            htmlUser += '<td><div class="infosSummary"><div class="name">' + this.fullname + '</div><div class="other">' + this.studies + ' - ' +  this.age + ' ans</div></div></td></tr>';
+            htmlUser += '<td><div class="infosSummary"><div class="name">' + this.fullname + '</div><div class="other">' + this.studies + ' - ' +  this.age + ' ans</div><div class="login">' + this.login + '</div></div></td></tr>';
             
             if (num%2 == 0) {
                 $(htmlUser).appendTo('#leftTable');
