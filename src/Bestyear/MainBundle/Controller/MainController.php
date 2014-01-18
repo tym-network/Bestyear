@@ -7,7 +7,7 @@ use Symfony\Component\HttpFoundation\Response as Reponse;
 use Symfony\Component\HttpFoundation\Request;
 
 class MainController extends Controller
-{   
+{
     function removeAccents($string) {
         $string = str_replace(
             array(
@@ -108,13 +108,9 @@ class MainController extends Controller
                 
                 $search = $this->removeAccents(mb_strtoupper(htmlspecialchars($request->query->get('input')),'UTF-8'));
                 $resultUsers = array();
-                             
-                $logger = $this->get('logger');
-                
-                
+
                 foreach ($users as $user) {
                     $comparison1 = substr($this->removeAccents(mb_strtoupper($user->getGivenname(),'UTF-8')), 0, strlen($search));
-                    $logger->info("RECHERCHE : ".$search." - ".$comparison1);
                     $comparison2 = substr($this->removeAccents(mb_strtoupper($user->getFamilyname(),'UTF-8')), 0, strlen($search));
                     $comparison3 = substr($this->removeAccents(mb_strtoupper($user->getUsername(),'UTF-8')), 0, strlen($search));
                     $comparison4 = substr($this->removeAccents(mb_strtoupper($user->getGivenname() + $user->getFamilyname(),'UTF-8')), 0, strlen($search));
