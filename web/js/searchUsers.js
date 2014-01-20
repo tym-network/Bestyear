@@ -39,8 +39,8 @@ function handleResults() {
     // Updates the string researched
     $("#searchContent").text(currentSearch);
     
-    if ($("#loadingWheel").not(":visible")) {
-        $("#loadingWheel").fadeIn(500);
+    if ($("#div2 .loadingWheel").not(":visible")) {
+        $("#div2 .loadingWheel").fadeIn(500);
     }
     
     // Display the icon in the left bar if not already shown
@@ -60,34 +60,32 @@ function handleResults() {
     
     if (numResults == 0) {
         // Delete "No Result" if there were a previous search
-        $("#noresult").animate({"opacity": 0}, 200, function() {
-            $("#noresult").remove();
-        });  
+        $("#noresult").animate({"opacity": 0}, 200);  
     } else if (numResults >= 1) {
         // Cleaning the tab (if there was a previous search)
-        $("#leftTable").animate({"opacity": 0}, 200);
-        $("#rightTable").animate({"opacity": 0}, 200, function() {
-            $("#rightTable").children().remove();
-            $("#leftTable").children().remove();
-        });
+        $("#leftTable").fadeOut(200);
+        $("#rightTable").fadeOut(200);
     }
 }
 
 function showResults(json) {
-    if ($("#loadingWheel").is(":visible")) {
-        $("#loadingWheel")
-            .stop()
-            .fadeOut(300);
-    }
+    // Hide loading wheel
+    $("#div2 .loadingWheel")
+        .stop()
+        .fadeOut(100);
+    
     var num = 0;
+    $("#rightTable").children().remove();
+    $("#leftTable").children().remove();
+    $("#noresult").remove();
     if (json.length == 0) {
         numResults = 0;
         htmlUser = "<p id=\"noresult\">Aucun résultat</p>";
         $(htmlUser).appendTo('.userList');
     } else {
         numResults = 1;
-        $("#leftTable").animate({"opacity": 1}, 400);
-        $("#rightTable").animate({"opacity": 1}, 400);
+        $("#leftTable").fadeIn(400);
+        $("#rightTable").fadeIn(400);
         $.each(json, function () {
             // Add the support of a picture when it will be implemented
             htmlUser = '<tr id="' + this.id + '" class="userPreview"><td><div class="circle ' + this.gender + '"><span class="icon icon-single user icon-white icon-60 userBigIcon"></span></div></div></div></td>';
@@ -112,11 +110,7 @@ function showResults(json) {
 /*
  * Display a specific user 
  */
-function displayUser(json) {
-    var num = 0;
-    var numCouronne = 0;
-    var column = "leftColumn";
-    
+function showUser() {
     // Cleaning the tab (if there was a previous user)
     $(".userProfile").children().remove();
     
@@ -134,6 +128,21 @@ function displayUser(json) {
         // transition.js
         displayDiv($(".userLeft"));
     }
+    
+    if ($("#div3 .loadingWheel").not(":visible")) {
+        $("#div3 .loadingWheel").fadeIn(500);
+    }
+}
+
+function displayUser(json) {
+    // Hide loading wheel
+    $("#div3 .loadingWheel")
+            .stop()
+            .fadeOut(100);
+    
+    var num = 0;
+    var numCouronne = 0;
+    var column = "leftColumn";
     
     // Picture and basic info
     htmlCode = '<div id="userNoPicture" class="';
@@ -298,6 +307,9 @@ function displayUser(json) {
     }
     
     $(htmlCode).appendTo('.userProfile');
+    if ($('.userProfile').not(':visible')) {
+        $('.userProfile').fadeIn(600);
+    }
 }
 
 function search() {
@@ -327,6 +339,7 @@ function searchUser(id) {
     var params = {
         "callback": "displayUser"
     };
+    showUser();
     send("searchUser/"+id,params);
 }
 

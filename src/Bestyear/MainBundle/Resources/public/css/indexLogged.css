@@ -63,7 +63,7 @@
     background: rgb(236,236,236);
 }
 
-#loadingWheel {
+.loadingWheel {
     display: none;
     position: absolute;
     background: url("../images/loader.gif") no-repeat;

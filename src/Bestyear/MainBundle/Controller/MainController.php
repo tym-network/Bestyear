@@ -113,8 +113,8 @@ class MainController extends Controller
                     $comparison1 = substr($this->removeAccents(mb_strtoupper($user->getGivenname(),'UTF-8')), 0, strlen($search));
                     $comparison2 = substr($this->removeAccents(mb_strtoupper($user->getFamilyname(),'UTF-8')), 0, strlen($search));
                     $comparison3 = substr($this->removeAccents(mb_strtoupper($user->getUsername(),'UTF-8')), 0, strlen($search));
-                    $comparison4 = substr($this->removeAccents(mb_strtoupper($user->getGivenname() + $user->getFamilyname(),'UTF-8')), 0, strlen($search));
-                    $comparison5 = substr($this->removeAccents(mb_strtoupper($user->getFamilyname() + $user->getGivenname(),'UTF-8')), 0, strlen($search));
+                    $comparison4 = substr($this->removeAccents(mb_strtoupper($user->getGivenname() . " " . $user->getFamilyname(),'UTF-8')), 0, strlen($search));
+                    $comparison5 = substr($this->removeAccents(mb_strtoupper($user->getFamilyname() . " " . $user->getGivenname(),'UTF-8')), 0, strlen($search));
                     
                     if (levenshtein($search, $comparison1) <= floor(strlen($search)*35/100)) {
                         $resultUsers[] = $user;
