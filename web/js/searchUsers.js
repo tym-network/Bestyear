@@ -33,11 +33,15 @@ function send(sUrl, oParams) {
 }
 
 /*
- * Handles the search results (from a json)
+ * Display the page to show the results
  */
-function handleResults(json) {
+function handleResults() {
     // Updates the string researched
     $("#searchContent").text(currentSearch);
+    
+    if ($("#loadingWheel").not(":visible")) {
+        $("#loadingWheel").fadeIn(500);
+    }
     
     // Display the icon in the left bar if not already shown
     if (!searchPanelActivated) {
@@ -54,14 +58,10 @@ function handleResults(json) {
         displayDiv($(".listLeft"));
     }
     
-    // No previous search
-    if (numResults == -1) {
-        showResults(json);
-    } else if (numResults == 0) {
+    if (numResults == 0) {
         // Delete "No Result" if there were a previous search
         $("#noresult").animate({"opacity": 0}, 200, function() {
             $("#noresult").remove();
-            showResults(json);
         });  
     } else if (numResults >= 1) {
         // Cleaning the tab (if there was a previous search)
@@ -69,16 +69,16 @@ function handleResults(json) {
         $("#rightTable").animate({"opacity": 0}, 200, function() {
             $("#rightTable").children().remove();
             $("#leftTable").children().remove();
-            showResults(json);
         });
-    } else {
-        showResults(json);
     }
-    
-    
 }
 
 function showResults(json) {
+    if ($("#loadingWheel").is(":visible")) {
+        $("#loadingWheel")
+            .stop()
+            .fadeOut(300);
+    }
     var num = 0;
     if (json.length == 0) {
         numResults = 0;
@@ -304,13 +304,14 @@ function search() {
     if ($('#searchUser').val()) {
         var params = {
             "input": $('#searchUser').val(),
-            "callback": "handleResults"
+            "callback": "showResults"
         };
         currentSearch = $('#searchUser').val().replace(/</gi, '');
         currentSearch = currentSearch.replace(/>/gi, '');
         currentSearch = currentSearch.replace(/\(/gi, '');
         currentSearch = currentSearch.replace(/\)/gi, '');
         params.input = currentSearch;
+        handleResults();
         send("search",params);
     }
 }
