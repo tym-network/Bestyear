@@ -1,0 +1,27 @@
+{% extends '::baseForm.html.twig' %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('bundles/bestyearuser/css/register_mail.css') }}" type="text/css"/>
+
+{% endblock %}
+
+{% block subject %}Bienvenue sur le Bestyear!{% endblock %}
+
+{% block body_text %}
+{% endblock %}
+
+
+{% block body_html %}
+{% block content %}
+<h1>Inscription</h1>
+<div class="line"></div>
+<div id="form">
+Bonjour {{ user.username }} !<br/>
+<br/>
+Pour valider votre compte utilisateur, merci de vous rendre sur {{ confirmationUrl }}<br/>
+<br/>
+Cordialement,<br/><br/>
+Le Bestyear
+</div>
+{% endblock %}
+{% endblock %}
