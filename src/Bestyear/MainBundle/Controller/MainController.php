@@ -30,25 +30,25 @@ class MainController extends Controller
         );
         return $string;
     }
-    
+
     public function indexAction()
     {
         if ($this->get('security.context')->isGranted('ROLE_USER')) {
             $now = date_create();
             $em = $this->getDoctrine()->getManager();
-            
+
             // Users which birthday is today
             $query = $em->createQuery(
-                "SELECT u 
-                FROM BestyearUserBundle:User u 
+                "SELECT u
+                FROM BestyearUserBundle:User u
                 WHERE DATE_FORMAT(u.birthdate, '%m%d') = DATE_FORMAT(:now, '%m%d')"
             )->setParameter('now', $now);
-            
+
             $birthdayUsers = $query->getResult();
             $birthdayData = array();
             $nowShort = date('md');
             $nowYear = date('Y');
-            
+
             foreach ($birthdayUsers as $user) {
                 $bdateShort = $user->getBirthdate()->format('md');
                 $bdateYear = $user->getBirthdate()->format('Y');
@@ -65,20 +65,25 @@ class MainController extends Controller
                     "gender" => $gender,
                 );
             }
-            
+
             // Users which birthday is coming in 4 days
             $query = $em->createQuery(
-                "SELECT u 
-                FROM BestyearUserBundle:User u 
-                WHERE DATE_FORMAT(u.birthdate, '%m%d') between DATE_FORMAT(DATE_ADD(:now, 1, 'day'), '%m%d') and date_format(DATE_ADD(:now, 4, 'day'), '%m%d')"
+                "SELECT u
+                FROM BestyearUserBundle:User u
+                WHERE DATE_FORMAT(u.birthdate, '%m%d') between DATE_FORMAT(DATE_ADD(:now, 1, 'day'), '%m%d') and date_format(DATE_ADD(:now, 4, 'day'), '%m%d')
+                ORDER BY u.givenname ASC"
             )->setParameter('now', $now);
-            
+
             $incomingBirthdayUsers = $query->getResult();
             $incomingBirthdayData = array();
-            
+
             foreach ($incomingBirthdayUsers as $user) {
                 $bdateShort = $user->getBirthdate()->format('md');
+                $bdateShort2 = $user->getBirthdate()->format('m/d');
                 $bdateYear = $user->getBirthdate()->format('Y');
+                $now = new \DateTime(date('Y/m/d'));
+                $bdateTime = new \DateTime(date('Y').'/'.$bdateShort2);
+                $interval = $bdateTime->diff($now)->format("%a");
                 $age = $bdateShort > $nowShort ? ($nowYear - $bdateYear - 1) : ($nowYear - $bdateYear);
                 if ($user->getGender() === "f") {
                     $gender = "female";
@@ -90,22 +95,23 @@ class MainController extends Controller
                     "age" => $age,
                     "id" => $user->getId(),
                     "gender" => $gender,
+                    "numDaysBeforeBirthday" => $interval,
                 );
             }
-            
+
             return $this->render('BestyearMainBundle:Main:indexLogged.html.twig', array('todaysBirthday' => $birthdayData, 'incomingBirthdayUsers' => $incomingBirthdayData));
         } else {
             return $this->render('BestyearMainBundle:Main:indexNotLogged.html.twig', array());
         }
     }
-    
+
     public function searchUsersAction(Request $request)
     {
         if ($this->get('security.context')->isGranted('ROLE_USER')) {
             if ($request->query->get('callback') != null && $request->query->get('input') != null) {
                 $em = $this->getDoctrine()->getManager();
                 $users = $em->getRepository('BestyearUserBundle:User')->findBy(array(), array('familyname'=>'asc'));
-                
+
                 $search = $this->removeAccents(mb_strtoupper(htmlspecialchars($request->query->get('input')),'UTF-8'));
                 $resultUsers = array();
 
@@ -115,7 +121,7 @@ class MainController extends Controller
                     $comparison3 = substr($this->removeAccents(mb_strtoupper($user->getUsername(),'UTF-8')), 0, strlen($search));
                     $comparison4 = substr($this->removeAccents(mb_strtoupper($user->getGivenname() . " " . $user->getFamilyname(),'UTF-8')), 0, strlen($search));
                     $comparison5 = substr($this->removeAccents(mb_strtoupper($user->getFamilyname() . " " . $user->getGivenname(),'UTF-8')), 0, strlen($search));
-                    
+
                     if (levenshtein($search, $comparison1) <= floor(strlen($search)*35/100)) {
                         $resultUsers[] = $user;
                     } elseif (levenshtein($search, $comparison2) <= floor(strlen($search)*35/100)) {
@@ -128,13 +134,13 @@ class MainController extends Controller
                         $resultUsers[] = $user;
                     }
                 }
-                
+
                 $nowShort = date('md');
                 $nowYear = date('Y');
-                
+
                 $response = new Reponse();
                 $response->headers->set('Content-Type', 'text/javascript');
-                
+
                 $data = array();
                 foreach ($resultUsers as $user) {
                     $bdateShort = $user->getBirthdate()->format('md');
@@ -154,13 +160,13 @@ class MainController extends Controller
                         "gender" => $gender,
                     );
                 }
-                
+
                 $json = json_encode($data);
                 $page = "var json = " . $json;
                 $page .= "\n" . $request->query->get('callback') . '(json)';
-                
+
                 $response->setContent($page);
-                
+
                 return $response;
             } else {
                 return $this->indexAction();
@@ -169,16 +175,16 @@ class MainController extends Controller
             return $this->indexAction();
         }
     }
-    
+
     public function searchUserAction(Request $request, $id) {
         if ($this->get('security.context')->isGranted('ROLE_USER')) {
             if ($id != null && $request->query->get('callback') != null) {
                 $em = $this->getDoctrine()->getManager();
                 $user = $em->getRepository('BestyearUserBundle:User')->findOneById($id);
-                
+
                 $nowShort = date('md');
                 $nowYear = date('Y');
-                
+
                 $response = new Reponse();
                 $response->headers->set('Content-Type', 'text/javascript');
                 $bdateShort = $user->getBirthdate()->format('md');
@@ -196,13 +202,13 @@ class MainController extends Controller
                     $address2_1 = $user->getStreetNumber2() . " " . $user->getStreet2();
                     $address2_2 = $user->getPostcode2() . " " . $user->getCity2();
                 }
-                
+
                 if ($user->getGender() === "f") {
                     $gender = "female";
                 } else {
                     $gender = "male";
                 }
-                
+
                 $data = array(
                     "id" => $user->getId(),
                     "gender" => $gender,
@@ -230,13 +236,13 @@ class MainController extends Controller
                     "tn010_job" => $user->getTn10Job(),
                     "tn10_place" => $user->getTn10Place(),
                 );
-                
+
                 $json = json_encode($data);
                 $page = "var json = " . $json;
                 $page .= "\n" . $request->query->get('callback') . '(json)';
-                
+
                 $response->setContent($page);
-                
+
                 return $response;
             } else {
                 return $this->indexAction();
