@@ -41,7 +41,7 @@
                 {% endfor %}
             </table>
         {% endif %}
-        
+
         <h2>Dans les 5 jours:</h2>
         {% if incomingBirthdayUsers|length == 0 %}
             Aucun anniversaire dans les 5 jours à venir.<br/>
@@ -55,7 +55,7 @@
                             <td>
                                 <div id="{{ u.id }}" class="birthdayUser">
                                     <div class="picUser {{ u.gender }}"><span class="icon icon-single user icon-white icon-30"></span></div>
-                                    <div class="infoUser">{{ u.fullname }}<br/>{{ u.age }} ans</div>
+                                    <div class="infoUser">{{ u.fullname }}<br/>{{ u.age }} ans dans {{ u.numDaysBeforeBirthday }} jour{% if u.numDaysBeforeBirthday > 1 %}s{% endif %}</div>
                                 </div>
                             </td>
                             {% set num = num+1 %}
