@@ -74,6 +74,8 @@ fos_user:
     db_driver: 		orm
     firewall_name: 	main
     user_class: 	Bestyear\UserBundle\Entity\User
+    service:
+        mailer: fos_user.mailer.twig_swift
     from_email:
         address:        no-reply@theotimeloiseau.com
         sender_name:    Le Bestyear
@@ -82,9 +84,13 @@ fos_user:
             type: bestyear_user_registration
         confirmation:
             enabled: true
+            template: BestyearUserBundle:Mail:register_mail.html.twig
     profile:
         form:
             type: bestyear_user_profile
+    resetting:
+        email:
+            template: BestyearUserBundle:Mail:password_mail.html.twig
 
 services:
     user_bundle.listener.user_registration:

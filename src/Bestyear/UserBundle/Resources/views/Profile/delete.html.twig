@@ -1,0 +1,25 @@
+{% extends '::baseForm.html.twig' %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('bundles/bestyearuser/css/delete.css') }}" type="text/css"/>
+{% endblock %}
+
+{% block content %}
+<h1>Suppression</h1>
+<div class="line"></div>
+<div id="form">
+    Vous êtes sur le point de supprimer votre compte Bestyear. Pour confirmer la suppression, cliquez sur le bouton ci-dessous afin que votre profil soit définitivement supprimé. Toutes vos informations seront supprimées.<br/>
+    <form action="{{ path('bestyear_deleted') }}" method="POST">
+        <input type="submit" class="button basicButton redButton" value="Se désinscrire"/>
+    </form>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+<script src="{{ asset('bundles/bestyearuser/js/jquery-ui-1.10.3.custom.js') }}"></script>
+<script src="{{ asset('bundles/bestyearuser/js/jquery.ui.datepicker-fr.js') }}"></script>
+<script src="{{ asset('bundles/bestyearuser/js/jquery.qtip.js') }}"></script>
+<script src="{{ asset('bundles/bestyearuser/js/formHandler.js') }}"></script>
+<script src="{{ asset('bundles/bestyearuser/js/register.js') }}"></script>
+<script src="{{ asset('bundles/bestyearuser/js/gender.js') }}"></script>
+{% endblock %}

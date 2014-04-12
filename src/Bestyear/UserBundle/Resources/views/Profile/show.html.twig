@@ -36,7 +36,7 @@
         <!--img src="{{ asset('bundles/bestyearmain/images/user.jpg') }}" id="userPicture" class="male" alt="{{ user.givenname }} {{ user.familyname }}"/>-->
         <div id="userNoPicture" class="male"><span class="icon icon-single user icon-white icon-60"></span></div>
         <div id="identity">
-            <span id="name">{{ user.givenname }} {{ user.familyname }}</span><br/>
+            <span id="name">{{ user.givenname }} {{ user.familyname }}</span> - <span id="login">{{ user.username }}</span><br/>
             <span id="birthdate">{{ user.birthdate|date("d/m/Y") }} ({{ age }} ans)</span><br/>
             <span id="level">{{ user.TC }}{{ user.studylevel }}</span>
         </div>

@@ -1,0 +1,12 @@
+#form {
+    padding: 5px 20px;
+    text-align: center;
+}
+
+.redButton {
+    background-color: #F03D3D;
+}
+
+.redButton:hover {
+    background-color: #C32B2B;
+}

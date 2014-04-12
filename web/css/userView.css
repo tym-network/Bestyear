@@ -4,7 +4,6 @@
 
 .userProfile {
     display: none;
-    opacity: 0;
 }
 
 .profile {
@@ -58,6 +57,10 @@
     font-size: 28px;
     font-family: "MavenProBold", "Century Gothic";
     font-weight: bold;
+}
+
+#login {
+    font-style: italic;
 }
 
 #socialNetworks {

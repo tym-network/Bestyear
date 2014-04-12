@@ -7,7 +7,7 @@ use Symfony\Component\HttpFoundation\Response as Reponse;
 use Symfony\Component\HttpFoundation\Request;
 
 class MainController extends Controller
-{   
+{
     function removeAccents($string) {
         $string = str_replace(
             array(
@@ -108,17 +108,13 @@ class MainController extends Controller
                 
                 $search = $this->removeAccents(mb_strtoupper(htmlspecialchars($request->query->get('input')),'UTF-8'));
                 $resultUsers = array();
-                             
-                $logger = $this->get('logger');
-                
-                
+
                 foreach ($users as $user) {
                     $comparison1 = substr($this->removeAccents(mb_strtoupper($user->getGivenname(),'UTF-8')), 0, strlen($search));
-                    $logger->info("RECHERCHE : ".$search." - ".$comparison1);
                     $comparison2 = substr($this->removeAccents(mb_strtoupper($user->getFamilyname(),'UTF-8')), 0, strlen($search));
                     $comparison3 = substr($this->removeAccents(mb_strtoupper($user->getUsername(),'UTF-8')), 0, strlen($search));
-                    $comparison4 = substr($this->removeAccents(mb_strtoupper($user->getGivenname() + $user->getFamilyname(),'UTF-8')), 0, strlen($search));
-                    $comparison5 = substr($this->removeAccents(mb_strtoupper($user->getFamilyname() + $user->getGivenname(),'UTF-8')), 0, strlen($search));
+                    $comparison4 = substr($this->removeAccents(mb_strtoupper($user->getGivenname() . " " . $user->getFamilyname(),'UTF-8')), 0, strlen($search));
+                    $comparison5 = substr($this->removeAccents(mb_strtoupper($user->getFamilyname() . " " . $user->getGivenname(),'UTF-8')), 0, strlen($search));
                     
                     if (levenshtein($search, $comparison1) <= floor(strlen($search)*35/100)) {
                         $resultUsers[] = $user;
@@ -151,6 +147,7 @@ class MainController extends Controller
                     }
                     $data[] = array(
                         "fullname" => $user->getGivenname() . " " . $user->getFamilyName(),
+                        "login" => $user->getUsername(),
                         "studies" => $user->getTC() . $user->getStudylevel(),
                         "age" => $age,
                         "id" => $user->getId(),
@@ -210,6 +207,7 @@ class MainController extends Controller
                     "id" => $user->getId(),
                     "gender" => $gender,
                     "fullname" => $user->getGivenname() . " " . $user->getFamilyName(),
+                    "login" => $user->getUsername(),
                     "studies" => $user->getTC() . $user->getStudylevel(),
                     "age" => $user->getBirthdate()->format('d/m/Y') . " (".$age." ans)",
                     "address1_1" => $address1_1,

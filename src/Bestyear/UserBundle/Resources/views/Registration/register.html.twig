@@ -71,12 +71,6 @@
             <input type="button" class="button nextStep" name="nextStep" value="Étape suivante"/>
         </div>
         <div id="step2">
-            {{ form_widget(form.gender) }}
-            <div id="genderSwitch">
-                <span class="genderSymbol active" id="maleSymbol"></span>
-                <div id="genderBar" class="maleSwitch"><div id="genderButton"></div></div>
-                <span class="genderSymbol" id="femaleSymbol"></span>
-            </div>
             <span class="" id="givennameSpan">
                 {% if form_errors(form.givenname) %}
                 <div id="errorBar">{{ form_errors(form.givenname) }}</div>
@@ -99,6 +93,13 @@
                 {{ form_widget(form.birthdate, {'attr': {'placeholder': 'YYYY-MM-JJ'} }) }}
                 <div class="error"></div>
             </span><br/>
+            {{ form_widget(form.gender) }}
+            <span class="center" id="genderText">Cliquez sur votre genre:</span>
+            <div id="genderSwitch">
+                <span class="genderSymbol active" id="maleSymbol"></span>
+                <div id="genderBar" class="maleSwitch"><div id="genderButton"></div></div>
+                <span class="genderSymbol" id="femaleSymbol"></span>
+            </div>
             <span class="" id="TCSpan">
                 {% if form_errors(form.TC) %}
                 <div id="errorBar">{{ form_errors(form.TC) }}</div>

@@ -63,11 +63,18 @@
 
 .userList .infosSummary {
     margin-left: 10px;
+    margin-top: -10px;
 }
 
 .userList .name {
     font-family: "MavenProBold", "Century Gothic";
     font-size: 26px;
+}
+
+.userList .login {
+    font-family: "MavenProLight", "Century Gothic";
+    font-style: italic;
+    font-size: 18px;
 }
 
 .userList .other {

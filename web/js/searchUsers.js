@@ -33,11 +33,15 @@ function send(sUrl, oParams) {
 }
 
 /*
- * Handles the search results (from a json)
+ * Display the page to show the results
  */
-function handleResults(json) {
+function handleResults() {
     // Updates the string researched
     $("#searchContent").text(currentSearch);
+    
+    if ($("#div2 .loadingWheel").not(":visible")) {
+        $("#div2 .loadingWheel").fadeIn(500);
+    }
     
     // Display the icon in the left bar if not already shown
     if (!searchPanelActivated) {
@@ -54,44 +58,38 @@ function handleResults(json) {
         displayDiv($(".listLeft"));
     }
     
-    // No previous search
-    if (numResults == -1) {
-        showResults(json);
-    } else if (numResults == 0) {
+    if (numResults == 0) {
         // Delete "No Result" if there were a previous search
-        $("#noresult").animate({"opacity": 0}, 200, function() {
-            $("#noresult").remove();
-            showResults(json);
-        });  
+        $("#noresult").animate({"opacity": 0}, 200);  
     } else if (numResults >= 1) {
         // Cleaning the tab (if there was a previous search)
-        $("#leftTable").animate({"opacity": 0}, 200);
-        $("#rightTable").animate({"opacity": 0}, 200, function() {
-            $("#rightTable").children().remove();
-            $("#leftTable").children().remove();
-            showResults(json);
-        });
-    } else {
-        showResults(json);
+        $("#leftTable").fadeOut(200);
+        $("#rightTable").fadeOut(200);
     }
-    
-    
 }
 
 function showResults(json) {
+    // Hide loading wheel
+    $("#div2 .loadingWheel")
+        .stop()
+        .fadeOut(100);
+    
     var num = 0;
+    $("#rightTable").children().remove();
+    $("#leftTable").children().remove();
+    $("#noresult").remove();
     if (json.length == 0) {
         numResults = 0;
         htmlUser = "<p id=\"noresult\">Aucun résultat</p>";
         $(htmlUser).appendTo('.userList');
     } else {
         numResults = 1;
-        $("#leftTable").animate({"opacity": 1}, 400);
-        $("#rightTable").animate({"opacity": 1}, 400);
+        $("#leftTable").fadeIn(400);
+        $("#rightTable").fadeIn(400);
         $.each(json, function () {
             // Add the support of a picture when it will be implemented
             htmlUser = '<tr id="' + this.id + '" class="userPreview"><td><div class="circle ' + this.gender + '"><span class="icon icon-single user icon-white icon-60 userBigIcon"></span></div></div></div></td>';
-            htmlUser += '<td><div class="infosSummary"><div class="name">' + this.fullname + '</div><div class="other">' + this.studies + ' - ' +  this.age + ' ans</div></div></td></tr>';
+            htmlUser += '<td><div class="infosSummary"><div class="name">' + this.fullname + '</div><div class="other">' + this.studies + ' - ' +  this.age + ' ans</div><div class="login">' + this.login + '</div></div></td></tr>';
             
             if (num%2 == 0) {
                 $(htmlUser).appendTo('#leftTable');
@@ -112,11 +110,7 @@ function showResults(json) {
 /*
  * Display a specific user 
  */
-function displayUser(json) {
-    var num = 0;
-    var numCouronne = 0;
-    var column = "leftColumn";
-    
+function showUser() {
     // Cleaning the tab (if there was a previous user)
     $(".userProfile").children().remove();
     
@@ -135,11 +129,28 @@ function displayUser(json) {
         displayDiv($(".userLeft"));
     }
     
+    if ($("#div3 .loadingWheel").not(":visible")) {
+        $("#div3 .loadingWheel").fadeIn(500);
+    }
+}
+
+function displayUser(json) {
+    // Hide loading wheel
+    $("#div3 .loadingWheel")
+            .stop()
+            .fadeOut(100);
+    
+    var num = 0;
+    var numCouronne = 0;
+    var column = "leftColumn";
+    
     // Picture and basic info
     htmlCode = '<div id="userNoPicture" class="';
     htmlCode += json.gender;
     htmlCode += '"><span class="icon icon-single user icon-white icon-60"></span></div><div id="identity"><span id="name">';
     htmlCode += json.fullname;
+    htmlCode += '</span>- <span id="login">';
+    htmlCode += json.login;
     htmlCode += '</span><br/><span id="birthdate">';
     htmlCode += json.age;
     htmlCode += '</span><br/><span id="level">';
@@ -298,19 +309,23 @@ function displayUser(json) {
     }
     
     $(htmlCode).appendTo('.userProfile');
+    if ($('.userProfile').not(':visible')) {
+        $('.userProfile').fadeIn(600);
+    }
 }
 
 function search() {
     if ($('#searchUser').val()) {
         var params = {
             "input": $('#searchUser').val(),
-            "callback": "handleResults"
+            "callback": "showResults"
         };
         currentSearch = $('#searchUser').val().replace(/</gi, '');
         currentSearch = currentSearch.replace(/>/gi, '');
         currentSearch = currentSearch.replace(/\(/gi, '');
         currentSearch = currentSearch.replace(/\)/gi, '');
         params.input = currentSearch;
+        handleResults();
         send("search",params);
     }
 }
@@ -326,6 +341,7 @@ function searchUser(id) {
     var params = {
         "callback": "displayUser"
     };
+    showUser();
     send("searchUser/"+id,params);
 }
 

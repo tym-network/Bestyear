@@ -2,6 +2,26 @@ bestyear_password_changed:
     pattern:  /profile/password-changed
     defaults: { _controller: BestyearUserBundle:PasswordChanged:passwordChanged }
 
+bestyear_delete:
+    pattern:  /profile/delete
+    defaults: { _controller: BestyearUserBundle:Delete:index }
+
+bestyear_deleted:
+    pattern:  /profile/deleted
+    defaults: { _controller: BestyearUserBundle:Delete:delete }
+
 bestyear_password_reset:
     pattern:  /resetting/password-reset
     defaults: { _controller: BestyearUserBundle:PasswordReset:passwordReset }
+
+bestyear_change_settings:
+    pattern:  /settings
+    defaults: { _controller: BestyearUserBundle:Settings:settings }
+
+bestyear_change_settings_saved:
+    pattern:  /settings_saved
+    defaults: { _controller: BestyearUserBundle:Settings:settingsSaved }
+
+bestyear_image:
+    pattern:  /profile/picture
+    defaults: { _controller: BestyearUserBundle:Picture:index }

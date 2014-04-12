@@ -1,0 +1,23 @@
+{% extends '::baseForm.html.twig' %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('bundles/bestyearuser/css/delete.css') }}" type="text/css"/>
+{% endblock %}
+
+{% block content %}
+<h1>Compte supprimé</h1>
+<div class="line"></div>
+<div id="form">
+    Votre compte est supprimé!
+    <a href="{{ path('bestyear_main_homepage') }}"><input type="button" class="button basicButton" value="Retour à l'accueil"/></a>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+<script src="{{ asset('bundles/bestyearuser/js/jquery-ui-1.10.3.custom.js') }}"></script>
+<script src="{{ asset('bundles/bestyearuser/js/jquery.ui.datepicker-fr.js') }}"></script>
+<script src="{{ asset('bundles/bestyearuser/js/jquery.qtip.js') }}"></script>
+<script src="{{ asset('bundles/bestyearuser/js/formHandler.js') }}"></script>
+<script src="{{ asset('bundles/bestyearuser/js/register.js') }}"></script>
+<script src="{{ asset('bundles/bestyearuser/js/gender.js') }}"></script>
+{% endblock %}

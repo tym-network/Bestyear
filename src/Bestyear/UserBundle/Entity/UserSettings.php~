@@ -1,0 +1,64 @@
+<?php
+
+namespace Bestyear\UserBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * UserSettings
+ *
+ * @ORM\Table()
+ * @ORM\Entity
+ */
+class UserSettings
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="birthdaysMail", type="boolean")
+     */
+    private $birthdaysMail;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set boooolean
+     *
+     * @param boolean $boooolean
+     * @return UserSettings
+     */
+    public function setBoooolean($boooolean)
+    {
+        $this->boooolean = $boooolean;
+    
+        return $this;
+    }
+
+    /**
+     * Get birthdaysMail
+     *
+     * @return boolean
+     */
+    public function getBirthdaysMail()
+    {
+        return $this->birthdaysMail;
+    }
+}
