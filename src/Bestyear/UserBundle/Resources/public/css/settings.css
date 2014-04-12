@@ -1,0 +1,45 @@
+form {
+    text-align: center;
+}
+
+#checkboxes {
+    text-align: left;
+    padding: 0 20px;
+}
+
+.checkboxContainer {
+    position: relative;
+    width: 15px;
+    height: 15px;
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 10px;
+}
+
+input[type=checkbox] {
+    position: relative;
+    opacity: 0;
+    z-index: 50;
+    width: 100%;
+    height: 100%;
+}
+
+.checkbox {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #D8D8D8;
+    border-radius: 5px;
+    box-shadow: inset 1px 1px 3px rgba(0,0,0,0.1)
+}
+
+input[type=checkbox]:checked + .checkbox:before {
+    position: absolute;
+    top: -7px;
+    font-family: "LigatureSymbols";
+    content: "\E029";
+    font-size: 24px;
+    color: #24C761;
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.3);
+}

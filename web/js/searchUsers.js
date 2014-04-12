@@ -149,6 +149,8 @@ function displayUser(json) {
     htmlCode += json.gender;
     htmlCode += '"><span class="icon icon-single user icon-white icon-60"></span></div><div id="identity"><span id="name">';
     htmlCode += json.fullname;
+    htmlCode += '</span>- <span id="login">';
+    htmlCode += json.login;
     htmlCode += '</span><br/><span id="birthdate">';
     htmlCode += json.age;
     htmlCode += '</span><br/><span id="level">';

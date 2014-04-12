@@ -1,0 +1,33 @@
+{% extends '::baseForm.html.twig' %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('bundles/bestyearuser/css/settings.css') }}" type="text/css"/>
+{% endblock %}
+
+{% block leftBar %}
+{% endblock %}
+
+{% block content %}
+<h1>Paramètres</h1>
+<div class="line"></div>
+<div id="form">
+    {{ form_start(form) }}
+        <div id="checkboxes">
+            {% if form_errors(form.birthdaysMail) %}
+                <div id="errorBar">{{ form_errors(form.birthdaysMail) }}</div>
+            {% endif %}
+            <div class="checkboxContainer">{{ form_widget(form.birthdaysMail) }}<div class="checkbox"></div></div><label for="form_birthdaysMail">Recevoir un mail quotidien pour les anniversaires</label>
+        </div>
+        <input type="submit" class="button submit" name="submit" value="Sauvegarder"/>
+    {{ form_end(form) }}
+</div>
+{% endblock %}
+
+{% block javascripts %}
+<script src="{{ asset('bundles/bestyearuser/js/jquery-ui-1.10.3.custom.js') }}"></script>
+<script src="{{ asset('bundles/bestyearuser/js/jquery.ui.datepicker-fr.js') }}"></script>
+<script src="{{ asset('bundles/bestyearuser/js/jquery.qtip.js') }}"></script>
+<script src="{{ asset('bundles/bestyearuser/js/formHandler.js') }}"></script>
+<script src="{{ asset('bundles/bestyearuser/js/register.js') }}"></script>
+<script src="{{ asset('bundles/bestyearuser/js/gender.js') }}"></script>
+{% endblock %}

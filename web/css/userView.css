@@ -59,6 +59,10 @@
     font-weight: bold;
 }
 
+#login {
+    font-style: italic;
+}
+
 #socialNetworks {
     float: right;
     margin-top: 24px;

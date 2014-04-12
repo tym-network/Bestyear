@@ -6,12 +6,13 @@ use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
 use Symfony\Component\Validator\Constraints as Assert;
 use Bestyear\UserBundle\Validator\Constraints as UserAssert;
+use \Bestyear\UserBundle\Entity\UserSettings as UserSettings;
 
 /**
  * User
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Bestyear\UserBundle\Entity\UserRepository")
  * @UserAssert\FieldsNotBlank
  */
 class User extends BaseUser
@@ -201,6 +202,20 @@ class User extends BaseUser
      * @ORM\Column(name="tn10_place", type="string", length=255, nullable=true)
      */
     protected $tn10_place;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Bestyear\UserBundle\Entity\UserSettings", cascade={"all"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $userSettings;
+
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->userSettings = new UserSettings();
+    }
+
 
     /**
      * Get id
@@ -932,5 +947,28 @@ class User extends BaseUser
     public function getTn10Place()
     {
         return $this->tn10_place;
+    }
+
+    /**
+     * Set userSettings
+     *
+     * @param \Bestyear\UserBundle\Entity\UserSettings $userSettings
+     * @return User
+     */
+    public function setUserSettings(\Bestyear\UserBundle\Entity\UserSettings $userSettings)
+    {
+        $this->userSettings = $userSettings;
+    
+        return $this;
+    }
+
+    /**
+     * Get userSettings
+     *
+     * @return \Bestyear\UserBundle\Entity\UserSettings 
+     */
+    public function getUserSettings()
+    {
+        return $this->userSettings;
     }
 }
