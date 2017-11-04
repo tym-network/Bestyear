@@ -46,6 +46,13 @@
                             </div>
                         </li>
                     </a>
+                    <a href="{{ path('bestyear_image') }}">
+                        <li>
+                            <div class="text">
+                                <span class="icon picture icon-white icon-24"></span>Images
+                            </div>
+                        </li>
+                    </a>
                     <a href="{{ path('fos_user_change_password') }}">
                         <li>
                             <div class="text">
@@ -74,7 +81,7 @@
         <div id="layout">
             <div id="leftBar">
                 <div id="leftWhiteArrow"></div>
-                
+
                 {% block leftBar %}
                 <a href="#home">
                     <div id="left1" class="leftButton homeLeft">
@@ -92,7 +99,7 @@
                     </div>
                 </a>
                 {% endblock %}
-                
+
             </div>
             <div id="content">
                 {% block content %}{% endblock %}

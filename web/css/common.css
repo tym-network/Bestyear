@@ -162,6 +162,14 @@
     content: "\E10f";
 }
 
+.picture:before {
+    content: "\E101";
+}
+
+.icon.left:before {
+    content: "\E080";
+}
+
 .genderSymbol {
   font-family: "MaleFemaleSymbols";
   font-size: 30px;
